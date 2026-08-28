@@ -7,7 +7,7 @@
 PY := python3
 SCRIPTS := scripts
 
-.PHONY: help glossary check build epub pdf html clean all
+.PHONY: help glossary check build epub pdf html audiobook clean all
 
 help:
 	@echo "make glossary  regenerate GLOSSARY.md from glossary.yaml"
@@ -36,6 +36,16 @@ html: glossary
 build: epub
 
 all: check epub html
+
+# One podcastkit episode per chapter: script.json (the narration, chunked for
+# TTS) + episode.yaml (the voice cast). This is the *source* an audio renderer
+# consumes — rendering it to MP3 is podcastkit's job and needs a TTS backend.
+audiobook:
+	@bookkit audiobook -b . -d build/audiobook
+	@echo "next: podcastkit generate -e build/audiobook/chapter_01 && podcastkit assemble -e build/audiobook/chapter_01"
+
+audiobook-plan:
+	@bookkit audiobook -b . --dry-run
 
 clean:
 	@rm -rf build GLOSSARY.md
