@@ -1,0 +1,1190 @@
+# The concept ledger for "Prompt to Production".
+#
+# This is the book's canon: every piece of jargon it teaches, the ONE definition
+# it commits to, and the ONE analogy it uses for that idea throughout. Chapters
+# are written against this file; `make check` lints the manuscript against it.
+#
+# The shape here deliberately prototypes the `Concept` model proposed in
+# alpibrusl/content-kit#9. If that lands, this file becomes a bookkit bible.
+#
+#   term        the canonical name
+#   aka         synonyms and near-misses the reader will meet elsewhere
+#   definition  the one plain-language definition (used verbatim in the glossary)
+#   analogy     the metaphor this book commits to and never contradicts
+#   depends_on  terms that must already be defined for this one to make sense
+#   defined_in  the chapter that introduces it
+
+kind: technical
+title: "Prompt to Production"
+
+concepts:
+
+  # ─── Chapter 1 — The Handoff ────────────────────────────────────────────
+  - term: "source code"
+    aka: ["code", "the source"]
+    definition: >-
+      The text a human or an agent writes to describe what a program should do.
+      It is the thing you edit; it is not the thing your users touch.
+    analogy: "A recipe: instructions written down, not the meal."
+    defined_in: 1
+
+  - term: "program"
+    aka: ["application", "app"]
+    definition: >-
+      Source code that has been turned into something a computer can execute.
+    depends_on: ["source code"]
+    defined_in: 1
+
+  - term: "build"
+    definition: >-
+      The process that turns source code into something runnable, and the act of
+      running that process. Repeatable by design: same source in, same result out.
+    analogy: "Cooking the recipe."
+    depends_on: ["source code", "program"]
+    defined_in: 1
+
+  - term: "artifact"
+    aka: ["build artifact"]
+    definition: >-
+      The output of a build — a file or package that can be deployed. Derived
+      from source, never edited directly, never the thing you keep.
+    depends_on: ["build"]
+    defined_in: 1
+
+  - term: "runtime"
+    aka: ["running", "at runtime"]
+    definition: >-
+      The state of a program while it is actually executing, as opposed to
+      sitting on disk as text. Most interesting failures happen here.
+    depends_on: ["program"]
+    defined_in: 1
+
+  - term: "deploy"
+    aka: ["deployment", "ship", "release"]
+    definition: >-
+      To put an artifact somewhere it will run for real users, and to make it
+      the version they reach.
+    depends_on: ["artifact", "runtime"]
+    defined_in: 1
+
+  - term: "production"
+    aka: ["prod", "live"]
+    definition: >-
+      The environment real users actually touch. The only one where mistakes
+      cost something.
+    depends_on: ["deploy"]
+    defined_in: 1
+
+  - term: "system"
+    definition: >-
+      Everything that has to be working for your users to get what they came
+      for: the program, the machine under it, the database, the network, the
+      third-party services. You own the system, not just the code.
+    depends_on: ["program", "runtime"]
+    defined_in: 1
+
+  # ─── Chapter 2 — Where Code Lives ───────────────────────────────────────
+  - term: "repository"
+    scan: true
+    aka: ["repo"]
+    definition: >-
+      The folder holding a project's source code together with the complete
+      recorded history of every change ever made to it.
+    analogy: "A workshop with a perfect logbook — not just a folder of files."
+    depends_on: ["source code"]
+    defined_in: 2
+
+  - term: "codebase"
+    definition: >-
+      All the source code belonging to one project, considered as a whole.
+    depends_on: ["source code", "repository"]
+    defined_in: 2
+
+  - term: "programming language"
+    aka: ["language"]
+    definition: >-
+      A notation for writing source code, with fixed rules about what counts as
+      a valid instruction. There are many because they were designed for
+      different jobs, not because the industry is disorganised.
+    depends_on: ["source code"]
+    defined_in: 2
+
+  - term: "compiled language"
+    definition: >-
+      A language whose source is translated into machine instructions ahead of
+      time, in a build step, before it can run.
+    depends_on: ["programming language", "build"]
+    defined_in: 2
+
+  - term: "interpreted language"
+    definition: >-
+      A language whose source is read and executed on the fly by another program,
+      with no separate translation step.
+    depends_on: ["programming language"]
+    defined_in: 2
+
+  - term: "library"
+    aka: ["package", "module"]
+    definition: >-
+      Someone else's code, packaged so your code can use it without you
+      understanding its insides.
+    depends_on: ["source code"]
+    defined_in: 2
+
+  - term: "dependency"
+    aka: ["dependencies"]
+    definition: >-
+      A library your project needs in order to work. If it breaks, disappears,
+      or changes, your project is affected.
+    depends_on: ["library"]
+    defined_in: 2
+
+  - term: "framework"
+    definition: >-
+      A large library that supplies the overall shape of an application, so you
+      fill in the parts specific to your problem rather than starting from
+      nothing.
+    depends_on: ["library"]
+    defined_in: 2
+
+  - term: "package manager"
+    definition: >-
+      A tool that fetches and installs your dependencies, and the dependencies
+      of those dependencies, at the versions you asked for.
+    depends_on: ["dependency"]
+    defined_in: 2
+
+  - term: "lockfile"
+    scan: true
+    definition: >-
+      A generated file recording the exact version of every dependency actually
+      installed, so the same build can be reproduced later.
+    depends_on: ["package manager", "dependency", "build"]
+    defined_in: 2
+
+  - term: "open source"
+    definition: >-
+      Software whose source code is published for anyone to read, use and modify,
+      under a licence that sets the conditions.
+    depends_on: ["source code"]
+    defined_in: 2
+
+  - term: "supply chain"
+    aka: ["software supply chain"]
+    definition: >-
+      The full tree of other people's code your program depends on, directly and
+      indirectly. Usually hundreds of packages written by strangers.
+    depends_on: ["dependency", "open source"]
+    defined_in: 2
+
+  # ─── Chapter 3 — The Shape of an App ────────────────────────────────────
+  - term: "client"
+    definition: >-
+      The side of a system that asks for something — a browser, a phone app, or
+      another program making a request.
+    depends_on: ["program"]
+    defined_in: 3
+
+  - term: "server (role)"
+    aka: ["server", "backend service"]
+    definition: >-
+      The side of a system that receives requests and answers them. A role
+      played by a program, not a physical thing — distinct from the machine of
+      the same name in Chapter 7.
+    depends_on: ["client", "program"]
+    defined_in: 3
+
+  - term: "frontend"
+    aka: ["front end", "client side"]
+    definition: >-
+      The part of an application a user sees and interacts with directly.
+    depends_on: ["client"]
+    defined_in: 3
+
+  - term: "backend"
+    aka: ["back end", "server side"]
+    definition: >-
+      The part of an application the user never sees: the logic, the rules, and
+      the data behind the screen.
+    depends_on: ["server (role)"]
+    defined_in: 3
+
+  - term: "request"
+    definition: >-
+      One message from a client asking a server for something.
+    depends_on: ["client", "server (role)"]
+    defined_in: 3
+
+  - term: "response"
+    definition: >-
+      The server's answer to one request, including a status saying whether it
+      worked.
+    depends_on: ["request"]
+    defined_in: 3
+
+  - term: "HTTP"
+    definition: >-
+      The agreed set of rules for how requests and responses are written and
+      sent over the web. HTTPS is the same thing with the contents encrypted.
+    depends_on: ["request", "response"]
+    defined_in: 3
+
+  - term: "API"
+    definition: >-
+      The fixed set of requests a service agrees to accept, and what it promises
+      to send back. The contract between two programs.
+    analogy: "A service counter with a fixed order form: you may ask for what is on the form, in the format the form demands."
+    depends_on: ["request", "response"]
+    defined_in: 3
+
+  - term: "endpoint"
+    scan: true
+    definition: >-
+      One specific address within an API, corresponding to one thing you can ask
+      for or do.
+    depends_on: ["API"]
+    defined_in: 3
+
+  - term: "JSON"
+    definition: >-
+      A plain-text format for structured data that both humans and programs can
+      read. The usual way requests and responses carry information.
+    depends_on: ["request", "response"]
+    defined_in: 3
+
+  - term: "database"
+    aka: ["DB", "the data layer"]
+    definition: >-
+      The system that stores your application's data durably, so it survives the
+      program stopping, restarting, or being replaced.
+    depends_on: ["backend"]
+    defined_in: 3
+
+  - term: "schema"
+    scan: true
+    definition: >-
+      The declared structure of the data in a database: what tables exist, what
+      fields they have, and what is allowed in each.
+    depends_on: ["database"]
+    defined_in: 3
+
+  - term: "migration"
+    scan: true
+    aka: ["schema migration"]
+    definition: >-
+      A recorded, ordered change to a database schema, applied the same way in
+      every environment so they never diverge.
+    depends_on: ["schema"]
+    defined_in: 3
+
+  - term: "state"
+    definition: >-
+      Everything a system remembers between one request and the next.
+    depends_on: ["request", "database"]
+    defined_in: 3
+
+  - term: "stateless"
+    scan: true
+    definition: >-
+      A design in which each request carries everything needed to answer it, so
+      any copy of the server can handle it and no copy has to remember anything.
+    depends_on: ["state", "server (role)"]
+    defined_in: 3
+
+  - term: "cache"
+    aka: ["caching"]
+    definition: >-
+      A copy of an expensive answer, kept somewhere fast so the same question
+      does not have to be worked out twice. Always a trade of freshness for
+      speed.
+    depends_on: ["response", "state"]
+    defined_in: 3
+
+  # ─── Chapter 4 — Version Control ────────────────────────────────────────
+  - term: "version control"
+    aka: ["source control", "VCS"]
+    definition: >-
+      A system that records every change to a codebase as a separate, labelled,
+      reversible step, so any past state can be recovered exactly.
+    depends_on: ["repository", "codebase"]
+    defined_in: 4
+
+  - term: "Git"
+    aka: ["git"]
+    definition: >-
+      The version control system essentially everyone uses. GitHub and GitLab
+      are hosting services built around it, not the thing itself.
+    depends_on: ["version control"]
+    defined_in: 4
+
+  - term: "commit"
+    definition: >-
+      One recorded change to the codebase, with a message saying why it was
+      made. The unit of history.
+    analogy: "A save point in a game — you can always load it again."
+    depends_on: ["Git", "version control"]
+    defined_in: 4
+
+  - term: "diff"
+    aka: ["the diff", "changeset"]
+    definition: >-
+      The exact lines added and removed by a change, shown side by side with what
+      was there before.
+    depends_on: ["commit"]
+    defined_in: 4
+
+  - term: "branch"
+    definition: >-
+      A separate line of commits, so work in progress can proceed without
+      affecting the version everyone else is using.
+    analogy: "A parallel workbench: the same project, a second surface to work on."
+    depends_on: ["commit"]
+    defined_in: 4
+
+  - term: "main branch"
+    aka: ["main", "master", "trunk"]
+    definition: >-
+      The branch treated as the current truth of the project — the one releases
+      are cut from.
+    depends_on: ["branch"]
+    defined_in: 4
+
+  - term: "merge"
+    definition: >-
+      To fold the commits from one branch into another.
+    depends_on: ["branch", "commit"]
+    defined_in: 4
+
+  - term: "merge conflict"
+    aka: ["conflict"]
+    definition: >-
+      What happens when two branches changed the same lines and the system
+      cannot know which version you meant. It requires a human decision, not a
+      repair.
+    depends_on: ["merge"]
+    defined_in: 4
+
+  - term: "remote"
+    definition: >-
+      The shared copy of a repository that everyone syncs to, usually hosted on
+      GitHub or similar. Work only exists for other people once it is pushed there.
+    depends_on: ["repository", "Git"]
+    defined_in: 4
+
+  - term: "pull request"
+    aka: ["PR", "merge request", "MR"]
+    definition: >-
+      A proposal to merge one branch into another, opened for review and
+      discussion before it is accepted.
+    depends_on: ["branch", "merge", "remote"]
+    defined_in: 4
+
+  - term: "code review"
+    aka: ["review"]
+    definition: >-
+      Someone other than the author reading a change before it is merged, and
+      saying whether it should be.
+    depends_on: ["pull request", "diff"]
+    defined_in: 4
+
+  - term: "revert"
+    definition: >-
+      To undo a change by recording a new commit that reverses it, leaving the
+      history intact rather than erasing it.
+    depends_on: ["commit", "main branch"]
+    defined_in: 4
+
+  # ─── Chapter 5 — Environments and Secrets ───────────────────────────────
+  - term: "environment"
+    definition: >-
+      One complete running copy of your system, kept separate from the others so
+      what happens in it affects nothing else.
+    analogy: "A dress rehearsal versus opening night: same play, different consequences."
+    depends_on: ["system", "runtime"]
+    defined_in: 5
+
+  - term: "local environment"
+    aka: ["local", "locally", "on my machine"]
+    definition: >-
+      The copy running on your own computer, for your eyes only.
+    depends_on: ["environment"]
+    defined_in: 5
+
+  - term: "staging"
+    scan: true
+    aka: ["pre-production", "preprod", "test environment"]
+    definition: >-
+      An environment built to resemble production as closely as possible, used
+      to see what a change will do before real users meet it.
+    depends_on: ["environment", "production"]
+    defined_in: 5
+
+  - term: "environment parity"
+    aka: ["parity"]
+    definition: >-
+      How closely your environments resemble each other. The less parity, the
+      less anything you observed in one tells you about another.
+    depends_on: ["environment", "staging"]
+    defined_in: 5
+
+  - term: "configuration"
+    aka: ["config"]
+    definition: >-
+      The settings that differ between environments — addresses, limits,
+      switches — kept outside the code so the same artifact runs anywhere.
+    depends_on: ["environment", "artifact"]
+    defined_in: 5
+
+  - term: "environment variable"
+    aka: ["env var"]
+    definition: >-
+      A named value handed to a program by whatever starts it, and the usual way
+      configuration reaches an application.
+    depends_on: ["configuration"]
+    defined_in: 5
+
+  - term: "secret"
+    aka: ["credential", "API key", "token"]
+    definition: >-
+      A value that grants access to something — a password, a key, a token.
+      Anyone holding it can act as you.
+    analogy: "A house key. You do not photocopy it into the blueprints you publish."
+    depends_on: ["configuration"]
+    defined_in: 5
+
+  - term: "secret manager"
+    aka: ["vault", "secret store"]
+    definition: >-
+      A service that stores secrets encrypted, hands them only to things allowed
+      to have them, and records every access.
+    depends_on: ["secret"]
+    defined_in: 5
+
+  - term: "rotation"
+    aka: ["key rotation", "rotate"]
+    definition: >-
+      Replacing a secret with a new one and retiring the old, so that a leaked
+      value stops being useful.
+    depends_on: ["secret"]
+    defined_in: 5
+
+  # ─── Chapter 6 — Tests ──────────────────────────────────────────────────
+  - term: "test"
+    aka: ["automated test"]
+    definition: >-
+      A small program that runs your program, checks it did the right thing, and
+      says pass or fail without a human watching.
+    analogy: "A question you write down once and can then ask forever, for free."
+    depends_on: ["program", "build"]
+    defined_in: 6
+
+  - term: "assertion"
+    definition: >-
+      The line in a test that states what must be true. If it is not, the test
+      fails.
+    depends_on: ["test"]
+    defined_in: 6
+
+  - term: "test suite"
+    aka: ["the tests", "the suite"]
+    definition: >-
+      All of a project's tests, run together as one gate.
+    depends_on: ["test"]
+    defined_in: 6
+
+  - term: "unit test"
+    definition: >-
+      A test of one small piece of logic in isolation, with everything around it
+      faked. Fast, precise, and blind to how the pieces fit together.
+    depends_on: ["test"]
+    defined_in: 6
+
+  - term: "integration test"
+    definition: >-
+      A test that exercises several real pieces together — code plus a real
+      database, say — to check they actually connect.
+    depends_on: ["test", "unit test", "database"]
+    defined_in: 6
+
+  - term: "end-to-end test"
+    aka: ["E2E test", "e2e"]
+    definition: >-
+      A test that drives the whole system the way a user would, from the screen
+      inwards. The most convincing and the most expensive.
+    depends_on: ["test", "integration test", "frontend"]
+    defined_in: 6
+
+  - term: "regression"
+    aka: ["regression test"]
+    definition: >-
+      A failure in something that used to work. A regression test is one written
+      specifically to catch a bug coming back.
+    depends_on: ["test"]
+    defined_in: 6
+
+  - term: "test coverage"
+    aka: ["coverage"]
+    definition: >-
+      The percentage of your code that runs at least once when the test suite
+      runs. A measure of what is untested, not of what is correct.
+    depends_on: ["test suite"]
+    defined_in: 6
+
+  - term: "flaky test"
+    aka: ["flake", "flaky"]
+    definition: >-
+      A test that passes and fails on the same code without explanation. The
+      most dangerous state a suite can be in, because it teaches people to
+      ignore failures.
+    depends_on: ["test"]
+    defined_in: 6
+
+  - term: "mock"
+    aka: ["stub", "fake", "test double"]
+    definition: >-
+      A stand-in for a real dependency during a test, so the test is fast and
+      does not touch anything real.
+    depends_on: ["test", "dependency"]
+    defined_in: 6
+
+  - term: "fixture"
+    definition: >-
+      The known starting state a test sets up before it does anything, so its
+      result means the same thing every run.
+    depends_on: ["test"]
+    defined_in: 6
+
+  # ─── Chapter 7 — Infrastructure ─────────────────────────────────────────
+  - term: "server (machine)"
+    aka: ["box", "host", "instance", "node"]
+    definition: >-
+      A computer, somewhere, that runs your program continuously. Distinct from
+      the server *role* of Chapter 3: this is the hardware the role runs on.
+    depends_on: ["server (role)", "runtime"]
+    defined_in: 7
+
+  - term: "cloud provider"
+    aka: ["the cloud", "hyperscaler"]
+    definition: >-
+      A company that rents you computers, storage and services by the minute,
+      so you never buy a machine. AWS, Google Cloud, Azure and their smaller
+      competitors.
+    depends_on: ["server (machine)"]
+    defined_in: 7
+
+  - term: "virtual machine"
+    aka: ["VM"]
+    definition: >-
+      A software-simulated computer running on a share of a real one, with its
+      own operating system. What you get when you rent "a server".
+    depends_on: ["server (machine)", "cloud provider"]
+    defined_in: 7
+
+  - term: "container"
+    definition: >-
+      Your program packaged together with everything it needs to run, in a
+      standard wrapper any host can start without knowing what is inside.
+    analogy: "A shipping container: the outside is standardised so cranes, ships and trucks need to know nothing about the contents."
+    depends_on: ["program", "dependency", "artifact"]
+    defined_in: 7
+
+  - term: "container image"
+    aka: ["image"]
+    definition: >-
+      The built, frozen contents of a container — the artifact you deploy. A
+      running copy of it is a container.
+    depends_on: ["container", "artifact", "build"]
+    defined_in: 7
+
+  - term: "registry"
+    aka: ["container registry", "image registry"]
+    definition: >-
+      The store your built images are pushed to and pulled from, in the way a
+      repository stores source.
+    depends_on: ["container image", "repository"]
+    defined_in: 7
+
+  - term: "orchestration"
+    scan: true
+    aka: ["Kubernetes", "K8s", "orchestrator"]
+    definition: >-
+      Software that decides which containers run on which machines, restarts
+      them when they die, and moves them when a machine fails. Kubernetes is
+      the dominant one.
+    depends_on: ["container", "server (machine)"]
+    defined_in: 7
+
+  - term: "serverless"
+    scan: true
+    definition: >-
+      A model where you hand over a piece of code and the provider runs it on
+      demand, charging per execution. There are still servers; you just never
+      meet them.
+    analogy: "Paying per photocopy at a print shop instead of buying the copier."
+    depends_on: ["cloud provider", "container"]
+    defined_in: 7
+
+  - term: "managed service"
+    definition: >-
+      Something you would otherwise run yourself — a database, a queue, a
+      search index — operated by the provider for a fee.
+    depends_on: ["cloud provider", "database"]
+    defined_in: 7
+
+  - term: "region"
+    definition: >-
+      The geographic location of the data centre your system runs in. It
+      determines latency for your users and which laws apply to your data.
+    depends_on: ["cloud provider"]
+    defined_in: 7
+
+  - term: "availability zone"
+    aka: ["AZ"]
+    definition: >-
+      One physically separate data centre within a region. Running in several
+      means one building's failure is not yours.
+    depends_on: ["region"]
+    defined_in: 7
+
+  - term: "horizontal scaling"
+    aka: ["scaling out"]
+    definition: >-
+      Handling more load by running more copies of your program.
+    depends_on: ["stateless", "server (machine)"]
+    defined_in: 7
+
+  - term: "vertical scaling"
+    aka: ["scaling up"]
+    definition: >-
+      Handling more load by giving one machine more power. Simpler, and it runs
+      out.
+    depends_on: ["server (machine)"]
+    defined_in: 7
+
+  - term: "load balancer"
+    definition: >-
+      The component that receives incoming requests and spreads them across
+      your running copies, skipping any that are unhealthy.
+    analogy: "The host at a restaurant door, sending each arrival to whichever till is open."
+    depends_on: ["horizontal scaling", "request"]
+    defined_in: 7
+
+  # ─── Chapter 8 — Infrastructure as Code ─────────────────────────────────
+  - term: "provisioning"
+    scan: true
+    definition: >-
+      Creating the infrastructure a system needs — machines, databases,
+      networks, permissions — and wiring it together.
+    depends_on: ["server (machine)", "managed service"]
+    defined_in: 8
+
+  - term: "ClickOps"
+    scan: true
+    aka: ["clicking in the console"]
+    definition: >-
+      Building infrastructure by hand in a provider's web console. Fast the
+      first time, unrepeatable afterwards, and invisible to everyone else.
+    depends_on: ["provisioning", "cloud provider"]
+    defined_in: 8
+
+  - term: "infrastructure as code"
+    aka: ["IaC"]
+    definition: >-
+      Describing the infrastructure you want in files kept under version
+      control, and letting a tool make reality match the description.
+    analogy: "A written recipe instead of cooking from memory: anyone can reproduce the dish, and you can see what changed."
+    depends_on: ["provisioning", "version control", "ClickOps"]
+    defined_in: 8
+
+  - term: "declarative"
+    definition: >-
+      Describing the end state you want and letting the tool work out the steps.
+      The opposite, imperative, means listing the steps yourself.
+    depends_on: ["infrastructure as code"]
+    defined_in: 8
+
+  - term: "idempotent"
+    scan: true
+    aka: ["idempotence", "idempotency"]
+    definition: >-
+      Safe to repeat: running it twice leaves you in the same place as running
+      it once.
+    analogy: "A light switch labelled ON — pressing it again does not make the room brighter."
+    depends_on: ["declarative"]
+    defined_in: 8
+
+  - term: "state file"
+    aka: ["infrastructure state"]
+    definition: >-
+      The tool's record of what it believes it has already created, used to work
+      out what still needs doing.
+    depends_on: ["infrastructure as code"]
+    defined_in: 8
+
+  - term: "drift"
+    aka: ["configuration drift"]
+    definition: >-
+      The gap that opens when reality stops matching the description, usually
+      because somebody changed something by hand.
+    depends_on: ["infrastructure as code", "state file", "ClickOps"]
+    defined_in: 8
+
+  - term: "plan"
+    aka: ["dry run", "plan and apply"]
+    definition: >-
+      A preview of exactly what a tool would change if you let it, shown before
+      anything happens. Reading it is the whole safety mechanism.
+    depends_on: ["infrastructure as code", "declarative"]
+    defined_in: 8
+
+  - term: "reproducibility"
+    definition: >-
+      The property that the same inputs produce the same system, on any day, by
+      anyone. What separates an engineered thing from a lucky one.
+    depends_on: ["infrastructure as code", "lockfile", "build"]
+    defined_in: 8
+
+  # ─── Chapter 9 — CI/CD ──────────────────────────────────────────────────
+  - term: "continuous integration"
+    aka: ["CI"]
+    definition: >-
+      Automatically building and testing every change as soon as it is proposed,
+      so problems are found in minutes rather than at release.
+    depends_on: ["build", "test suite", "pull request"]
+    defined_in: 9
+
+  - term: "pipeline"
+    aka: ["workflow", "CI pipeline"]
+    definition: >-
+      The fixed sequence of automated steps a change passes through on its way
+      to production.
+    analogy: "An assembly line with inspection points — nothing reaches the shop floor except by travelling down it."
+    depends_on: ["continuous integration", "deploy"]
+    defined_in: 9
+
+  - term: "job"
+    aka: ["step", "stage"]
+    definition: >-
+      One unit of work in a pipeline: install, build, test, deploy.
+    depends_on: ["pipeline"]
+    defined_in: 9
+
+  - term: "runner"
+    aka: ["build agent", "CI runner"]
+    definition: >-
+      The machine that executes pipeline jobs — a clean, temporary one each
+      time, which is why CI catches what your laptop hides.
+    depends_on: ["job", "server (machine)"]
+    defined_in: 9
+
+  - term: "gate"
+    aka: ["required check", "quality gate"]
+    definition: >-
+      A pipeline step whose failure blocks the change from going further. A test
+      nobody is required to pass is a suggestion.
+    depends_on: ["job", "test suite"]
+    defined_in: 9
+
+  - term: "continuous delivery"
+    aka: ["CD"]
+    definition: >-
+      Keeping every change that passes the pipeline ready to deploy at any
+      moment, with a human choosing when.
+    depends_on: ["pipeline", "gate"]
+    defined_in: 9
+
+  - term: "continuous deployment"
+    definition: >-
+      The same as continuous delivery, minus the human: anything that passes the
+      pipeline goes to production automatically.
+    depends_on: ["continuous delivery", "production"]
+    defined_in: 9
+
+  - term: "rollback"
+    definition: >-
+      Returning production to the previous known-good version. The most
+      important button you own, and worthless if never rehearsed.
+    depends_on: ["deploy", "production", "revert"]
+    defined_in: 9
+
+  - term: "blue-green deployment"
+    definition: >-
+      Running the new version alongside the old, then switching traffic across
+      in one step — and back just as fast if it goes wrong.
+    depends_on: ["deploy", "rollback", "load balancer"]
+    defined_in: 9
+
+  - term: "canary release"
+    aka: ["canary"]
+    definition: >-
+      Sending a small fraction of traffic to a new version first, and watching
+      it before letting the rest follow.
+    depends_on: ["deploy", "blue-green deployment"]
+    defined_in: 9
+
+  - term: "feature flag"
+    aka: ["feature toggle"]
+    definition: >-
+      A switch that turns a feature on or off without deploying, so shipping the
+      code and releasing the feature become two separate decisions.
+    depends_on: ["deploy", "configuration"]
+    defined_in: 9
+
+  # ─── Chapter 10 — Observability ─────────────────────────────────────────
+  - term: "monitoring"
+    definition: >-
+      Watching for the failures you already thought of, by checking known
+      signals against known thresholds.
+    depends_on: ["production", "system"]
+    defined_in: 10
+
+  - term: "observability"
+    scan: true
+    definition: >-
+      How well you can work out what a running system is doing from the outside,
+      including for problems nobody anticipated.
+    analogy: "A car dashboard versus opening the bonnet: you should be able to tell what is wrong while still driving."
+    depends_on: ["monitoring", "runtime"]
+    defined_in: 10
+
+  - term: "log"
+    aka: ["logs", "logging", "log line"]
+    definition: >-
+      A timestamped line a program writes about something it just did, kept so
+      it can be read afterwards.
+    analogy: "A diary: one entry per event, in the order they happened."
+    depends_on: ["observability"]
+    defined_in: 10
+
+  - term: "structured logging"
+    definition: >-
+      Writing logs as machine-readable fields rather than sentences, so they can
+      be searched and counted rather than only read.
+    depends_on: ["log", "JSON"]
+    defined_in: 10
+
+  - term: "metric"
+    aka: ["metrics"]
+    definition: >-
+      A number about your system sampled over time — requests per second, error
+      count, memory used.
+    analogy: "Vital signs: a pulse tells you something is wrong long before a diary entry does."
+    depends_on: ["observability"]
+    defined_in: 10
+
+  - term: "trace"
+    aka: ["distributed trace", "span"]
+    definition: >-
+      A record of one request's entire journey across every service it touched,
+      with the time spent at each stop.
+    analogy: "A parcel's tracking history: every depot, with timestamps."
+    depends_on: ["observability", "request"]
+    defined_in: 10
+
+  - term: "latency"
+    scan: true
+    definition: >-
+      How long something takes, measured from the user's point of view rather
+      than the server's.
+    depends_on: ["request", "response", "metric"]
+    defined_in: 10
+
+  - term: "percentile"
+    scan: true
+    aka: ["p50", "p95", "p99", "tail latency"]
+    definition: >-
+      A way of reading a distribution: p95 latency is the time within which 95%
+      of requests finished. Averages hide the users having the worst time;
+      percentiles do not.
+    depends_on: ["latency", "metric"]
+    defined_in: 10
+
+  - term: "error rate"
+    definition: >-
+      The proportion of requests that failed, over some window.
+    depends_on: ["metric", "response"]
+    defined_in: 10
+
+  - term: "dashboard"
+    definition: >-
+      A screen of charts assembled to answer, at a glance, whether the system is
+      healthy.
+    depends_on: ["metric"]
+    defined_in: 10
+
+  - term: "alert"
+    aka: ["alerting", "paging"]
+    definition: >-
+      An automated message sent to a human when a signal crosses a threshold.
+      Every alert should be worth waking someone for; the ones that are not
+      train people to ignore all of them.
+    depends_on: ["metric", "dashboard"]
+    defined_in: 10
+
+  - term: "health check"
+    definition: >-
+      An endpoint whose only job is to answer "am I working?", so a load
+      balancer or orchestrator can stop sending traffic to a copy that is not.
+    depends_on: ["endpoint", "load balancer", "orchestration"]
+    defined_in: 10
+
+  - term: "service level objective"
+    aka: ["SLO", "SLI", "SLA"]
+    definition: >-
+      A target for how good the service will be, stated as a number over a
+      window — "99.9% of requests succeed in a month". An SLI is the measurement,
+      an SLO your internal target, an SLA the contractual promise with penalties.
+    analogy: "A promise with a number in it — the only kind you can be held to."
+    depends_on: ["metric", "error rate", "latency"]
+    defined_in: 10
+
+  - term: "error budget"
+    definition: >-
+      The amount of failure your SLO permits. Spent slowly, it is permission to
+      ship; spent fast, it is a signal to stop and fix.
+    depends_on: ["service level objective"]
+    defined_in: 10
+
+  # ─── Chapter 11 — When It Breaks ────────────────────────────────────────
+  - term: "incident"
+    definition: >-
+      A period during which the system is not doing what it promised, treated as
+      a thing with a start, an owner, and an end.
+    depends_on: ["production", "service level objective"]
+    defined_in: 11
+
+  - term: "severity"
+    aka: ["sev", "SEV1", "P1"]
+    definition: >-
+      An agreed scale for how bad an incident is, decided in advance so nobody
+      has to negotiate urgency while the site is down.
+    depends_on: ["incident"]
+    defined_in: 11
+
+  - term: "on-call"
+    definition: >-
+      The named person responsible for responding to alerts during a given
+      period. A rota, not a volunteer.
+    depends_on: ["alert", "incident"]
+    defined_in: 11
+
+  - term: "runbook"
+    scan: true
+    aka: ["playbook"]
+    definition: >-
+      Written instructions for handling a specific known failure, so the
+      response does not depend on who happens to be awake.
+    depends_on: ["incident", "on-call"]
+    defined_in: 11
+
+  - term: "fix-forward"
+    definition: >-
+      Repairing a broken production system by deploying a new fix rather than
+      returning to the previous version. Riskier than rollback, and sometimes
+      the only option.
+    depends_on: ["rollback", "incident"]
+    defined_in: 11
+
+  - term: "blast radius"
+    definition: >-
+      How much is harmed when one thing fails. The central question in every
+      design decision you will now make.
+    depends_on: ["incident", "system"]
+    defined_in: 11
+
+  - term: "single point of failure"
+    aka: ["SPOF"]
+    definition: >-
+      A component whose failure takes everything with it.
+    depends_on: ["blast radius", "availability zone"]
+    defined_in: 11
+
+  - term: "graceful degradation"
+    definition: >-
+      Designing so that losing one part costs you one feature rather than the
+      whole service.
+    depends_on: ["blast radius", "single point of failure"]
+    defined_in: 11
+
+  - term: "retry"
+    aka: ["retries", "backoff", "exponential backoff"]
+    definition: >-
+      Automatically trying a failed operation again, waiting longer between
+      attempts. Retrying too eagerly turns a small problem into an outage.
+    depends_on: ["request", "idempotent"]
+    defined_in: 11
+
+  - term: "postmortem"
+    scan: true
+    aka: ["incident review", "retrospective"]
+    definition: >-
+      A written account after an incident: what happened, why, and what will
+      change. Blameless means it examines the system that let a person make the
+      mistake, not the person.
+    analogy: "An aviation accident report: the industry gets safer because the findings are published, not punished."
+    depends_on: ["incident", "severity"]
+    defined_in: 11
+
+  - term: "mean time to recovery"
+    aka: ["MTTR"]
+    definition: >-
+      How long, on average, from breaking to being fixed. Usually a more useful
+      target than trying never to break.
+    depends_on: ["incident", "rollback"]
+    defined_in: 11
+
+  # ─── Chapter 12 — Security and Cost ─────────────────────────────────────
+  - term: "authentication"
+    scan: true
+    aka: ["authn", "login"]
+    definition: >-
+      Establishing who someone is.
+    depends_on: ["request", "secret"]
+    defined_in: 12
+
+  - term: "authorization"
+    scan: true
+    aka: ["authz", "permissions", "access control"]
+    definition: >-
+      Establishing what that person is allowed to do. A different question from
+      authentication, and the one more often got wrong.
+    depends_on: ["authentication"]
+    defined_in: 12
+
+  - term: "least privilege"
+    definition: >-
+      Granting every person and program exactly the access it needs and nothing
+      more, so a compromise stays small.
+    analogy: "A hotel keycard that opens your room, the gym, and nothing else."
+    depends_on: ["authorization", "blast radius"]
+    defined_in: 12
+
+  - term: "encryption in transit"
+    aka: ["TLS", "SSL", "HTTPS encryption"]
+    definition: >-
+      Scrambling data while it moves across a network so it is unreadable if
+      intercepted. This is what the padlock in a browser means.
+    depends_on: ["HTTP", "secret"]
+    defined_in: 12
+
+  - term: "encryption at rest"
+    definition: >-
+      Scrambling stored data so a stolen disk or database file is useless
+      without the key.
+    depends_on: ["database", "encryption in transit"]
+    defined_in: 12
+
+  - term: "vulnerability"
+    aka: ["CVE", "security advisory"]
+    definition: >-
+      A known flaw that lets someone do something they should not. Published
+      with an identifier so everyone can check whether they are affected.
+    depends_on: ["dependency", "supply chain"]
+    defined_in: 12
+
+  - term: "patching"
+    aka: ["dependency updates"]
+    definition: >-
+      Upgrading dependencies to versions where known vulnerabilities are fixed.
+      Ongoing work, not a task that completes.
+    depends_on: ["vulnerability", "dependency", "lockfile"]
+    defined_in: 12
+
+  - term: "personal data"
+    aka: ["PII", "personally identifiable information"]
+    definition: >-
+      Data that identifies a living person. Collecting it puts you under legal
+      obligations regardless of your size or intentions.
+    depends_on: ["database", "encryption at rest"]
+    defined_in: 12
+
+  - term: "rate limiting"
+    aka: ["throttling"]
+    definition: >-
+      Capping how many requests one caller may make in a period, to stop one
+      user — or one bug — consuming everything.
+    depends_on: ["request", "API"]
+    defined_in: 12
+
+  - term: "audit log"
+    definition: >-
+      An append-only record of who did what and when, kept for investigation
+      rather than debugging.
+    depends_on: ["log", "authorization"]
+    defined_in: 12
+
+  - term: "egress"
+    scan: true
+    aka: ["data transfer out", "bandwidth cost"]
+    definition: >-
+      Data leaving a provider's network — usually the most surprising line on a
+      cloud bill, because moving data out costs far more than moving it in.
+    depends_on: ["cloud provider", "region"]
+    defined_in: 12
+
+  - term: "cost anomaly"
+    aka: ["bill shock", "cost alert"]
+    definition: >-
+      An unexpected jump in spend, usually caused by a loop, a retry storm, or
+      something left running. Worth an alert of its own.
+    depends_on: ["alert", "cloud provider", "retry"]
+    defined_in: 12
+
+  # ─── Chapter 13 — Directing the Work ────────────────────────────────────
+  - term: "specification"
+    aka: ["spec", "requirements"]
+    definition: >-
+      A written statement of what should be built and how you will know it was.
+      The agent's output is only as well-defined as this.
+    depends_on: ["source code"]
+    defined_in: 13
+
+  - term: "acceptance criteria"
+    aka: ["definition of done"]
+    definition: >-
+      The specific, checkable conditions that decide whether a piece of work is
+      finished. Written before the work, not after.
+    depends_on: ["specification", "test"]
+    defined_in: 13
+
+  - term: "scope"
+    aka: ["scope creep", "in scope", "out of scope"]
+    definition: >-
+      The agreed boundary of what a piece of work includes. Creep is what
+      happens when that boundary moves quietly.
+    depends_on: ["specification"]
+    defined_in: 13
+
+  - term: "minimum viable product"
+    aka: ["MVP"]
+    definition: >-
+      The smallest version that genuinely tests whether the idea works. A
+      deliberate reduction in features, never a reduction in the standards of
+      Chapter 14.
+    depends_on: ["scope", "production"]
+    defined_in: 13
+
+  - term: "technical debt"
+    aka: ["tech debt"]
+    definition: >-
+      The accumulated cost of shortcuts, paid as slowness every time you change
+      the system afterwards.
+    analogy: "A loan: sometimes the right choice, always accruing interest, dangerous only when nobody is tracking the balance."
+    depends_on: ["codebase", "scope"]
+    defined_in: 13
+
+  - term: "refactor"
+    scan: true
+    definition: >-
+      Changing how code is written without changing what it does, to make the
+      next change easier. Safe only when tests exist to prove nothing moved.
+    depends_on: ["technical debt", "test suite", "regression"]
+    defined_in: 13
+
+  - term: "iteration"
+    aka: ["increment", "sprint"]
+    definition: >-
+      One cycle of building a small piece, putting it in front of reality, and
+      adjusting.
+    depends_on: ["scope", "minimum viable product"]
+    defined_in: 13

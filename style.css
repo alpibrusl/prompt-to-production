@@ -1,0 +1,70 @@
+/* Layered on top of bookkit's built-in stylesheet (stylesheet_mode: extend).
+   Only the things a book with code and asides needs that a novel does not. */
+
+/* Part dividers: a chapter may open with "> **Part II — Keeping It**" */
+blockquote strong {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+/* Code should be visibly code, without shouting. bookkit has no syntax
+   highlighting yet (alpibrusl/content-kit#12); monochrome weight is enough
+   for the handful of snippets in this book, and survives a greyscale print. */
+pre {
+  background: #f4f4f4;
+  border-left: 3px solid #bbb;
+  padding: 0.8rem 1rem;
+  font-size: 0.85em;
+  line-height: 1.45;
+  page-break-inside: avoid;
+}
+
+code {
+  background: #f4f4f4;
+  padding: 0.05em 0.25em;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Definition lists carry the glossary and the in-chapter term boxes. */
+dl {
+  margin: 1.2rem 0;
+}
+
+dt {
+  font-weight: 600;
+  margin-top: 0.9rem;
+}
+
+dd {
+  margin: 0.25rem 0 0 1.2rem;
+}
+
+/* Tables: comparisons of the "this vs that" kind appear throughout. */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.9em;
+  page-break-inside: avoid;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f0f0f0;
+}
+
+/* Chapter-closing checklists read better tight. */
+h2 + ul li {
+  margin-bottom: 0.3rem;
+}

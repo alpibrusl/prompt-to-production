@@ -1,0 +1,42 @@
+name: book
+
+# The pipeline is the only path to a published book. Nothing here is a step
+# somebody could skip by building on their laptop instead.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install bookkit
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+          pip install "content-kit-core @ git+https://github.com/alpibrusl/content-kit@main#subdirectory=packages/core"
+          pip install "bookkit[epub] @ git+https://github.com/alpibrusl/content-kit@main#subdirectory=packages/bookkit"
+
+      # The gate. A term used before it is defined fails the build, the same
+      # way a failing test would.
+      - name: Check term continuity
+        run: make check
+
+      - name: Build EPUB
+        run: make epub
+
+      - name: Build HTML
+        run: make html
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prompt-to-production
+          path: build/

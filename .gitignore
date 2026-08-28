@@ -1,0 +1,15 @@
+# Build artifacts. The manuscript is the source; these are derived.
+build/
+GLOSSARY.md
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editors / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/

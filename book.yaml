@@ -1,0 +1,53 @@
+title: "Prompt to Production"
+subtitle: "The software engineering your AI agent assumes you already know"
+author:
+  name: "Alfonso Piñeiro"
+  bio: >-
+    Writes about the systems that get built when the person building them
+    is not the person who learned to code.
+language: en
+output: "prompt-to-production.epub"
+
+copyright:
+  year: "2026"
+  license: "CC BY-NC-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  notice:
+    - >-
+      Written with the assistance of an AI agent, which is the only honest way
+      to write this particular book. Every claim in it is the author's to defend.
+
+theme:
+  base_font: serif
+  page_size: 6x9
+  font_size_pt: 11.0
+  stylesheet: "style.css"
+  stylesheet_mode: extend
+
+chapters:
+  # Part I — The Ground
+  - { file: chapters/01-the-handoff.md,        title: "" }
+  - { file: chapters/02-where-code-lives.md,   title: "" }
+  - { file: chapters/03-the-shape-of-an-app.md, title: "" }
+  # Part II — Keeping It
+  - { file: chapters/04-version-control.md,    title: "" }
+  - { file: chapters/05-environments.md,       title: "" }
+  - { file: chapters/06-tests.md,              title: "" }
+  # Part III — Shipping It
+  - { file: chapters/07-infrastructure.md,     title: "" }
+  - { file: chapters/08-infrastructure-as-code.md, title: "" }
+  - { file: chapters/09-ci-cd.md,              title: "" }
+  # Part IV — Living With It
+  - { file: chapters/10-observability.md,      title: "" }
+  - { file: chapters/11-when-it-breaks.md,     title: "" }
+  - { file: chapters/12-security-and-cost.md,  title: "" }
+  # Part V — Working With the Agent
+  - { file: chapters/13-directing-the-work.md, title: "" }
+  - { file: chapters/14-the-minimum-bar.md,    title: "" }
+
+front_matter: [title_page, copyright, toc]
+
+back_matter:
+  # Generated from glossary.yaml by `make glossary` — do not edit by hand.
+  - { file: GLOSSARY.md, title: "Glossary" }
+  - about_author
