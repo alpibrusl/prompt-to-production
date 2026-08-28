@@ -28,6 +28,9 @@ theme:
   stylesheet_mode: extend
 
 chapters:
+  # Front matter. Numbered 00 so the term linter treats it as a preface, which
+  # may legitimately reference terms the chapters go on to define.
+  - { file: chapters/00-a-note-from-the-author.md, title: "" }
   # Part I — The Ground
   - { file: chapters/01-the-handoff.md,        title: "" }
   - { file: chapters/02-where-code-lives.md,   title: "" }
