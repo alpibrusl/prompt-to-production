@@ -1,10 +1,8 @@
 title: "Prompt to Production"
 subtitle: "The software engineering your AI agent assumes you already know"
 author:
-  name: "Alfonso Piñeiro"
-  bio: >-
-    Writes about the systems that get built when the person building them
-    is not the person who learned to code.
+  name: "Alfonso Sastre"
+  bio: ""   # add your own; the about_author section is enabled once this is set
 language: en
 output: "prompt-to-production.epub"
 
@@ -50,4 +48,4 @@ front_matter: [title_page, copyright, toc]
 back_matter:
   # Generated from glossary.yaml by `make glossary` — do not edit by hand.
   - { file: GLOSSARY.md, title: "Glossary" }
-  - about_author
+  # Re-add `about_author` once author.bio is filled in.
