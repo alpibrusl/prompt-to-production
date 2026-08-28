@@ -41,6 +41,17 @@ CI on every push and pull request. When adding prose:
     make epub / make html / make pdf
     make all      # check + epub + html (pdf needs Pango, see README)
 
+## Audio
+
+`make audiobook` emits a podcastkit project under `build/audiobook/` — derived,
+gitignored, one episode per chapter. Rendering it to MP3 needs a TTS backend and
+is not wired into CI, because it costs money per character on the paid backends
+and hours of CPU on the free ones.
+
+The conversion drops fenced code blocks and excludes the glossary, which is
+correct for audio. Bear that in mind when adding prose: anything that exists
+*only* inside a code fence will not reach a listener.
+
 ## Licences
 
 Manuscript CC BY-NC-SA 4.0; code EUPL-1.2. New files under `scripts/` need an

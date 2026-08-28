@@ -42,6 +42,7 @@ make check     # lint the manuscript against the concept ledger
 make epub      # → build/prompt-to-production.epub
 make html      # → build/prompt-to-production.html
 make pdf       # → build/prompt-to-production.pdf   (needs Pango, see below)
+make audiobook # → build/audiobook/chapter_NN/       (audio source, see below)
 make all       # check + epub + html
 ```
 
@@ -49,6 +50,39 @@ make all       # check + epub + html
 `libpango-1.0-0` and `libpangoft2-1.0-0` on Debian/Ubuntu, `pango` via Homebrew
 on macOS. It is deliberately left out of `make all` so the default build works
 without them; CI installs them and builds all three formats.
+
+## The audio edition
+
+The same manuscript renders to audio through
+[podcastkit](https://github.com/alpibrusl/content-kit), bookkit's sibling. It is
+not a separate script — `make audiobook` reads the chapters and emits one
+podcastkit episode per chapter: a `script.json` holding the narration chunked on
+sentence boundaries into TTS-sized lines, and an `episode.yaml` holding the voice
+cast.
+
+```bash
+make audiobook-plan     # episodes, line counts, character counts — no files written
+make audiobook          # → build/audiobook/chapter_NN/{script.json,episode.yaml}
+
+# then, with a TTS backend configured:
+podcastkit generate -e build/audiobook/chapter_01    # → voices/*.mp3
+podcastkit assemble -e build/audiobook/chapter_01    # → chapter_01.mp3
+```
+
+One episode per chapter is already podcast-shaped: 14 episodes, ~134,000
+characters of narration.
+
+**What the conversion does with a technical book.** Fenced code blocks are
+dropped from the narration, which is right — a pipeline listing read aloud is
+noise. Tables and checklists survive as prose, and the generated glossary is not
+included at all, since 146 definitions read in sequence is reference material,
+not listening. Headings are not announced.
+
+**Rendering needs a backend, and it is the one part that costs something.**
+`kokoro` and `chatterbox` run locally and are free but English-centric and slow
+on CPU; `openai` and `elevenlabs` are paid per character and handle other
+languages better. `make audiobook-plan` prints the character count precisely so
+the spend can be estimated before committing to it.
 
 ## The concept ledger
 
