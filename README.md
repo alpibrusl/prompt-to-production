@@ -41,8 +41,14 @@ pip install "bookkit[epub] @ git+https://github.com/alpibrusl/content-kit@main#s
 make check     # lint the manuscript against the concept ledger
 make epub      # → build/prompt-to-production.epub
 make html      # → build/prompt-to-production.html
-make all       # check + build everything
+make pdf       # → build/prompt-to-production.pdf   (needs Pango, see below)
+make all       # check + epub + html
 ```
+
+`make pdf` needs WeasyPrint's system libraries, which pip cannot install —
+`libpango-1.0-0` and `libpangoft2-1.0-0` on Debian/Ubuntu, `pango` via Homebrew
+on macOS. It is deliberately left out of `make all` so the default build works
+without them; CI installs them and builds all three formats.
 
 ## The concept ledger
 
