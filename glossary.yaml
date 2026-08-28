@@ -1181,6 +1181,26 @@ concepts:
     depends_on: ["technical debt", "test suite", "regression"]
     defined_in: 13
 
+  - term: "reversible decision"
+    aka: ["one-way door", "two-way door"]
+    definition: >-
+      A choice you can walk back later for roughly the cost of the work. An
+      irreversible one changes what is possible afterwards, and deserves
+      proportionally more of your attention.
+    depends_on: ["blast radius", "technical debt"]
+    defined_in: 13
+
+  - term: "lock-in"
+    aka: ["vendor lock-in"]
+    definition: >-
+      How hard it would be to leave something you have adopted — because your
+      data ends up in a shape only it reads, or because your system assumes its
+      particular way of working. Worth accepting deliberately; bad to discover.
+    analogy: "Easy to check in, expensive to check out."
+    depends_on: ["managed service", "cloud provider", "reversible decision"]
+    defined_in: 13
+    scan: true
+
   - term: "iteration"
     aka: ["increment", "sprint"]
     definition: >-

@@ -72,6 +72,36 @@ Ask for a login page and you will get a login page. Whether you also get passwor
 
 The agent is not withholding. It is answering the question you asked. The skill you need is not writing code. It is knowing which questions exist.
 
+## What this book is not about
+
+It is not about Claude Code, or Codex, or Cursor, or whatever is announced next month.
+
+That is a deliberate refusal, not an oversight. The tools are the fastest-moving part of this whole landscape: their interfaces change monthly, their capabilities change quarterly, and half the specifics anyone writes about them are wrong within a year. A book organised around one of them would be a book with a shelf life measured in months, and you would have to distrust every page of it by the time you finished.
+
+What the agent hands you moves on a completely different timescale. The idea that changes should be recorded and reversible is fifty years old. The way browsers talk to servers is thirty years old. The idea that you should be able to reproduce a build from source is older than most of the industry. Nobody is going to deprecate the concept of a backup.
+
+So: no screenshots, no prompts to copy, no tool-specific instructions. When this book says "the agent", it means whichever one you use. Everything here should apply equally to a tool that does not exist yet — and if it stops applying, that will be genuine news rather than a version bump.
+
+This is a book about the ground the tools stand on.
+
+## What this book does not cover
+
+Scope, honestly, so you know when you have left it.
+
+The book assumes you are building a **web application or a service** — something with a screen or an interface, a backend, and a database, running on somebody else's computers. That is what agents are asked to build most often, and it is where the practices transfer furthest.
+
+Several things sit outside that, and are genuinely different rather than merely omitted:
+
+- **Native mobile apps.** Much of Part III does not survive contact with an app store. You cannot deploy in four minutes, you cannot roll back a version that people have already installed on their phones, and someone else decides when your release goes out. The concepts still apply; the mechanics are their own subject.
+- **Desktop and embedded software**, for the same reason and more so.
+- **Machine learning systems.** Training models, versioning data sets, and noticing when a model quietly gets worse are a discipline of their own, with an operational practice this book does not touch.
+- **Games**, which have their own everything.
+- **Very large scale.** Everything here is written for a system serving up to a few hundred thousand people, run by a handful of people. Past that, several chapters stop being sufficient.
+- **Regulated work** — medical devices, aviation, banking beyond the basics — where the rules are specific, legally binding, and not something to learn from a general book.
+- **The craft of the interface itself:** design, and in particular accessibility, which is a real obligation and deserves better than the paragraph this book could give it.
+
+If you are doing one of those, everything in Parts II and IV still holds — keeping your work, knowing what your system is doing, being able to recover. It is Part III, the shipping, that changes shape.
+
 ## The arc of this book
 
 The chapters follow the life of a thing you build, roughly in the order the problems arrive.

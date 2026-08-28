@@ -74,6 +74,70 @@ Then, the questions that are not about the diff at all — the ones this book eq
 
 None require reading code. All catch real problems.
 
+## When you cannot judge the choice
+
+Here is a situation that will happen to you within a week of starting anything real.
+
+The agent stops and offers you a choice. Postgres or MongoDB. REST or GraphQL. A monolith or separate services. Vercel or AWS. It lays out three options with trade-offs, all of which sound reasonable, none of which you can evaluate, and it waits.
+
+You have no basis to choose. None. The words are not the problem — you could look each of them up — the problem is that the trade-off is between consequences you have never experienced.
+
+This section is what to do in that moment, and it is not "go and learn databases".
+
+### Refuse the menu
+
+The first move is to notice what has happened. **A menu is a decision being handed back to you by the party better equipped to make it.**
+
+The agent has read more about these options than you will in a decade. Presenting them as a neutral list is not deference; it is an abdication, and it is often a sign that the question was not thought about very hard. So push it back:
+
+> "Pick one. Tell me why, tell me what you are trading away, and tell me what would make you change your mind."
+
+That last clause matters more than the others. A recommendation with no stated conditions is a preference. A recommendation that says "choose this unless you expect more than a few thousand writes a second, in which case reconsider" is a piece of engineering you can actually hold on to — and check against later.
+
+### Convert the question into one you can answer
+
+You cannot evaluate "Postgres versus MongoDB". You can evaluate consequences, and you are in fact better placed than the agent to weigh those, because they are consequences for *you*.
+
+Five questions do most of the work, and none of them require knowing what the options are:
+
+**"Which of these is hardest to undo, and what would undoing it cost?"**
+This is the single most useful question in this section. Most decisions are cheap to reverse and deserve about a minute of your attention. A few are expensive — the database, the cloud provider, the shape of your data — and those deserve real time. A **reversible decision** is one you can walk back later for roughly the cost of the work; an irreversible one changes what is possible afterwards. Spend your worry proportionally, and notice that the agent will present both kinds in exactly the same tone.
+
+**"Which is the boring, common choice?"**
+Ask this without embarrassment. The widely-used option has more documentation, more answers to more questions, more people who can be hired to help, and — not incidentally — the agent itself has seen vastly more of it, so its advice about that option will be better. Novelty is a real cost, and you pay it alone, in the dark, at the moment something breaks. For a first system, "what would most teams do here?" is a better question than "what is best?"
+
+**"What does each cost per month now, and at ten times this size?"**
+Concrete, checkable, and yours to judge. It also flushes out the option that is free until it suddenly is not.
+
+**"Which of these adds something I have to operate?"**
+Every component you run yourself is a thing that can break at three in the morning — Chapter 11's whole subject. An option that hands the operating to somebody else, as a managed service, is often worth real money for that reason alone, and the cost of running it is rarely in the comparison as presented.
+
+**"What happens if we simply do not decide this now?"**
+A surprising share of these choices are premature. If the honest answer is "nothing, for six months", then defer it, and by the time you must choose you will know things you do not know today.
+
+### Lock-in
+
+One thing worth naming because it hides inside otherwise sensible choices: **lock-in** is how hard it would be to leave. Some options are easy to adopt and very hard to walk away from — because your data ends up in a shape only they read, or because the way you build assumes their particular way of doing things.
+
+Lock-in is not automatically bad. Accepting it in exchange for not operating something yourself is frequently the right trade for a small team. But it should be a decision rather than a discovery, and "how hard would it be to leave this later?" is a question you can ask and understand the answer to.
+
+### When to spend money on a human
+
+Refusing the menu handles most cases. A few genuinely warrant a real engineer, for an hour, paid:
+
+- The decision is expensive or impossible to reverse.
+- It commits you to a recurring cost that scales with success.
+- It touches money, or other people's personal data.
+- It locks you to one vendor for the foreseeable future.
+
+Those four are where a wrong answer compounds for years, and an hour of somebody who has lived through the consequences is the best-value money in this entire book. You are not buying a decision; you are buying a sanity check on the reasoning you already have.
+
+### The point
+
+"I do not know enough to judge this" is a complete and respectable position. It is also not the end of the conversation.
+
+The move is not to go and learn the subject. It is to **change the question into one you can answer** — about reversibility, cost, operational burden, and how hard it would be to leave. Those are business questions wearing technical clothes, and you were always the right person to answer them.
+
 ## Debt
 
 **Technical debt** is the accumulated cost of shortcuts, paid as slowness every time you change the system afterwards.
@@ -138,3 +202,11 @@ Makes "done" checkable, and reliably surfaces a case neither of you had consider
 The review question for someone who cannot read every line. That last clause matters most — it invites disclosure of judgement calls that are invisible in a diff.
 
 > "Keep this change small. If it needs to touch more than a few files, tell me why first."
+
+> "Don't give me a menu. Pick one, tell me why, tell me what you are trading away, and tell me what would make you change your mind."
+
+For any choice you cannot evaluate. The last clause is the one that turns a preference into something you can check against later.
+
+> "Which of these is hardest to undo, what does each cost per month, and which one adds something I have to operate myself?"
+
+Three questions you can answer even when the options mean nothing to you.
