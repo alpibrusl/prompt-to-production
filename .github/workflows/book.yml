@@ -49,6 +49,13 @@ jobs:
       - name: Build PDF
         run: make pdf
 
+      # Cheap, needs no TTS backend, and catches the audio source breaking —
+      # which is how the exit-code bug in `audiobook-plan` reached main.
+      - name: Generate the audiobook project
+        run: |
+          make audiobook-plan
+          make audiobook
+
       - uses: actions/upload-artifact@v4
         with:
           name: prompt-to-production
