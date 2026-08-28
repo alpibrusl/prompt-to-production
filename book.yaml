@@ -2,7 +2,12 @@ title: "Prompt to Production"
 subtitle: "The software engineering your AI agent assumes you already know"
 author:
   name: "Alfonso Sastre"
-  bio: ""   # add your own; the about_author section is enabled once this is set
+  bio: >-
+    Alfonso Sastre is a theoretical physicist by training. His PhD and four
+    years of postdoctoral research were in lattice QCD, a field where the
+    physics comes out of large-scale simulation — which meant writing
+    high-performance code and analysing the data it produced. Since 2015 he has
+    worked as a data scientist in travel, banking and electric mobility.
 language: en
 output: "prompt-to-production.epub"
 
@@ -48,4 +53,4 @@ front_matter: [title_page, copyright, toc]
 back_matter:
   # Generated from glossary.yaml by `make glossary` — do not edit by hand.
   - { file: GLOSSARY.md, title: "Glossary" }
-  # Re-add `about_author` once author.bio is filled in.
+  - about_author
