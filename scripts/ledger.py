@@ -4,6 +4,8 @@ The ledger is this book's canon. Both the glossary generator and the term
 linter read it through here so they can never disagree about what it says.
 """
 
+# SPDX-License-Identifier: EUPL-1.2
+
 from __future__ import annotations
 
 import sys

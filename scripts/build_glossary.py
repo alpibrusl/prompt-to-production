@@ -7,6 +7,8 @@ which is why it is in .gitignore.
 Prototypes the generated-glossary back matter proposed in alpibrusl/content-kit#11.
 """
 
+# SPDX-License-Identifier: EUPL-1.2
+
 from __future__ import annotations
 
 from pathlib import Path

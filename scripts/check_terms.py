@@ -26,6 +26,8 @@ Two deliberate limits, both chosen to keep the gate quiet enough to be trusted:
     error, because that is the one that leaves a reader stranded.
 """
 
+# SPDX-License-Identifier: EUPL-1.2
+
 from __future__ import annotations
 
 import re

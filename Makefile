@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 # The manuscript is source. Everything in build/ is derived.
 #
 # This file is also, deliberately, the smallest honest example of what the book
