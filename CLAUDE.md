@@ -35,6 +35,15 @@ CI on every push and pull request. When adding prose:
 - Add any new term to `glossary.yaml` rather than defining it only in prose.
 - Keep an analogy consistent with the one the ledger commits to.
 
+## Absolutes
+
+Distinguish a prescription from an assertion. "Never commit secrets" is a rule
+of practice and its force is the point — keep it. "Writing code was never the
+difficult part" is a claim about the world, and an absolute there invites a
+reader to argue with the sentence instead of absorbing the lesson. When editing,
+check `never`, `always`, `only`, `every`, `exactly`, `not negotiable`: keep them
+in rules, soften them in claims.
+
 ## Build
 
     make check    # the gate

@@ -80,7 +80,7 @@ The answer is a **lockfile** — `package-lock.json`, `poetry.lock`, `Cargo.lock
 
 With a lockfile, a build next year fetches exactly what a build today fetched. Without one, everyone builds something subtly different and nobody knows why one of them fails.
 
-Two rules follow, and they are not negotiable:
+Two rules follow, and they are close to universal practice for good reason:
 
 **Commit the lockfile.** It belongs in the repository. It is not clutter and it is not a build artifact, despite being generated — it is a record of a decision.
 

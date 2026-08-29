@@ -1,6 +1,20 @@
 # The Night It Breaks
 
-It will break. Not as a possibility to guard against — as a certainty to prepare for.
+**02:13.** Your agent reports that the deployment succeeded. It did. Everything it was asked to check came back green.
+
+**02:14.** Customers cannot log in. Nobody tells you, because it is two in the morning where you are, and the people affected are in a timezone where it is the middle of the afternoon and they have simply gone somewhere else.
+
+**02:41.** A support email arrives. You read it at 08:30.
+
+**08:32.** You start looking. The site loads fine. Logging in fails, but only for accounts created before last March — which you do not discover for another hour, because your own account was created last week and works perfectly.
+
+**09:50.** You establish that something in yesterday's deployment is responsible. You would like to go back to the previous version. You discover three things in quick succession: you are not certain which version was running on Monday, nobody has ever run the rollback command, and the change included a database migration you are not sure can be undone.
+
+**11:20.** Fixed. Six hours of a working day gone, and almost none of them spent on the repair.
+
+That last point is the one worth sitting with. The bug itself took ninety seconds to find once somebody looked at the right thing. Everything else — the six hours — was the absence of what this chapter is about: knowing quickly, having a way back, and having decided in advance who looks.
+
+It will break. Not as a possibility to guard against, but as a certainty to prepare for.
 
 This is the chapter people skip, because preparing for failure feels pessimistic when you are trying to build something. It is the opposite. Every system of any size fails regularly; the ones you think of as reliable are not the ones that do not break, they are the ones that break invisibly and recover before you notice. Amazon fails. Google fails. Your bank fails. The difference between them and a system that ruins a weekend is entirely in the preparation.
 

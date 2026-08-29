@@ -85,6 +85,10 @@ You do not need to understand every resource to notice that a plan you expected 
 
 The plan is where that gets caught. It is one of the few places in this book where a person who cannot read the underlying code can still perform the critical safety check, because the summary is in plain language and the dangerous word is *destroy*.
 
+This matters more now than when these tools were designed. An agent will propose a plan that destroys a database with precisely the same tone it uses to propose adding a tag — fluent, reasonable, accompanied by a sensible-sounding justification. It is not being reckless; it has no stake in your data and no memory of the last outage. Confidence in the explanation tells you nothing about the safety of the operation, and the plan is the one artifact that does not care how convincing the explanation was.
+
+So read the plan yourself, every time, even when the change was described to you as routine. **Especially** then.
+
 ## What this buys you
 
 **Reproducibility** — the property that the same inputs produce the same system, on any day, by anyone — is the thread running through this whole book, and it is worth naming now that you have seen it three times.
