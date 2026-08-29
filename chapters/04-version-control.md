@@ -70,7 +70,7 @@ This is where a great deal of engineering actually happens, and it is worth unde
 - It is where **code review** happens: somebody other than the author reading the change before it is merged, and saying whether it should be.
 - It is a permanent record of the discussion. Two years later, "why on earth is it done this way" often has an answer sitting in a PR comment.
 
-You are probably wondering how to review code you cannot fully read. It is a fair question and Chapter 13 answers it properly. The short version: you can read the *shape* of a change long before you can read its contents, and the shape tells you a surprising amount. A PR that claims to fix a typo and touches forty files is worth a question regardless of what those files contain.
+You are probably wondering how to review code you cannot fully read. It is a fair question and Chapter 14 answers it properly. The short version: you can read the *shape* of a change long before you can read its contents, and the shape tells you a surprising amount. A PR that claims to fix a typo and touches forty files is worth a question regardless of what those files contain.
 
 ## Undoing things
 

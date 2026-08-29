@@ -1,4 +1,4 @@
-# Tests
+# The Question You Ask Automatically
 
 Of all the practices in this book, automated testing is the one that most reliably gets skipped by people building with an agent, and the one whose absence is most expensive.
 
@@ -75,7 +75,7 @@ Tests written by a human have the same weakness in principle, which is why revie
 
 Four things narrow the gap, none perfect:
 
-**Write the acceptance criteria yourself, first.** Chapter 13 is about this properly. If you state the expected answer — "a 10% discount on a €150 order leaves €135, and shipping is charged on top" — then the test is written against *your* sentence rather than the agent's inference. This single habit fixes more of this problem than the other three combined.
+**Write the acceptance criteria yourself, first.** Chapter 14 is about this properly. If you state the expected answer — "a 10% discount on a €150 order leaves €135, and shipping is charged on top" — then the test is written against *your* sentence rather than the agent's inference. This single habit fixes more of this problem than the other three combined.
 
 **Ask for tests from the specification, not from the code.** "Write tests for this function" invites the agent to read the implementation and describe it back. "Write tests for these acceptance criteria, without looking at how it was implemented" is a different request, and it produces different tests.
 

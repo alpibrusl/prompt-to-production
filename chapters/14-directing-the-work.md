@@ -4,7 +4,7 @@
 
 Everything so far has been vocabulary and consequence. This chapter turns it back into instructions: how to ask for work, how to judge what comes back, and how to say no.
 
-You now know roughly a hundred and forty things exist that you did not know existed at the start. That knowledge is only worth something if it changes what you ask for.
+You now know roughly a hundred and fifty things exist that you did not know existed at the start. That knowledge is only worth something if it changes what you ask for.
 
 ## The asymmetry
 
@@ -28,7 +28,7 @@ Vague:
 
 Better:
 
-> "Add email and password authentication. Passwords hashed with bcrypt, never stored or logged in plain text. Login is rate limited to five attempts per email per fifteen minutes. Sessions expire after thirty days. There is a password reset by email link, valid for one hour, single use. Write tests for: successful login, wrong password, expired session, reset link reuse, and rate limit triggering. Nothing new goes in the repository as a secret."
+> "Add email and password authentication. Passwords hashed with argon2id, never stored or logged in plain text. Login is rate limited to five attempts per email per fifteen minutes. Sessions expire after thirty days. There is a password reset by email link, valid for one hour, single use. Write tests for: successful login, wrong password, expired session, reset link reuse, and rate limit triggering. Nothing new goes in the repository as a secret."
 
 The second is longer, but notice what it actually is. Every clause is a thing from an earlier chapter. Hashing and rate limiting from Chapter 12. Not logging secrets from Chapters 5 and 10. Tests including failure cases from Chapter 6. It is not a technical specification — you did not specify a single implementation choice — it is a *completeness* specification, and it is written entirely in vocabulary you now have.
 
