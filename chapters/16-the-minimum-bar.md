@@ -66,7 +66,7 @@ The budget alert takes four minutes and is the cheapest item on this entire list
 - [ ] Someone other than you could set up the project from the repository, following written instructions.
 - [ ] There is a written note of what exists and what it costs.
 
-The second one is a good test with an uncomfortable answer. If only you can build it, then the project's continuity is a property of your availability.
+The second one is a good test with an uncomfortable answer. If only you can build it, then the project's continuity is a property of your availability — Chapter 15's whole subject.
 
 ### Not being ruined by a bad night
 

@@ -123,10 +123,11 @@ Here is the whole book as a list of questions. Work down it. The first "no" is w
 | 9 | Is the data backed up, and has a restore actually been performed? | Chapter 11 |
 | 10 | Does the server check permissions, rather than just the screen hiding buttons? | Chapters 3 and 12 |
 | 11 | Is there an alert if the bill suddenly jumps? | Chapter 13 |
+| 12 | If you disappeared for a month, could someone else pick this up from what is written down? | Chapter 15 |
 
 Nothing here requires you to understand the answers yet. You can ask your agent every one of these questions today and get a truthful yes or no, and the pattern of noes tells you where your risk actually is — which is rarely where people assume.
 
-The same list appears in full at the end of the book, as Chapter 15, with the reasoning behind each item. This version is the map; that one is the audit.
+The same list appears in full at the end of the book, as Chapter 16, with the reasoning behind each item. This version is the map; that one is the audit.
 
 ## The arc of this book
 

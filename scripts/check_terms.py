@@ -20,11 +20,6 @@ Two deliberate limits, both chosen to keep the gate quiet enough to be trusted:
     Concept.scannable_names). Single common words like "build" or "state" are
     not hunted; the false-positive rate would make the gate useless.
 
-  * Chapter 0 is front matter — a preface, an author's note — and is exempt from
-    used-before-defined. Framing is not teaching: a note that says why the book
-    exists may name what the book will later define, and demanding signposts
-    there would wreck the prose to no benefit. It is still checked for orphans.
-
   * A *signposted* forward reference is allowed. "Containers (Chapter 7) package
     the program..." is good writing, not an error — the reader is told exactly
     where the definition lives. A forward reference with no signpost is the
@@ -114,8 +109,6 @@ def main() -> int:
     # ── term-used-before-defined / orphan-concept ─────────────────────────
     chapters = chapter_files()
     prose = {n: strip_noise(p.read_text(encoding="utf-8")) for n, p in chapters}
-    # Front matter frames; it does not teach. See the module docstring.
-    taught = {n: text for n, text in prose.items() if n > 0}
 
     def first_hit(
         names: list[str], corpus: dict[int, str] | None = None
@@ -142,7 +135,7 @@ def main() -> int:
 
         # Used-before-defined, by contrast, looks only at the distinctive names,
         # so an ordinary word cannot produce a false failure that blocks a build.
-        found = first_hit(c.scannable_names, taught)
+        found = first_hit(c.scannable_names)
         if found is None:
             continue
         number, para = found

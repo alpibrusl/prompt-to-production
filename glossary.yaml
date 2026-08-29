@@ -1227,3 +1227,13 @@ concepts:
       adjusting.
     depends_on: ["scope", "minimum viable product"]
     defined_in: 14
+
+  # ─── Chapter 15 — You Are the Single Point of Failure ───────────────────
+  - term: "bus factor"
+    scan: true
+    definition: >-
+      The number of people who could disappear from a project before it
+      stalls. Building alone with an agent, this is exactly one — the agent
+      holds no session on its own between conversations to fall back on.
+    depends_on: ["single point of failure"]
+    defined_in: 15

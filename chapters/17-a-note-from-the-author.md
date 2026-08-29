@@ -1,5 +1,7 @@
 # A Note from the Human Author
 
+> **Afterword**
+
 Everything in this book describes how people learned to build software. Every practice in it was invented by humans, for humans.
 
 Tools carry the assumptions of their makers. A hammer assumes a wrist. Version control assumes someone who forgets what they did last Tuesday. Tests assume someone who cannot hold a whole system in their head at once. Code review assumes someone who makes mistakes they cannot see in their own work. Separate environments assume someone who needs a safe place to be wrong. Each of these is an honest accommodation of a human limitation, and each has earned its place over fifty years.
@@ -24,6 +26,6 @@ You are already living in the world I am describing. You simply arrived at it fr
 
 What does not change, in this book or in that argument, is where responsibility sits. Someone is accountable for a running system, and it is not the agent. Machinery can carry verification. It cannot carry accountability, and no improvement in the machinery will move that line.
 
-Read the rest as the current best answer. Not the final one.
+Read what came before as the current best answer. Not the final one.
 
 — Alfonso Sastre

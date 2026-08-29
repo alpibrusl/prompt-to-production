@@ -28,9 +28,6 @@ theme:
   stylesheet_mode: extend
 
 chapters:
-  # Front matter. Numbered 00 so the term linter treats it as a preface, which
-  # may legitimately reference terms the chapters go on to define.
-  - { file: chapters/00-a-note-from-the-author.md, title: "" }
   # Part I — The Ground
   - { file: chapters/01-the-handoff.md,        title: "" }
   - { file: chapters/02-where-code-lives.md,   title: "" }
@@ -50,7 +47,11 @@ chapters:
   - { file: chapters/13-cost.md,               title: "" }
   # Part V — Working With the Agent
   - { file: chapters/14-directing-the-work.md, title: "" }
-  - { file: chapters/15-the-minimum-bar.md,    title: "" }
+  - { file: chapters/15-you-are-the-single-point-of-failure.md, title: "" }
+  - { file: chapters/16-the-minimum-bar.md,    title: "" }
+  # Afterword. Was chapter 0 (front matter); moved here deliberately.
+  # See "The afterword is a real chapter, not front matter" in CLAUDE.md.
+  - { file: chapters/17-a-note-from-the-author.md, title: "" }
 
 front_matter: [title_page, copyright, toc]
 

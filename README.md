@@ -21,9 +21,11 @@ like. Not how to write code. How to *ask for* what you now know exists.
 | **II** | Keeping It | Version control · environments and secrets · tests |
 | **III** | Shipping It | Infrastructure · infrastructure as code · CI/CD |
 | **IV** | Living With It | Observability · when it breaks · security · cost |
-| **V** | Working With the Agent | Directing the work · the minimum bar |
+| **V** | Working With the Agent | Directing the work · you are the single point of failure · the minimum bar |
 
-Roughly 29,500 words and 150 defined terms, all collected in a generated
+A closing note from the author follows as an afterword.
+
+Roughly 30,700 words and 151 defined terms, all collected in a generated
 glossary.
 
 ## The book is source
@@ -69,18 +71,14 @@ podcastkit generate -e build/audiobook/chapter_01    # → voices/*.mp3
 podcastkit assemble -e build/audiobook/chapter_01    # → chapter_01.mp3
 ```
 
-One episode per chapter is already podcast-shaped: 16 episodes, ~166,000
-characters of narration.
-
-**Episode numbers are positional, not chapter numbers.** The author's note is
-front matter but still narrated, so it is `chapter_01` and every chapter is
-offset by one — chapter 15 is `chapter_16`. Worth knowing before you publish a
-feed with the episodes mislabelled.
+One episode per chapter is already podcast-shaped: 17 episodes, ~172,600
+characters of narration. Episode numbers match chapter numbers exactly —
+the author's note is narrated too, as the closing episode, `chapter_17`.
 
 **What the conversion does with a technical book.** Fenced code blocks are
 dropped from the narration, which is right — a pipeline listing read aloud is
 noise. Tables and checklists survive as prose, and the generated glossary is not
-included at all, since 150 definitions read in sequence is reference material,
+included at all, since 151 definitions read in sequence is reference material,
 not listening. Headings are not announced.
 
 **Rendering needs a backend, and it is the one part that costs something.**
