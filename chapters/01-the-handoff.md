@@ -62,6 +62,8 @@ That shape is what this book is.
 
 Let me be honest about the scope of the claim here, because there is a lot of dishonest writing in this area.
 
+A word on who this is for, because it is broader than it first looks. The obvious reader is someone who cannot program and has discovered that an agent can build things for them. But the actual condition this book addresses is more general than that: **you can now build software faster than your engineering judgement has had time to develop.** That describes founders, product managers, scientists, analysts and designers — and it equally describes a competent developer working two layers outside their usual territory, which now happens to almost everyone. If you have shipped something you could not fully account for, you are in the right place regardless of what you do for a living.
+
 This book will not teach you to program. You will not finish it able to read a complicated piece of code and say whether it is good. That is a real skill, it takes real time, and pretending otherwise would waste yours.
 
 What it will do is give you the **vocabulary and the map**. By the end you will know what the parts of a system are called, what each is for, what goes wrong with each, and what "done properly" looks like — well enough to ask for it. That turns out to be most of the value, for a specific reason:
@@ -101,6 +103,30 @@ Several things sit outside that, and are genuinely different rather than merely 
 - **The craft of the interface itself:** design, and in particular accessibility, which is a real obligation and deserves better than the paragraph this book could give it.
 
 If you are doing one of those, everything in Parts II and IV still holds — keeping your work, knowing what your system is doing, being able to recover. It is Part III, the shipping, that changes shape.
+
+## If you have already built something
+
+You may not have the luxury of reading this in order. Something exists, people may already be using it, and you would like to know what is most urgently missing.
+
+Here is the whole book as a list of questions. Work down it. The first "no" is where to start, and the chapter beside it is where that is answered.
+
+| | Question | Where |
+|---|---|---|
+| 1 | Is the source in version control, with a copy somewhere other than your laptop? | Chapter 4 |
+| 2 | Are the secrets — keys, passwords, tokens — outside the repository? | Chapter 5 |
+| 3 | Are the dependency versions pinned, and is the lockfile committed? | Chapter 2 |
+| 4 | Are there tests, and do they run automatically? | Chapters 6 and 9 |
+| 5 | Is what real users touch separate from what you experiment on? | Chapter 5 |
+| 6 | Could someone else rebuild the whole setup from what is written down? | Chapters 7 and 8 |
+| 7 | Can you put it back the way it was, and have you ever tried? | Chapter 9 |
+| 8 | Would you find out it was broken before a customer told you? | Chapter 10 |
+| 9 | Is the data backed up, and has a restore actually been performed? | Chapter 11 |
+| 10 | Does the server check permissions, rather than just the screen hiding buttons? | Chapters 3 and 12 |
+| 11 | Is there an alert if the bill suddenly jumps? | Chapter 12 |
+
+Nothing here requires you to understand the answers yet. You can ask your agent every one of these questions today and get a truthful yes or no, and the pattern of noes tells you where your risk actually is — which is rarely where people assume.
+
+The same list appears in full at the end of the book, as Chapter 14, with the reasoning behind each item. This version is the map; that one is the audit.
 
 ## The arc of this book
 

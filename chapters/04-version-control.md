@@ -90,6 +90,24 @@ A few situations, and their answers:
 
 Every one of these depends on having committed regularly, with useful messages. That is the entire discipline: commit small, commit often, say why. The tooling does the rest.
 
+## What changes when the author is an agent
+
+The workflow above is thirty years old and it assumed something that is no longer true: that producing a change was the slow part.
+
+When a human wrote the code, authorship was the bottleneck. Review was comparatively cheap — a person spent a day writing two hundred lines, and a colleague spent twenty minutes reading them. The ratio worked.
+
+An agent can produce four thousand lines in thirty seconds. Your capacity to review them has not changed at all. **Review is now the bottleneck, and it is the only bottleneck left.**
+
+Three consequences, and they run against the instinct that faster generation means you can relax:
+
+**Small changes matter more, not less.** The temptation is to let a change grow, because growing it is free now. Resist it harder than a human author would have needed to. If you cannot review it, nobody is reviewing it, and an unreviewed change is one that went to production on the strength of an agent's confidence alone.
+
+**The commit message carries more weight, not less.** A human author remembers, for a few weeks, why they did something. An agent remembers nothing between conversations. If the reasoning is not in the message, it exists nowhere — not in anybody's head, not in an old chat window you will never find again. The history is now the *only* record of intent.
+
+**Volume changes what history is for.** Twenty commits a day from one person used to indicate a problem. Now it may just be Tuesday. That makes the ability to bisect — to search history for the change that broke something — more valuable than it has ever been, and it makes small, individually-revertible commits the thing that keeps that ability working.
+
+There is a version of "the agent writes it, so I do not need to be careful" that is exactly backwards. Every practice in this chapter exists to make change safe, and change just got very much cheaper to produce.
+
 ## The rules that are actually rules
 
 Almost everything about how teams use Git is a matter of taste. A few things are not.

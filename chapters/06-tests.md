@@ -61,6 +61,30 @@ The failure mode at each extreme is real. All unit tests and nothing else: every
 
 **Faking the surroundings.** A **mock** — also stub, fake, test double — is a stand-in for a real dependency during a test. When your code calls a payment provider, the test substitutes something that pretends to be one, so the test is fast and does not charge anyone. Necessary, and worth one caution: a mock encodes your *belief* about how the real thing behaves. If that belief is wrong, your test passes and production fails, and it will be a genuinely confusing hour.
 
+## The blind spot you cannot test your way out of
+
+Everything above was true ten years ago. This part is not.
+
+When you ask an agent to write a feature and then ask the same agent to write tests for it, something happens that has no equivalent in the world these practices came from: **the code and the tests are produced by the same mind, from the same reading of your request.**
+
+If that reading was wrong, both are wrong in the same direction. The implementation does the wrong thing; the test asserts that it does the wrong thing; the suite goes green. You have not gained a check — you have gained a very confident second opinion from the same source.
+
+This is not hypothetical, and it is not rare. It is the default outcome when the misunderstanding is in the *requirement* rather than in the code. Suppose you asked for a discount that applies to the order total, and the agent understood "the total before shipping". It will implement that, and its test will assert `135` for exactly the arithmetic it already believes in. Every test passes. Everything is wrong. Nothing anywhere will tell you.
+
+Tests written by a human have the same weakness in principle, which is why review by a second person exists. What is new is the *scale and confidence*: a single agent can produce implementation, tests, and a persuasive explanation of why they are correct, all sharing one flawed premise, in under a minute.
+
+Four things narrow the gap, none perfect:
+
+**Write the acceptance criteria yourself, first.** Chapter 13 is about this properly. If you state the expected answer — "a 10% discount on a €150 order leaves €135, and shipping is charged on top" — then the test is written against *your* sentence rather than the agent's inference. This single habit fixes more of this problem than the other three combined.
+
+**Ask for tests from the specification, not from the code.** "Write tests for this function" invites the agent to read the implementation and describe it back. "Write tests for these acceptance criteria, without looking at how it was implemented" is a different request, and it produces different tests.
+
+**Supply the failure cases yourself.** You may not know how to implement anything, but you know your business. What happens with a discount code that expired yesterday? With a negative quantity? With the same code used twice? Those are the cases where an agent's assumptions are least reliable and your knowledge is most reliable, and they are exactly where you should spend your attention.
+
+**Be suspicious of a suite that has never failed.** If a test has passed on every run since it was written, it has demonstrated nothing except that it runs. The regression rule from the last section is partly a defence against this: a test written to reproduce a real bug has, at least once, been proven capable of failing.
+
+None of this makes agent-written tests worthless. They catch typos, broken wiring, and the regressions of Chapter 6's main argument perfectly well, and having them beats not having them by a wide margin. What they cannot do is tell you that you asked for the wrong thing. **That check has no automated form. It is yours.**
+
 ## Regressions and the fixing rule
 
 A **regression** is a failure in something that used to work. It is the most demoralising category of bug because it means you went backwards, and because it tends to arrive in something nobody was thinking about.
@@ -112,5 +136,9 @@ The regression rule. Ask for it in exactly this order, every time.
 The second half of that question is the one that matters. A number alone is not information; "the payment logic has no tests" is.
 
 > "Are any of our tests flaky? If so, fix them or delete them."
+
+> "Write these tests from the acceptance criteria I gave you, not from the code you wrote. And list the cases you decided not to cover."
+
+The second sentence is the useful one. It surfaces the assumptions that would otherwise be invisible, and it is where you will most often find that you and the agent understood the request differently.
 
 Ask occasionally. Flakiness accumulates quietly, and by the time it is obvious the habit of ignoring failures has already formed.

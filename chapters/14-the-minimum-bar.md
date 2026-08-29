@@ -103,7 +103,7 @@ You cannot write the code. You still cannot fully read it. Neither was the goal,
 
 What you can do now is name the parts, know what goes wrong with each, ask questions whose answers are checkable, and recognise the difference between a thing that works and a thing that will keep working. You can read a diff for shape. You can tell whether a plan is about to destroy a database. You can look at an average response time and ask for the p99 instead. You can hear "it's just an MVP" and know which corners that does and does not license.
 
-That is the actual job, and it always was. The writing of code was never the difficult part of software engineering — it was merely the part that took longest to learn, which made it look like the same thing. Agents have removed the time. They have not removed the judgement, and the judgement is what this book has been about.
+That is the actual job, and it always was. Writing code was never the *whole* difficulty of software engineering — some of it is genuinely hard, and always will be. But it was the part that took longest to learn, which made the two easy to confuse. Agents have removed much of the time. They have not removed the judgement, and the judgement is what this book has been about.
 
 ## The last thing
 
