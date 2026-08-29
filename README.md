@@ -161,6 +161,6 @@ be conservative about ordinary English or the gate becomes noise.
 
 ## Licence
 
-Manuscript: [CC BY-NC-SA 4.0](COPYING.md). Code: [EUPL-1.2](LICENSE), the
+Manuscript: [CC BY-NC 4.0](COPYING.md). Code: [EUPL-1.2](LICENSE), the
 same licence as content-kit, so the prototypes here can move upstream without a
 relicensing question. See [COPYING.md](COPYING.md).

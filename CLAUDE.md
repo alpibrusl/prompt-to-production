@@ -63,5 +63,5 @@ correct for audio. Bear that in mind when adding prose: anything that exists
 
 ## Licences
 
-Manuscript CC BY-NC-SA 4.0; code EUPL-1.2. New files under `scripts/` need an
+Manuscript CC BY-NC 4.0; code EUPL-1.2. New files under `scripts/` need an
 `SPDX-License-Identifier: EUPL-1.2` header. See `COPYING.md`.
