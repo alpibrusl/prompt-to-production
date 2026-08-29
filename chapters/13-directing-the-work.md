@@ -74,6 +74,36 @@ Then, the questions that are not about the diff at all — the ones this book eq
 
 None require reading code. All catch real problems.
 
+## Reviewing at speed
+
+Chapter 4 named the shift plainly: an agent can produce four thousand lines in thirty seconds, your reading speed has not changed, and review is now the only bottleneck left. The six questions above assume you are sitting with one diff. In practice you will not get one diff — you will get a session that produces ten or twenty of them before lunch, and "read every line of every one closely" is advice that cannot survive contact with that volume. Followed literally, it produces the opposite of what it promises: a reviewer too worn down by the fifth diff to look hard at the one that actually mattered.
+
+### Not every diff earns the same read
+
+The fix is not reading faster. It is reading unevenly, on purpose, using the logic Chapter 11 uses for blast radius: spend attention where a mistake is expensive, not evenly across everything that happens to arrive.
+
+Before deciding how hard to look, three questions decide the depth:
+
+- Does this touch money, authentication, or someone else's personal data?
+- Is it hard to undo once it has run?
+- Could it run in production, unattended, before a person would notice?
+
+Any yes earns the full six-question pass from the previous section, read closely, no exceptions. All no — a copy change, a new internal report, a rename — earns a real look rather than a rubber stamp, but not the same minutes. This is not laziness dressed up as a system; it is the same proportional attention Chapter 11 asks for during an incident, applied before one happens instead of during it.
+
+### Four patterns worth stopping for
+
+Whatever the depth of the pass, four things are worth specifically watching for, because they are quiet, common, and none of them require reading the implementation — only the claim being made about it.
+
+**Confidence that is not evidence.** "This library handles that." "This is safe to run twice." "The API returns X." Said with the same flat certainty whether the agent has verified it or is pattern-matching from something similar it has seen before, and you cannot tell which from the tone alone. When a sentence like this is load-bearing for a decision you are about to make and move on from, check the one line of documentation or run the one command rather than trusting the sentence. The check is usually faster than the argument you would have later if it was wrong.
+
+**A simple problem solved with a complicated one.** More configuration, more layers, more "so this can be extended later" than the request needed. Sometimes this is right — software does eventually grow into the abstraction. The question that separates the two cases is one this chapter already gave you, for scope: if you cannot get a one-sentence reason for a piece existing, ask for it. An MVP that quietly grew three configuration options nobody asked for is scope creep wearing an engineering justification.
+
+**A dependency that arrived uninvited.** Chapter 2 covered why a dependency is a relationship, not a favour — the cost does not show up until later, which is exactly why it needs to be caught now. Watch for it appearing as a side effect: "added a small library to handle X" inside a diff about something else entirely. Ask the same question Chapter 2 asks at the start of a project, every time it happens rather than only then: what does it save us, and would we notice if it disappeared.
+
+**A decision re-derived from scratch, possibly differently.** Chapter 4 already made the structural point — nothing survives between conversations except what is written down. The failure this produces is not the agent saying "I don't remember." It is the agent confidently reasoning to an answer again, with no sign anything changed, and sometimes arriving somewhere slightly different than it did last month. If a project has a decision that must not silently drift — a pricing rule, a data-retention period, who is allowed to see what — write it down somewhere read at the start of every session. A decision that only exists in an old commit is a decision that will eventually be re-made.
+
+None of these four ask you to read code. They ask whether a specific *claim* holds up — which is the register this whole chapter has stayed in since the first page, and it is the only one that scales past the first diff of the morning.
+
 ## When you cannot judge the choice
 
 Here is a situation that will happen to you within a week of starting anything real.
@@ -200,6 +230,10 @@ Makes "done" checkable, and reliably surfaces a case neither of you had consider
 > "Explain this diff to me in plain language. What changed, what could break, and what did you decide that I should know about?"
 
 The review question for someone who cannot read every line. That last clause matters most — it invites disclosure of judgement calls that are invisible in a diff.
+
+> "Anything in here you are not fully certain about? Any dependency that snuck in that I did not ask for? Anything more complicated than the request needed?"
+
+A direct pass at the four patterns above, asked in one breath rather than hunted for line by line. It works because it asks about the claim, not the code — and it is worth asking every time volume is high, not only when something feels off.
 
 > "Keep this change small. If it needs to touch more than a few files, tell me why first."
 

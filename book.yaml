@@ -57,3 +57,4 @@ back_matter:
   # Generated from glossary.yaml by `make glossary` — do not edit by hand.
   - { file: GLOSSARY.md, title: "Glossary" }
   - about_author
+  - { file: COLOPHON.md, title: "Colophon" }
