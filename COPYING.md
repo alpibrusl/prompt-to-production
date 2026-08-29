@@ -2,16 +2,16 @@
 
 This repository holds two different kinds of work, under two different licences.
 
-## The manuscript — CC BY-NC-SA 4.0
+## The manuscript — CC BY-NC 4.0
 
 `chapters/`, `glossary.yaml`, and the glossary generated from it are licensed
-under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-International Licence.
+under the Creative Commons Attribution-NonCommercial 4.0 International Licence.
 
-You may share and adapt the text, provided you give appropriate credit, do not
-use it commercially, and license any adaptation under the same terms.
+You may share and adapt the text, provided you give appropriate credit and do
+not use it commercially. Unlike the previous licence on this manuscript, an
+adaptation is not required to carry the same licence.
 
-Full text: <https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode>
+Full text: <https://creativecommons.org/licenses/by-nc/4.0/legalcode>
 
 ## The code — EUPL-1.2
 
