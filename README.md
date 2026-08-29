@@ -69,8 +69,13 @@ podcastkit generate -e build/audiobook/chapter_01    # → voices/*.mp3
 podcastkit assemble -e build/audiobook/chapter_01    # → chapter_01.mp3
 ```
 
-One episode per chapter is already podcast-shaped: 14 episodes, ~134,000
+One episode per chapter is already podcast-shaped: 15 episodes, ~137,000
 characters of narration.
+
+**Episode numbers are positional, not chapter numbers.** The author's note is
+front matter but still narrated, so it is `chapter_01` and every chapter is
+offset by one — chapter 14 is `chapter_15`. Worth knowing before you publish a
+feed with the episodes mislabelled.
 
 **What the conversion does with a technical book.** Fenced code blocks are
 dropped from the narration, which is right — a pipeline listing read aloud is

@@ -44,8 +44,10 @@ audiobook:
 	@bookkit audiobook -b . -d build/audiobook
 	@echo "next: podcastkit generate -e build/audiobook/chapter_01 && podcastkit assemble -e build/audiobook/chapter_01"
 
+# bookkit returns 9 for a dry run by its own exit-code convention, which make
+# would otherwise treat as failure. 9 is the success case for this target.
 audiobook-plan:
-	@bookkit audiobook -b . --dry-run
+	@bookkit audiobook -b . --dry-run || [ $$? -eq 9 ]
 
 clean:
 	@rm -rf build GLOSSARY.md
