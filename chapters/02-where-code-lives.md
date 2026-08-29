@@ -88,6 +88,20 @@ Two rules follow, and they are close to universal practice for good reason:
 
 This is the first appearance of a pattern that runs through the whole book: *make the thing reproducible, then keep the record of how*. You will see it again with environments, with infrastructure, with deployment. It is arguably the single deepest idea in software engineering, and it shows up first in a generated file most people never open.
 
+## What the agent can reach
+
+Open a terminal next to the chat window and the difference between "the agent suggests a command" and "the agent runs a command" disappears. Read a file, run tests, install a package, commit a fix — increasingly, it just does these, without you typing anything yourself.
+
+That is real, not a simulation of it, and it raises a question with two genuinely different parts worth keeping apart: what you allow it to do, and what it can reach at all.
+
+The first is a matter of scope. A command that stays inside your project — editing a file, running its tests — is low-stakes, and a well-built agent gets on with these without asking each time. A command that reaches past the project is a different order of thing: installing something system-wide, changing shell configuration, anything beginning with `sudo`. `sudo apt-get install` is close to the canonical example. It sounds like ordinary maintenance, and it is also a command that can alter the machine outside anything you are building, with full privileges, on your say-so alone. A well-designed agent asks before running one of these rather than assuming an earlier yes still applies, and the correct posture on your side is not "let it run this freely" — it is "let it ask, every time, and read the request before answering." That is not being difficult. It is close to universal practice among careful users, for good reason.
+
+The second part is not about permission at all — it is about whether there is a path there to begin with, and this is where working arrangements genuinely differ. An agent running directly on your laptop, in a terminal or an editor, has the reach of your own user account: your other projects, your files, whatever else lives on that machine, once you say yes. Increasingly, though, the agent is not on your laptop. It is running in a **sandbox** — an isolated space set up somewhere else, holding nothing but the project it was handed for this conversation. Ask that one to check a file in your downloads folder and it cannot, not from refusal but because no path exists from where it is standing to where that file lives. It was never given one.
+
+That is a hard boundary, not a policy one. Where the `sudo` question is a choice you make, this one cannot be argued past — a sandbox with no connection to your laptop stays that way regardless of how the request is phrased. It is also, deliberately, part of the design: a session that can only touch what it was explicitly handed is one where a mistake stays contained, and where nothing survives beyond the conversation that made it unless you were the one who moved it out.
+
+Knowing which situation you are in changes what a request like "just grab it from the file on my desktop" means. To an agent on your laptop it is an instruction. To one in a sandbox somewhere else, there is nothing on the other end of that sentence, and "I don't have access to that" is the honest answer rather than a sign that something is broken.
+
 ## What to ask for
 
 > "Show me the dependency list, and for each one tell me in a sentence what it does and whether we would be in trouble if it were abandoned."
@@ -97,3 +111,7 @@ You are checking two things: that your agent can justify each one, and that you 
 > "Is the lockfile committed?"
 
 A short question with a yes or no answer, and worth asking once at the start of any project. If the answer is no, the fix takes ten seconds and prevents a category of problem that is miserable to diagnose later.
+
+> "Before you run anything that reaches outside this project's folder — installing something system-wide, changing configuration that is not part of the repo — ask me first, every time, even if I said yes to something similar last time. And tell me plainly: are you running locally or somewhere else, and what can you actually see from there?"
+
+The first half keeps the `sudo` question a live one rather than a standing yes. The second tells you, in one answer, whether "grab it from my desktop" is a request the agent can act on or one it cannot — which saves a confusing round trip the moment you assume the wrong one.

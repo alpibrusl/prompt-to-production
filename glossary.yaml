@@ -177,6 +177,16 @@ concepts:
     depends_on: ["dependency", "open source"]
     defined_in: 2
 
+  - term: "sandbox"
+    scan: true
+    definition: >-
+      The isolated space an agent's commands actually run inside, walled off
+      from anything not explicitly given to it. Sometimes your own laptop with
+      a permission check on anything that reaches further; sometimes a machine
+      set up elsewhere, holding nothing but the project it was handed.
+    analogy: "A locked room: full run of what's inside it, no way out, and nothing outside it can tell it's there."
+    defined_in: 2
+
   # ─── Chapter 3 — The Shape of an App ────────────────────────────────────
   - term: "client"
     definition: >-
