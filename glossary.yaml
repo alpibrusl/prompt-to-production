@@ -1043,7 +1043,7 @@ concepts:
     depends_on: ["incident", "rollback"]
     defined_in: 11
 
-  # ─── Chapter 12 — Security and Cost ─────────────────────────────────────
+  # ─── Chapter 12 — Security ──────────────────────────────────────────────
   - term: "authentication"
     scan: true
     aka: ["authn", "login"]
@@ -1058,6 +1058,14 @@ concepts:
     definition: >-
       Establishing what that person is allowed to do. A different question from
       authentication, and the one more often got wrong.
+    depends_on: ["authentication"]
+    defined_in: 12
+
+  - term: "password hashing"
+    definition: >-
+      Turning a password into a fixed-length value that cannot practically be
+      reversed, using an algorithm made deliberately slow. What you store —
+      never the password itself.
     depends_on: ["authentication"]
     defined_in: 12
 
@@ -1123,6 +1131,7 @@ concepts:
     depends_on: ["log", "authorization"]
     defined_in: 12
 
+  # ─── Chapter 13 — Cost ──────────────────────────────────────────────────
   - term: "egress"
     scan: true
     aka: ["data transfer out", "bandwidth cost"]
@@ -1130,7 +1139,7 @@ concepts:
       Data leaving a provider's network — usually the most surprising line on a
       cloud bill, because moving data out costs far more than moving it in.
     depends_on: ["cloud provider", "region"]
-    defined_in: 12
+    defined_in: 13
 
   - term: "cost anomaly"
     aka: ["bill shock", "cost alert"]
@@ -1138,16 +1147,16 @@ concepts:
       An unexpected jump in spend, usually caused by a loop, a retry storm, or
       something left running. Worth an alert of its own.
     depends_on: ["alert", "cloud provider", "retry"]
-    defined_in: 12
+    defined_in: 13
 
-  # ─── Chapter 13 — Directing the Work ────────────────────────────────────
+  # ─── Chapter 14 — Directing the Work ────────────────────────────────────
   - term: "specification"
     aka: ["spec", "requirements"]
     definition: >-
       A written statement of what should be built and how you will know it was.
       The agent's output is only as well-defined as this.
     depends_on: ["source code"]
-    defined_in: 13
+    defined_in: 14
 
   - term: "acceptance criteria"
     aka: ["definition of done"]
@@ -1155,7 +1164,7 @@ concepts:
       The specific, checkable conditions that decide whether a piece of work is
       finished. Written before the work, not after.
     depends_on: ["specification", "test"]
-    defined_in: 13
+    defined_in: 14
 
   - term: "scope"
     aka: ["scope creep", "in scope", "out of scope"]
@@ -1163,16 +1172,16 @@ concepts:
       The agreed boundary of what a piece of work includes. Creep is what
       happens when that boundary moves quietly.
     depends_on: ["specification"]
-    defined_in: 13
+    defined_in: 14
 
   - term: "minimum viable product"
     aka: ["MVP"]
     definition: >-
       The smallest version that genuinely tests whether the idea works. A
       deliberate reduction in features, never a reduction in the standards of
-      Chapter 14.
+      Chapter 15.
     depends_on: ["scope", "production"]
-    defined_in: 13
+    defined_in: 14
 
   - term: "technical debt"
     aka: ["tech debt"]
@@ -1181,7 +1190,7 @@ concepts:
       the system afterwards.
     analogy: "A loan: sometimes the right choice, always accruing interest, dangerous only when nobody is tracking the balance."
     depends_on: ["codebase", "scope"]
-    defined_in: 13
+    defined_in: 14
 
   - term: "refactor"
     scan: true
@@ -1189,7 +1198,7 @@ concepts:
       Changing how code is written without changing what it does, to make the
       next change easier. Safe only when tests exist to prove nothing moved.
     depends_on: ["technical debt", "test suite", "regression"]
-    defined_in: 13
+    defined_in: 14
 
   - term: "reversible decision"
     aka: ["one-way door", "two-way door"]
@@ -1198,7 +1207,7 @@ concepts:
       irreversible one changes what is possible afterwards, and deserves
       proportionally more of your attention.
     depends_on: ["blast radius", "technical debt"]
-    defined_in: 13
+    defined_in: 14
 
   - term: "lock-in"
     aka: ["vendor lock-in"]
@@ -1208,7 +1217,7 @@ concepts:
       particular way of working. Worth accepting deliberately; bad to discover.
     analogy: "Easy to check in, expensive to check out."
     depends_on: ["managed service", "cloud provider", "reversible decision"]
-    defined_in: 13
+    defined_in: 14
     scan: true
 
   - term: "iteration"
@@ -1217,4 +1226,4 @@ concepts:
       One cycle of building a small piece, putting it in front of reality, and
       adjusting.
     depends_on: ["scope", "minimum viable product"]
-    defined_in: 13
+    defined_in: 14

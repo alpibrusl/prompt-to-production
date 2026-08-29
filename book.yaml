@@ -46,10 +46,11 @@ chapters:
   # Part IV — Living With It
   - { file: chapters/10-observability.md,      title: "" }
   - { file: chapters/11-when-it-breaks.md,     title: "" }
-  - { file: chapters/12-security-and-cost.md,  title: "" }
+  - { file: chapters/12-security.md,           title: "" }
+  - { file: chapters/13-cost.md,               title: "" }
   # Part V — Working With the Agent
-  - { file: chapters/13-directing-the-work.md, title: "" }
-  - { file: chapters/14-the-minimum-bar.md,    title: "" }
+  - { file: chapters/14-directing-the-work.md, title: "" }
+  - { file: chapters/15-the-minimum-bar.md,    title: "" }
 
 front_matter: [title_page, copyright, toc]
 

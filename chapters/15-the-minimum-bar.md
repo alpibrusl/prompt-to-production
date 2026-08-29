@@ -14,7 +14,7 @@ A prototype shown to three friendly users, holding no real data, that can be thr
 
 Everything below follows from your answer. If the honest reply is "I lose an afternoon", most of this is optional. If it is "a customer loses their data" or "we are in breach of a law", none of it is.
 
-The tempting phrase to be wary of is *it's just an MVP*. Chapter 13 drew the line and it is worth restating, because it is the specific rationalisation that leads to the bad version of this: an MVP reduces **features**, not **standards**. Three screens instead of twelve, absolutely. Three screens with no backups, no authorization checks and the database password in the repository is not a smaller product. It is the same product with a hidden liability attached.
+The tempting phrase to be wary of is *it's just an MVP*. Chapter 14 drew the line and it is worth restating, because it is the specific rationalisation that leads to the bad version of this: an MVP reduces **features**, not **standards**. Three screens instead of twelve, absolutely. Three screens with no backups, no authorization checks and the database password in the repository is not a smaller product. It is the same product with a hidden liability attached.
 
 ## The bar
 

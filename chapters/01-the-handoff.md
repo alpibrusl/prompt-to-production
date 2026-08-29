@@ -70,7 +70,7 @@ What it will do is give you the **vocabulary and the map**. By the end you will 
 
 **An agent will build almost anything you ask for, and will rarely tell you what you forgot to ask for.**
 
-Ask for a login page and you will get a login page. Whether you also get password hashing, a way to reset a forgotten password, a record of who logged in when, and a cap on how many passwords can be tried per minute — that depends entirely on whether you knew those things existed.
+Ask for a login page and you will get a login page. Whether you also get a properly stored password, a way to reset a forgotten one, a record of who logged in when, and a cap on how many passwords can be tried per minute — that depends entirely on whether you knew those things existed.
 
 The agent is not withholding. It is answering the question you asked. The skill you need is not writing code. It is knowing which questions exist.
 
@@ -122,11 +122,11 @@ Here is the whole book as a list of questions. Work down it. The first "no" is w
 | 8 | Would you find out it was broken before a customer told you? | Chapter 10 |
 | 9 | Is the data backed up, and has a restore actually been performed? | Chapter 11 |
 | 10 | Does the server check permissions, rather than just the screen hiding buttons? | Chapters 3 and 12 |
-| 11 | Is there an alert if the bill suddenly jumps? | Chapter 12 |
+| 11 | Is there an alert if the bill suddenly jumps? | Chapter 13 |
 
 Nothing here requires you to understand the answers yet. You can ask your agent every one of these questions today and get a truthful yes or no, and the pattern of noes tells you where your risk actually is — which is rarely where people assume.
 
-The same list appears in full at the end of the book, as Chapter 14, with the reasoning behind each item. This version is the map; that one is the audit.
+The same list appears in full at the end of the book, as Chapter 15, with the reasoning behind each item. This version is the map; that one is the audit.
 
 ## The arc of this book
 
