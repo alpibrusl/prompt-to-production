@@ -50,6 +50,20 @@ in rules, soften them in claims.
     make epub / make html / make pdf
     make all      # check + epub + html (pdf needs Pango, see README)
 
+## The afterword is a real chapter, not front matter
+
+`chapters/17-a-note-from-the-author.md` used to be chapter 0, read before
+Chapter 1. It moved to the end deliberately — it reads better as a closing
+reflection than as philosophy in front of a frightened reader's first
+question, and it is still narrated in the audiobook (back matter is not).
+
+Because it is now numbered after everything else, it needs no special
+treatment from the term linter: every term it uses is already defined by the
+time the reader gets there. `check_terms.py` used to carry a chapter-0
+exemption for this file specifically; that exemption is gone, on purpose,
+because nothing needs it now. Do not re-add a front-matter special case
+without checking whether this is still true.
+
 ## Audio
 
 `make audiobook` emits a podcastkit project under `build/audiobook/` — derived,
