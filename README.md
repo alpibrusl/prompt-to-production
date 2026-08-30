@@ -10,6 +10,13 @@ It teaches the vocabulary and the map: what the parts of a system are called,
 what each is for, what goes wrong with each, and what "done properly" looks
 like. Not how to write code. How to *ask for* what you now know exists.
 
+Chapter 1 explicitly excludes ML and statistical work from scope. Its
+companion volume, [*Prompt to
+Evidence*](https://github.com/alpibrusl/prompt-to-evidence), fills that gap
+— same voice and tooling, analytical discipline instead of software
+engineering, for people who are not mathematicians rather than people who
+cannot read code.
+
 > An agent will build almost anything you ask for, and will rarely tell you what
 > you forgot to ask for.
 
