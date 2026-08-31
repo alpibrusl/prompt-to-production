@@ -31,11 +31,13 @@ The specific reason this matters *more* when an agent writes the code, not less:
 Tests are simpler than people imagine. Almost all of them have three steps, and once you see the pattern you can read a test even if you cannot write one.
 
 ```python
-def test_discount_applies_to_order_total():
-    order = Order(items=[Item(price=100), Item(price=50)])   # arrange
-    order.apply_discount("SAVE10")                            # act
-    assert order.total == 135                                 # assert
+def test_discount_applies_to_invoice_total():
+    invoice = Invoice(items=[Item(price=100), Item(price=50)])  # arrange
+    invoice.apply_discount("SAVE10")                              # act
+    assert invoice.total == 135                                   # assert
 ```
+
+This is Ledgerly's own test, more or less — an early-customer discount applied to an invoice total.
 
 Set up a known situation. Do the thing. State what must be true afterwards.
 
@@ -69,7 +71,7 @@ When you ask an agent to write a feature and then ask the same agent to write te
 
 If that reading was wrong, both are wrong in the same direction. The implementation does the wrong thing; the test asserts that it does the wrong thing; the suite goes green. You have not gained a check — you have gained a very confident second opinion from the same source.
 
-This is not hypothetical, and it is not rare. It is the default outcome when the misunderstanding is in the *requirement* rather than in the code. Suppose you asked for a discount that applies to the order total, and the agent understood "the total before shipping". It will implement that, and its test will assert `135` for exactly the arithmetic it already believes in. Every test passes. Everything is wrong. Nothing anywhere will tell you.
+This is not hypothetical, and it is not rare. It is the default outcome when the misunderstanding is in the *requirement* rather than in the code. Suppose you asked Ledgerly's agent for a discount that applies to the invoice total, and it understood "the total before tax". It will implement that, and its test will assert `135` for exactly the arithmetic it already believes in. Every test passes. Everything is wrong. Nothing anywhere will tell you.
 
 Tests written by a human have the same weakness in principle, which is why review by a second person exists. What is new is the *scale and confidence*: a single agent can produce implementation, tests, and a persuasive explanation of why they are correct, all sharing one flawed premise, in under a minute.
 
@@ -93,7 +95,7 @@ There is one practice that repays itself more than any other in this chapter, an
 
 **When you find a bug, write a test that fails because of it. Then fix it.**
 
-The test now fails, proving it genuinely reproduces the problem. Then the fix makes it pass, proving the fix works. And the test stays, forever, so that particular bug can never quietly return.
+The test now fails, proving it genuinely reproduces the problem. Then the fix makes it pass, proving the fix works. And the test stays, so that particular bug cannot quietly return without the suite noticing.
 
 Do this consistently and your test suite grows in exactly the places your system is weak — shaped by real failures rather than by guesses about where problems might live. It is the cheapest possible way to build a suite that is actually about your system.
 

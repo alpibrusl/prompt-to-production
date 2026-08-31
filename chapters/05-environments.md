@@ -12,7 +12,7 @@ An **environment** is one complete running copy of your system, kept separate fr
 
 The analogy to hold: a dress rehearsal versus opening night. Same play, same cast, same script — utterly different consequences for a mistake.
 
-Most projects have two or three:
+Ledgerly, like most projects, has two or three:
 
 **Local** is the copy running on your own computer, for your eyes only. Break it freely; nobody notices. Its data is fake.
 

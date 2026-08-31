@@ -12,7 +12,7 @@ Two words that sound similar, mean different things, and are confused constantly
 
 Authentication is the one people get right, because it is visible — there is a login page, it either works or it does not. Authorization is where the breaches are, because it is invisible: nothing on screen tells you that user 4471 can fetch user 4472's invoice by changing a number in the address bar.
 
-That specific bug — where an identifier in a request is not checked against who is asking — is one of the most common serious vulnerabilities on the web. It requires no skill to find. Someone changes `/invoices/8812` to `/invoices/8813` out of curiosity and sees a stranger's data.
+That specific bug — where an identifier in a request is not checked against who is asking — is one of the most common serious vulnerabilities on the web. It requires no skill to find. Someone changes `/invoices/8812` — the same invoice Chapter 10's logs showed being created — to `/invoices/8813` out of curiosity and sees a stranger's data.
 
 **Every request that touches data belonging to someone must check that the caller is entitled to it.** Not the interface — the backend, as Chapter 3 insisted. Every single one. This is the highest-value security question in this book and it is worth asking about every endpoint you have.
 

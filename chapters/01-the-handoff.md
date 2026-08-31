@@ -6,6 +6,8 @@ You described what you wanted. Something built it. It works.
 
 You are looking at a screen where a thing you imagined is now happening — a form that submits, a list that sorts, a page that shows your data arranged the way you asked for it. Twenty minutes ago it did not exist. There is a particular feeling to this moment, and if you have felt it you know that no description does it justice.
 
+Call it Ledgerly, if it helps to give it a name — an invoicing tool for freelancers, say, built the way you just built something. The examples through this book will keep returning to it. What follows is the same regardless of what you actually built.
+
 Then comes the second question, and it is much harder than the first: *now what?*
 
 This book is about the gap between those two moments. It is a large gap. It is where most of the actual discipline of software engineering lives, and almost none of it is visible in the thing you just built. The agent handled the part that looks like the work. What it handed you is the part that looks like nothing at all.
@@ -36,7 +38,7 @@ Now consider a different kind. The code is perfect. Every instruction is correct
 - It worked yesterday and fails today, though nobody changed anything.
 - It works for one person and falls over when forty arrive at once.
 - It works, and quietly charges you €2,000 this month instead of €20.
-- It works, and has been serving one customer's private data to another for eleven days.
+- It works, and has been serving one customer's invoice to another for eleven days — the exact bug Chapter 12 catches Ledgerly making.
 
 None of these are code problems in the sense you are used to. They are **system** problems — and *system* here means everything that has to be working for a user to get what they came for. The program, yes, but also the machine underneath it, the network in between, the database holding the data, the third-party service you call, the settings that differ between your laptop and the real world, and the assumptions everyone made about how much traffic there would be.
 

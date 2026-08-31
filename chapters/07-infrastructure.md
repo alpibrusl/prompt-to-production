@@ -2,7 +2,7 @@
 
 > **Part III — Shipping It**
 
-Your program needs a computer to run on. Somebody else's, continuously, reachable from the internet, and you will pay for it monthly.
+Your program — Ledgerly, still — needs a computer to run on. Somebody else's, continuously, reachable from the internet, and you will pay for it monthly.
 
 That much is obvious. What is not obvious is that there are four or five quite different things you might rent, they differ enormously in cost and in how much work they leave you, and the choice is usually made in the first ten minutes of a project by whoever set it up — which, now, may be an agent that was not asked to explain itself.
 
@@ -99,7 +99,7 @@ Three questions in one, and the third is the one that reveals things. "It would 
 
 > "Is our database managed, with automated backups? When was a restore last tested?"
 
-Backups that have never been restored are not backups. They are an untested belief.
+An untested backup is a belief, not a fact — Chapter 16 has the fuller version of this rule.
 
 > "Are we running more than one copy, and is the application stateless enough for that to work?"
 

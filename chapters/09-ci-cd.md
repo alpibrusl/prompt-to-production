@@ -1,6 +1,6 @@
 # The Path to Production
 
-There is a moment in every project where getting a change to users stops being simple and starts being frightening. Usually it arrives with the first real customer.
+There is a moment in every project where getting a change to users stops being simple and starts being frightening. Usually it arrives with the first real customer — Ledgerly's first paying freelancer, say.
 
 The difference between teams that ship confidently many times a day and teams that batch changes into a nervous Thursday release is not talent, and it is not the size of the company. It is whether the path from a change to production is automated and identical every time, or improvised.
 

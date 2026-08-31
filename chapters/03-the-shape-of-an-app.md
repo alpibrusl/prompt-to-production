@@ -75,7 +75,7 @@ Stateless does not mean nothing is remembered. It means *the server* does not re
 
 ## Structure and change in the database
 
-The declared structure of your data — what tables exist, what fields they have, what is allowed in each — is the **schema**. `users` has an id, an email, a created date; email must be unique; the created date cannot be empty.
+The declared structure of your data — what tables exist, what fields they have, what is allowed in each — is the **schema**. Ledgerly's `invoices` table has an id, a customer, an amount, a due date; the customer field cannot be empty.
 
 The schema is not paperwork. It is enforcement. A well-specified schema makes whole categories of bad data impossible, and the database will refuse to store something that violates it. Getting the schema right early is one of the highest-leverage things you can do, because everything downstream inherits its assumptions.
 

@@ -27,9 +27,11 @@ Three things, complementary, commonly called the three pillars. You need all thr
 A **log** is a timestamped line a program writes about something it just did.
 
 ```
-2026-08-28 14:32:07 INFO  order 8812 created for user 4471, total 42.50
-2026-08-28 14:32:09 ERROR payment failed for order 8812: card declined
+2026-08-28 14:32:07 INFO  invoice 8812 created for user 4471, total 42.50
+2026-08-28 14:32:09 ERROR payment failed for invoice 8812: card declined
 ```
+
+Ledgerly's own logs, on an ordinary Friday. Invoice 8812 will come up again in Chapter 12, for a different reason.
 
 A diary: one entry per event, in order. Logs are the most detailed signal and the most useful when you already know roughly where to look. They are poor at telling you something is wrong — nobody reads them continuously — and excellent at telling you what happened once you have a thread to pull.
 
@@ -40,7 +42,7 @@ Two things separate useful logs from noise.
 **Structure.** **Structured logging** means writing logs as machine-readable fields rather than sentences:
 
 ```json
-{"level":"error","event":"payment_failed","order_id":8812,"reason":"card_declined"}
+{"level":"error","event":"payment_failed","invoice_id":8812,"reason":"card_declined"}
 ```
 
 Uglier to read, vastly more useful. You can now ask "how many payments failed for this reason today, by hour" — a question you simply cannot ask of English sentences without regret. Ask for structured logging from the start; converting later is tedious and nobody gets round to it.

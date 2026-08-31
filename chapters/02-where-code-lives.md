@@ -1,6 +1,6 @@
 # Where Code Lives
 
-Somewhere on your computer there is now a folder. Inside it are files with names like `app.py` or `index.tsx` or `main.go`, arranged in subfolders, some of which you did not ask for and do not recognise.
+Somewhere on your computer there is now a folder — Ledgerly's, say, or whatever you called yours. Inside it are files with names like `app.py` or `index.tsx` or `main.go`, arranged in subfolders, some of which you did not ask for and do not recognise.
 
 This chapter is about that folder: what is in it, why it is shaped that way, and the one part of it that is not really yours.
 

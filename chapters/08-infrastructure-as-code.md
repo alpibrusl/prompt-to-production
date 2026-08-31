@@ -1,6 +1,6 @@
 # Writing the Setup Down
 
-Chapter 7 was about what you rent. This one is about how you arrange it, and the answer is the same answer this book keeps giving in different costumes: *write it down so it can be reproduced, rather than doing it by hand and hoping*.
+Chapter 7 was about what you rent. This one is about how you arrange it, for Ledgerly and for anything else — and the answer is the same one this book keeps giving in different costumes: *write it down so it can be reproduced, rather than doing it by hand and hoping*.
 
 ## The thing everybody does first
 

@@ -1,6 +1,6 @@
 # The Night It Breaks
 
-**02:13.** Your agent reports that the deployment succeeded. It did. Everything it was asked to check came back green.
+**02:13.** Ledgerly's deployment succeeds, your agent reports. It did. Everything it was asked to check came back green.
 
 **02:14.** Customers cannot log in. Nobody tells you, because it is two in the morning where you are, and the people affected are in a timezone where it is the middle of the afternoon and they have simply gone somewhere else.
 
@@ -79,7 +79,7 @@ The overwhelming majority of incidents are caused by a change. If you deployed w
 A rough order for the first ten minutes:
 
 1. **Confirm it is real.** Check from outside your own network.
-2. **Say something.** Even "we're investigating" — internally, and to users if it is user-visible. Silence is worse than bad news, always.
+2. **Say something.** Even "we're investigating" — internally, and to users if it is user-visible. Silence is worse than bad news almost every time, and treating this occasion as the exception is usually just nerves talking.
 3. **Check recent deployments.** Roll back if plausible.
 4. **Check the dependencies.** Is it your cloud provider, your payment processor, your email service? Their status page may lag; their social media is often faster.
 5. **Stop the bleeding**, even crudely. Disabling a broken feature beats a broken site.

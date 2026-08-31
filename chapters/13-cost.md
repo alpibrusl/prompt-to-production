@@ -1,6 +1,6 @@
 # The Bill You Didn't See Coming
 
-You can build something that functions perfectly and still be destroyed by it: cloud costs are unusual in that you can incur an enormous bill without any warning, in a matter of hours, through a mistake rather than success. The stories are real, well documented, and mostly not about growth.
+You can build something that functions perfectly — Ledgerly is up, taking invoices, nothing broken — and still be destroyed by it: cloud costs are unusual in that you can incur an enormous bill without any warning, in a matter of hours, through a mistake rather than success. The stories are real, well documented, and mostly not about growth.
 
 ## What actually generates a bill
 

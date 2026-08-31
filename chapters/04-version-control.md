@@ -2,7 +2,7 @@
 
 > **Part II — Keeping It**
 
-You have a working thing. Now you are going to change it, and changing it is where the losses happen.
+You have a working thing — Ledgerly, say. Now you are going to change it, and changing it is where the losses happen.
 
 Not dramatic losses. Ordinary ones: an afternoon of work overwritten, a feature that worked on Tuesday and does not on Thursday with nobody able to say what happened in between, a fix that broke something else and no way back to before the fix.
 

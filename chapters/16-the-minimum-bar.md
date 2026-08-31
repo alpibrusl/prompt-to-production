@@ -95,6 +95,14 @@ If that is too much to hold, there is a version that fits on a card. These five 
 
 An afternoon. Genuinely.
 
+## What Ledgerly actually needed
+
+Chapter 1 opened with a thing that worked, twenty minutes after it hadn't, and offered to call it Ledgerly if a name helped. If you've been picturing it since, you've now watched it collect most of the list above one chapter at a time — mostly by nearly failing to.
+
+Chapter 10 watched invoice 8812 arrive in the logs, an ordinary Friday. Chapter 12 came back to that same invoice from the other direction — the identifier sitting unchecked in a URL, one digit away from a stranger's bill. Chapter 15 was the rule nobody wrote down: a tax-number export added for one customer, six weeks gone from anyone's memory by the time it broke, on a holiday, for a system with exactly one person who could explain it.
+
+None of these arrived as a single dramatic failure. Each was a small, ordinary gap — a check missing on the backend, a decision left in a conversation instead of a file — that cost an afternoon rather than the business, because something in an earlier chapter caught it before it compounded. That is what the bar above is actually for: not preventing the mistake, which happens anyway, but keeping it small enough to be a Tuesday rather than the reason a freelancer stops trusting Ledgerly with their invoices.
+
 ## What you have
 
 You began this book able to get working code and unable to say what surrounded it. That has changed, and it is worth being clear about what changed and what did not.

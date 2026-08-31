@@ -32,7 +32,7 @@ cannot read code.
 
 A closing note from the author follows as an afterword.
 
-Roughly 30,700 words and 151 defined terms, all collected in a generated
+Roughly 31,100 words and 151 defined terms, all collected in a generated
 glossary.
 
 ## The book is source

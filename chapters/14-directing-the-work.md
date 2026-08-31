@@ -22,7 +22,7 @@ A **specification** is a written statement of what should be built and how you w
 
 The distinction between a vague request and a good one is not length. It is whether it contains anything falsifiable.
 
-Vague:
+Vague, the request Ledgerly actually got in its first week:
 
 > "Add user authentication."
 
@@ -108,7 +108,7 @@ None of these four ask you to read code. They ask whether a specific *claim* hol
 
 Here is a situation that will happen to you within a week of starting anything real.
 
-The agent stops and offers you a choice. Postgres or MongoDB. REST or GraphQL. A monolith or separate services. Vercel or AWS. It lays out three options with trade-offs, all of which sound reasonable, none of which you can evaluate, and it waits.
+The agent stops and offers you a choice. This is roughly how Ledgerly's own database got picked: Postgres or MongoDB. REST or GraphQL. A monolith or separate services. Vercel or AWS. It lays out three options with trade-offs, all of which sound reasonable, none of which you can evaluate, and it waits.
 
 You have no basis to choose. None. The words are not the problem — you could look each of them up — the problem is that the trade-off is between consequences you have never experienced.
 

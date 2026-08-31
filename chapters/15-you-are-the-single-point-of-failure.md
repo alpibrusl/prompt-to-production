@@ -1,6 +1,6 @@
 # You Are the Single Point of Failure
 
-Two months from now, you take a genuine two-week holiday, properly offline. While you are gone, a customer reports that exports have stopped including tax numbers — a rule that was added deliberately, for one specific customer, for a specific legal reason, six weeks ago. Nobody else knows why the rule exists. It is not in a comment. The commit message says "fix export." It is not in your head either, by the time you are asked, because six weeks is long enough to forget a thing you never wrote down.
+Two months from now, you take a genuine two-week holiday, properly offline. While you are gone, a Ledgerly customer reports that invoice exports have stopped including tax numbers — a rule that was added deliberately, for one specific customer, for a specific legal reason, six weeks ago. Nobody else knows why the rule exists. It is not in a comment. The commit message says "fix export." It is not in your head either, by the time you are asked, because six weeks is long enough to forget a thing you never wrote down.
 
 The agent you ask to look into it reads the code, finds the rule, and explains confidently what it does. It cannot tell you why, because *why* was never in the code to begin with. It was in a conversation that ended in June.
 
