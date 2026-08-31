@@ -10,15 +10,18 @@ It teaches the vocabulary and the map: what the parts of a system are called,
 what each is for, what goes wrong with each, and what "done properly" looks
 like. Not how to write code. How to *ask for* what you now know exists.
 
-Chapter 1 explicitly excludes ML and statistical work from scope. Two
+Chapter 1 explicitly excludes ML and statistical work from scope. Three
 companion volumes fill the gaps this book leaves on purpose: [*Prompt to
 Evidence*](https://github.com/alpibrusl/prompt-to-evidence) — analytical
 discipline instead of software engineering, for people who are not
-mathematicians rather than people who cannot read code — and [*Prompt to
+mathematicians rather than people who cannot read code — [*Prompt to
 Ledger*](https://github.com/alpibrusl/prompt-to-ledger) — financial
-discipline for people who are not accountants. Same voice, same tooling,
-each aimed at a different gap between what an agent can now produce and the
-judgement its output assumes you already have.
+discipline for people who are not accountants — and [*Prompt to
+Decision*](https://github.com/alpibrusl/prompt-to-decision) — the layer
+above all three, for deciding whether to act on a recommendation once
+you've verified it. Same voice, same tooling, each aimed at a different gap
+between what an agent can now produce and the judgement its output assumes
+you already have.
 
 > An agent will build almost anything you ask for, and will rarely tell you what
 > you forgot to ask for.
