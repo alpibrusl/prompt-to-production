@@ -34,8 +34,8 @@ Your laptop has a different operating system from the server. It has a different
 
 Two things buy most of the available parity, and both are covered later because both are large:
 
-- **Containers** (Chapter 7) package the program with the exact versions of everything it needs, so the same package runs identically anywhere. This closes most of the "different versions installed" gap in one move.
-- **Infrastructure as code** (Chapter 8) means each environment is built from the same written description rather than assembled by hand, so they cannot quietly diverge.
+- **Containers** (Chapter 7) package the program together with much of the runtime environment it depends on, eliminating most of the "different versions installed" gap in one move — though not differences in the underlying kernel, CPU architecture, or whatever it talks to over the network.
+- **Infrastructure as code** (Chapter 8) means each environment is built from the same written description rather than assembled by hand, making silent configuration drift far harder — not impossible, if someone changes something by hand outside that description, but much easier to catch when they do.
 
 The thing you can do today, before either of those, is more modest and still worth it: know how your environments differ, and be honest about what your testing therefore proves. A change tested against twelve rows has not been tested for speed. It has been tested for correctness only, and you should say so rather than pretend otherwise.
 
