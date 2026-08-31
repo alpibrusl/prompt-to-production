@@ -71,7 +71,9 @@ The failure is almost always the same, and it is not exotic:
 
 Step five is faster than people expect. There are bots that continuously scan every new public commit on GitHub for anything shaped like a credential. Keys have been found and used within *seconds* of being pushed. Not hours.
 
-And because Git history is permanent — Chapter 4 — deleting the key in a later commit does not remove it. It is still there, in the history, one command away, forever, until somebody rewrites the history properly.
+And because Git history is permanent — Chapter 4 — deleting the key in a later commit does not remove it. It remains in the history, one command away, and by the time anyone gets around to properly rewriting that history, a bot may already have copied, cached, or scraped it.
+
+**Removing a leaked secret from Git history does not make that credential safe again.** Rewriting history stops new clones from seeing it. It does nothing about the copy a bot already made. The only fix that actually closes the door is rotating or revoking the credential itself — treat "leaked" as a one-way state the moment it happens, not something a later cleanup commit undoes.
 
 The bill that follows a leaked cloud key is a specific and well-documented horror. Somebody uses your account to run a large number of machines mining cryptocurrency, and you find out five days later.
 
@@ -85,7 +87,7 @@ The bill that follows a leaked cloud key is a specific and well-documented horro
 
 **Different secrets per environment.** Staging must never hold production's keys. If it does, then staging is production for anyone who compromises it, and you have carefully built a weaker copy of your real system with the same keys in it.
 
-**Rotate when in doubt.** **Rotation** is replacing a secret with a new one and retiring the old, so a leaked value stops being useful. If a key might have been exposed, rotate it. Do not investigate first and rotate after. Rotation takes minutes and costs nothing; investigation takes hours during which the key still works.
+**Rotate when in doubt.** **Rotation** is replacing a secret with a new one and retiring the old, so a leaked value stops being useful. If a key might have been exposed, rotate it. Do not investigate first and rotate after — investigation takes hours during which the key still works, and rotation doesn't have to wait for the investigation to finish. It is genuinely close to free when the secret lives in a secret manager everything fetches live; it is not free when it's a plain value baked into an environment variable, because every running instance that has the old value needs to actually pick up the new one, and a sloppy rotation there can turn a leak into an outage of its own — one more reason the secret manager above is worth setting up before you need it in a hurry.
 
 **Never send a secret through chat or email.** It will sit in that history as long as the repository would have.
 

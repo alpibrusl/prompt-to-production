@@ -42,7 +42,7 @@ This is almost always a choice made in code, and it is almost always cheap at th
 
 Naive retries make outages worse in a way that is worth understanding because it is counterintuitive. A service slows down. Every client retries immediately. The service now receives triple the traffic while already struggling, so it slows further, so more requests time out and are retried. A service that was degraded is now completely down, and it stays down after the original cause has passed, because the retry traffic alone is enough to keep it there. This is called a retry storm and it is a genuine, common cause of outages that outlast their trigger.
 
-Backoff spreads the load out. And retries are only safe at all when the operation is **idempotent** — Chapter 8's word, arriving where it matters. Retrying "set status to paid" is fine at any number of repetitions. Retrying "charge this card" without care charges the card twice.
+Backoff spreads the load out. And retries are only safe at all when the operation is **idempotent** — Chapter 8's word, arriving where it matters. Retrying "set status to paid" is fine at any number of repetitions *in the order they were meant to happen*. It stops being fine if a late, delayed retry can land after something legitimate changed the status again in between — a refund, say — and silently stomps back to "paid" on an order that was correctly reverted. The safe version checks the current state before acting ("set to paid, but only if it's currently pending") rather than setting it unconditionally. Retrying "charge this card" without care charges the card twice regardless of ordering.
 
 ## Handling it when it happens
 

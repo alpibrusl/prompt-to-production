@@ -38,7 +38,8 @@ concepts:
   - term: "build"
     definition: >-
       The process that turns source code into something runnable, and the act of
-      running that process. Repeatable by design: same source in, same result out.
+      running that process. A well-controlled build should be reproducible: the
+      same source and pinned build inputs producing the same result.
     analogy: "Cooking the recipe."
     depends_on: ["source code", "program"]
     defined_in: 1
@@ -46,8 +47,9 @@ concepts:
   - term: "artifact"
     aka: ["build artifact"]
     definition: >-
-      The output of a build — a file or package that can be deployed. Derived
-      from source, never edited directly, never the thing you keep.
+      The output of a build — a file or package that can be deployed.
+      Derived from source, not edited directly, and reproducible from the
+      recorded source and build inputs if it's ever lost.
     depends_on: ["build"]
     defined_in: 1
 
@@ -923,11 +925,13 @@ concepts:
     defined_in: 10
 
   - term: "alert"
-    aka: ["alerting", "paging"]
+    aka: ["alerting"]
     definition: >-
-      An automated message sent to a human when a signal crosses a threshold.
-      Every alert should be worth waking someone for; the ones that are not
-      train people to ignore all of them.
+      An automated message sent to a human when a signal crosses a
+      threshold. Not every alert needs to interrupt someone immediately —
+      only page someone for the ones that do; every alert that pages
+      someone should be worth waking them for, or it trains people to
+      ignore pages.
     depends_on: ["metric", "dashboard"]
     defined_in: 10
 

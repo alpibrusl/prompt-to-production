@@ -12,7 +12,7 @@ A **server** is the side that receives the asking and answers. Note carefully: t
 
 One message from a client asking for something is a **request**. The server's answer is a **response**. That is the entire interaction, repeated billions of times a second across the world, and essentially all of web software is arrangements of it.
 
-The rules for how requests and responses are written and sent are **HTTP**. When you see HTTPS, it is the same protocol with the contents encrypted so that nobody in between can read them — Chapter 12 explains what that does and does not protect you from.
+The rules for how requests and responses are written and sent are **HTTP**. When you see HTTPS, it is that same HTTP wrapped in an additional layer — TLS — that encrypts the connection and checks you're actually talking to the server you think you are, before any HTTP even starts. Chapter 12 explains what that does and does not protect you from.
 
 Every response carries a status code, and you know some already. `200` means fine. `404` means the thing you asked for does not exist. `500` means the server broke while trying to answer — that one is *your* fault, not the caller's, and the distinction is built into the numbering: the `4xx` range means the request was bad, the `5xx` range means the server was.
 

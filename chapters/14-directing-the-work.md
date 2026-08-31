@@ -40,7 +40,7 @@ Write acceptance criteria before the work, not after. Criteria written afterward
 
 Ask for small things. A request that touches one area, that you can describe in a few sentences, that produces a change you can look at in one sitting.
 
-The reason is not process hygiene. It is that a large change is genuinely unreviewable — by you, and honestly by anyone. A change touching thirty files does something you did not ask for, always, and neither you nor the agent will notice, because the noticing budget was spent by file eight.
+The reason is not process hygiene. It is that a large change is genuinely unreviewable — by you, and honestly by anyone. A change touching thirty files is much harder to verify and much more likely to contain something you did not ask for — a renamed variable that shouldn't have moved, a dependency bumped along the way — and past a certain size, neither you nor the agent will reliably notice, because the noticing budget was spent by file eight. When a small request comes back as a sprawling diff, treat that as a signal to ask what else is in there before assuming it is fine.
 
 Small changes also fail cheaply. If a change to one thing breaks, you know what broke it. If a change to nine things breaks, you have an investigation. This is Chapter 4's argument for small commits and Chapter 11's argument for small blast radius, arriving in the form of a working habit.
 

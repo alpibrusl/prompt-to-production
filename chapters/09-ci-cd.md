@@ -56,7 +56,7 @@ The letters CD stand for two different things and people use them interchangeabl
 
 **Continuous deployment** means there is no button. Anything that passes goes to production automatically.
 
-Continuous deployment sounds reckless and mostly is not, for a reason that takes a moment to see: it forces the pipeline to be genuinely trustworthy. If nothing stands between a merge and your users, the tests must be real and the rollback must work. Teams that deploy automatically often have *better* safety than teams with a manual gate, because the manual gate is doing the job that automation should be doing, and doing it worse — a tired person at 6pm is not a good check.
+Continuous deployment sounds reckless and mostly is not, for a reason that takes a moment to see: it forces the pipeline to be genuinely trustworthy. If nothing stands between a merge and your users, the tests must be real and the rollback must work. A team whose pipeline actually has that — strong tests, a canary or staged rollout, fast rollback, and the ability to see what's happening in production (Chapter 10) — can end up with *better* safety than a team relying on a manual gate, because the gate is doing the job automation should be doing, and doing it worse: a tired person at 6pm is not a good check. That is a claim about a mature pipeline, though, not about removing the button by itself — a thin test suite with no button is worse than a thin test suite with one.
 
 That said: **start with continuous delivery.** Automate everything up to the last step, and press the button yourself. When you have gone a month pressing the button and never once been glad of the chance to say no, you have earned the right to remove it.
 
@@ -72,7 +72,7 @@ It is the single most valuable capability you can have, and it is worthless if i
 
 Two techniques make it fast and safe:
 
-**Blue-green deployment.** Run the new version alongside the old, then switch traffic across in one step. If it goes wrong, switch back — the old version is still running and still warm. Rollback becomes a redirection rather than a redeployment, and it takes seconds.
+**Blue-green deployment.** Run the new version alongside the old, then switch traffic across in one step. If it goes wrong, switch back — the old version is still running and still warm. Rollback becomes a redirection rather than a redeployment, and it takes seconds — provided both versions can safely run against the same database at the same moment. A migration that isn't backward-compatible (a renamed column, a newly required field) breaks that assumption: switch back to the old code and it may now be reading or writing data in a shape only the new version understood, turning an easy rollback into new damage instead of undoing the old kind.
 
 **Canary release.** Send a small fraction of traffic — 1%, then 5%, then 25% — to the new version, watching as you go. Most bad deployments are visible in the first minute at 1%, and 1% of your users having a bad minute is a different event from all of them having a bad hour.
 

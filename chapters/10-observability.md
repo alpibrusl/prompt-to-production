@@ -84,13 +84,13 @@ A **percentile** fixes this. **p95 latency** is the time within which 95% of req
 
 A **dashboard** is a screen of charts assembled to answer, at a glance, whether the system is healthy. You want one, it should fit on one screen, and it should show the golden signals. A dashboard with forty charts is a dashboard nobody reads.
 
-An **alert** is an automated message to a human when a signal crosses a threshold. And alerts are where good intentions most often produce something actively harmful, so here is the rule:
+An **alert** is an automated message to a human when a signal crosses a threshold. Not every alert needs to be urgent — plenty are fine to review the next morning as a list — but a smaller set are worth *paging* someone for: interrupting them immediately, day or night. Alerts are where good intentions most often produce something actively harmful, so here is the rule for that smaller, urgent set:
 
-**Every alert should be worth waking someone for.**
+**Every alert that pages someone should be worth waking them for.**
 
-An alert that fires and needs no action teaches everyone that alerts need no action. Do that twenty times and you have trained your team — or yourself — to dismiss the notification without reading it. The alert that matters then arrives into a habit of ignoring alerts. This is not hypothetical; it is the mechanism behind a large share of "why did nobody notice for six hours".
+An alert that pages someone and needs no action teaches everyone that pages need no action. Do that twenty times and you have trained your team — or yourself — to dismiss the notification without reading it. The one that matters then arrives into a habit of ignoring them. This is not hypothetical; it is the mechanism behind a large share of "why did nobody notice for six hours".
 
-Alert on symptoms users feel, not on internal curiosities. "Error rate above 5% for five minutes" is worth waking for. "CPU at 80%" is not — a system at 80% CPU serving everyone correctly is a system doing its job.
+Alert on symptoms users feel, not on internal curiosities, and reserve paging for the ones that genuinely can't wait. "Error rate above 5% for five minutes" is worth paging for. "CPU at 80%" is not — a system at 80% CPU serving everyone correctly is a system doing its job, and belongs on the dashboard, not in anyone's pocket at 2am.
 
 A **health check** is a small endpoint whose only purpose is to answer "am I working?", so a load balancer or orchestrator can stop sending traffic to a copy that is not. Make it check the things the application actually needs — can it reach the database? — rather than merely returning "yes", which a completely broken process will happily do.
 
@@ -136,6 +136,6 @@ The single highest-value change here.
 
 Ask this every time someone shows you a performance number.
 
-> "What are we alerting on, and would each one be worth waking me at 3am?"
+> "Which of our alerts actually page someone, and would each one genuinely be worth waking me at 3am?"
 
-Prune ruthlessly. A short list of real alerts beats a long list nobody reads.
+Prune ruthlessly. A short list of real pages beats a long list nobody reads.

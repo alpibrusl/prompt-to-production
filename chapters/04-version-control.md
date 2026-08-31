@@ -112,7 +112,7 @@ There is a version of "the agent writes it, so I do not need to be careful" that
 
 Almost everything about how teams use Git is a matter of taste. A few things are not.
 
-**Never commit secrets.** Passwords, API keys, tokens, certificates. Chapter 5 is largely about this, but the reason it belongs here is a property of Git specifically: because history is permanent, a secret committed once is in the history *forever*, even if you delete it in the next commit. Removing it properly means rewriting history, which is disruptive, and by then it may well have been scraped. There are bots that watch public repositories for exactly this and act within seconds.
+**Never commit secrets.** Passwords, API keys, tokens, certificates. Chapter 5 is largely about this, but the reason it belongs here is a property of Git specifically: because history is permanent, a secret committed once remains in the history even after you delete it in the next commit. Removing it properly means rewriting history, which is disruptive — and by then it may already have been scraped, so rewriting the history is not the fix on its own. There are bots that watch public repositories for exactly this and act within seconds; treat a leaked secret as compromised and rotate it, regardless of how quickly you clean up the commit.
 
 **Protect the main branch.** Configure the remote so that nobody — including you — can push directly to `main`; everything arrives through a reviewed PR with passing checks. This takes two minutes to set up and eliminates an entire genre of accident.
 
