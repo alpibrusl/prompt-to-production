@@ -69,4 +69,5 @@ back_matter:
   # Generated from glossary.yaml by `make glossary` — do not edit by hand.
   - { file: GLOSSARY.md, title: "Glossary" }
   - about_author
+  - { file: ABOUT-THE-SERIES.md, title: "The Prompt to... Series" }
   - { file: COLOPHON.md, title: "Colophon" }
