@@ -57,7 +57,9 @@ concepts:
     aka: ["running", "at runtime"]
     definition: >-
       The state of a program while it is actually executing, as opposed to
-      sitting on disk as text. Most interesting failures happen here.
+      sitting on disk as text. Most interesting failures happen here. Also,
+      by extension, the program that runs a program — the JVM, the Node
+      runtime — which Chapter 2 meets.
     depends_on: ["program"]
     defined_in: 1
 
@@ -1039,6 +1041,15 @@ concepts:
     depends_on: ["incident", "severity"]
     defined_in: 11
 
+  - term: "backup"
+    definition: >-
+      A copy of the database taken on a schedule and kept somewhere the
+      running system cannot touch, together with the restore that brings it
+      back. One that has never been restored is a belief, not a fact.
+    analogy: "A spare key that has never been tried in the lock."
+    depends_on: ["database"]
+    defined_in: 11
+
   - term: "mean time to recovery"
     aka: ["MTTR"]
     definition: >-
@@ -1183,7 +1194,7 @@ concepts:
     definition: >-
       The smallest version that genuinely tests whether the idea works. A
       deliberate reduction in features, never a reduction in the standards of
-      Chapter 15.
+      Chapter 16.
     depends_on: ["scope", "production"]
     defined_in: 14
 

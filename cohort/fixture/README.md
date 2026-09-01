@@ -26,7 +26,7 @@ about the fixture is meant to persist between sessions or cohorts.
 
 The generated repo is disposable: this script is the source, the repo it
 produces is a build artifact, and `.gitignore` here keeps it out of the
-`cohort-kit` repository the same way `build/` stays out of the book's own.
+book's repository the same way `build/` does.
 
 ## What's planted, and which session uses it
 

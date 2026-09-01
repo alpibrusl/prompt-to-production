@@ -79,6 +79,18 @@ The failure mode at each extreme is real. All unit tests and nothing else: every
 
 **Faking the surroundings.** A **mock** — also stub, fake, test double — is a stand-in for a real dependency during a test. When your code calls a payment provider, the test substitutes something that pretends to be one, so the test is fast and does not charge anyone. Necessary, and worth one caution: a mock encodes your *belief* about how the real thing behaves. If that belief is wrong, your test passes and production fails, and it will be a genuinely confusing hour.
 
+## Regressions and the fixing rule
+
+A **regression** is a failure in something that used to work. It is the most demoralising category of bug because it means you went backwards, and because it tends to arrive in something nobody was thinking about.
+
+There is one practice that repays itself more than any other in this chapter, and it is small enough to adopt today:
+
+**When you find a bug, write a test that fails because of it. Then fix it.**
+
+The test now fails, proving it genuinely reproduces the problem. Then the fix makes it pass, proving the fix works. And the test stays, so that particular bug cannot quietly return without the suite noticing.
+
+Do this consistently and your test suite grows in exactly the places your system is weak — shaped by real failures rather than by guesses about where problems might live. It is the cheapest possible way to build a suite that is actually about your system.
+
 ## The blind spot you cannot test your way out of
 
 Everything above was true ten years ago. This part is not.
@@ -101,19 +113,7 @@ Four things narrow the gap, none perfect:
 
 **Be suspicious of a suite that has never failed.** If a test has passed on every run since it was written, it has demonstrated nothing except that it runs. The regression rule from the last section is partly a defence against this: a test written to reproduce a real bug has, at least once, been proven capable of failing.
 
-None of this makes agent-written tests worthless. They catch typos, broken wiring, and the regressions of Chapter 6's main argument perfectly well, and having them beats not having them by a wide margin. What they cannot do is tell you that you asked for the wrong thing. **That check has no automated form. It is yours.**
-
-## Regressions and the fixing rule
-
-A **regression** is a failure in something that used to work. It is the most demoralising category of bug because it means you went backwards, and because it tends to arrive in something nobody was thinking about.
-
-There is one practice that repays itself more than any other in this chapter, and it is small enough to adopt today:
-
-**When you find a bug, write a test that fails because of it. Then fix it.**
-
-The test now fails, proving it genuinely reproduces the problem. Then the fix makes it pass, proving the fix works. And the test stays, so that particular bug cannot quietly return without the suite noticing.
-
-Do this consistently and your test suite grows in exactly the places your system is weak — shaped by real failures rather than by guesses about where problems might live. It is the cheapest possible way to build a suite that is actually about your system.
+None of this makes agent-written tests worthless. They catch typos, broken wiring, and the regressions the last section was about perfectly well, and having them beats not having them by a wide margin. What they cannot do is tell you that you asked for the wrong thing. **That check has no automated form. It is yours.**
 
 ## Coverage, honestly
 

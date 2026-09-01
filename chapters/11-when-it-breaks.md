@@ -10,9 +10,9 @@
 
 **09:50.** You establish that something in yesterday's deployment is responsible. You would like to go back to the previous version. You discover three things in quick succession: you are not certain which version was running on Monday, nobody has ever run the rollback command, and the change included a database migration you are not sure can be undone.
 
-**11:20.** Fixed. Six hours of a working day gone, and almost none of them spent on the repair.
+**11:20.** Fixed. Nine hours from the deploy to the fix, six of them before anyone on your side knew, and almost none of them spent on the repair.
 
-That last point is the one worth sitting with. The bug itself took ninety seconds to find once somebody looked at the right thing. Everything else — the six hours — was the absence of what this chapter is about: knowing quickly, having a way back, and having decided in advance who looks.
+That last point is the one worth sitting with. The bug itself took ninety seconds to find once somebody looked at the right thing. Everything else — the rest of the nine hours — was the absence of what this chapter is about: knowing quickly, having a way back, and having decided in advance who looks.
 
 <div style="margin:1.6rem 0;">
 <svg viewBox="0 0 760 230" width="100%" style="display:block;" xmlns="http://www.w3.org/2000/svg">
@@ -39,12 +39,12 @@ That last point is the one worth sitting with. The bug itself took ninety second
 <line x1="50" y1="148" x2="50" y2="162" stroke="#1a1a1a" stroke-width="1.1"/>
 <line x1="50" y1="155" x2="690" y2="155" stroke="#1a1a1a" stroke-width="1.1"/>
 <line x1="690" y1="148" x2="690" y2="162" stroke="#1a1a1a" stroke-width="1.1"/>
-<text x="370" y="172" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">six hours, start to finish</text>
+<text x="370" y="172" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">nine hours, start to finish</text>
 <line x1="660" y1="181" x2="660" y2="193" stroke="#1a1a1a" stroke-width="1.1"/>
 <line x1="660" y1="187" x2="700" y2="187" stroke="#1a1a1a" stroke-width="1.1"/>
 <line x1="700" y1="181" x2="700" y2="193" stroke="#1a1a1a" stroke-width="1.1"/>
 <text x="680" y="204" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" fill="#666">~90 sec: the actual fix</text>
-<text x="370" y="222" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-style="italic" fill="#444">Almost none of the six hours went to the actual repair.</text>
+<text x="370" y="222" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-style="italic" fill="#444">Almost none of the nine hours went to the actual repair.</text>
 </svg>
 </div>
 
@@ -130,6 +130,12 @@ The right model is aviation. The industry got dramatically safer over decades be
 A postmortem worth writing has: a timeline, the user impact in plain terms, what actually caused it, what made it worse, what made recovery slow, and specific actions with owners. That last part is what separates a postmortem from a story. "We should be more careful" is not an action. "Add a confirmation prompt to the delete command" is.
 
 Write one for anything above SEV3, even alone, even for something small. Especially alone — you have no colleague to remember on your behalf.
+
+## Backups, and the restore you have actually run
+
+Rolling back (Chapter 9) puts the *code* back the way it was. It does nothing for the *data*: a migration that dropped a column, a bulk edit that ran against the wrong rows, an account deleted by mistake. For those the way back is a **backup** — a copy of the database taken on a schedule and kept somewhere the running system cannot touch — and the restore that brings it back.
+
+Two things matter about a backup, and only one of them is whether it exists. A managed database (Chapter 7) will usually take one every day without being asked and let you restore to a point in time; that is worth more than any amount of cleverness, and it is most of the reason this book tells you to pay for one. The other is whether a restore has ever actually been run. A backup that has never been restored is a belief, not a fact — nobody knows whether the copy is complete, whether bringing it back takes ten minutes or ten hours, or whether it needs a password that left with a former contractor. Run one restore, into a scratch database, on a calm day, and time it. Chapter 16 puts this first on its list, and this is why.
 
 ## The measure that matters
 

@@ -32,7 +32,7 @@ A person forgetting is a gap you can usually see. An agent re-deriving is a gap 
 
 The fix is not to remember harder. It is to move the decisions that must not silently drift out of your head and into something every session reads, so continuity does not depend on your availability, your memory, or which agent happens to be running.
 
-Not everything qualifies — most choices are cheap to redo or reverse, and writing all of them down is how a project ends up with a document nobody reads. What belongs here is narrower: a pricing rule with a reason behind it, a data-retention period, who is allowed to see what, why the boring option was rejected in favour of the unusual one. The test is the one from Chapter 13: if getting it wrong later would be expensive or hard to undo, it earns a place in writing. Everything else can stay a conversation.
+Not everything qualifies — most choices are cheap to redo or reverse, and writing all of them down is how a project ends up with a document nobody reads. What belongs here is narrower: a pricing rule with a reason behind it, a data-retention period, who is allowed to see what, why the boring option was rejected in favour of the unusual one. The test is the one from Chapter 14: if getting it wrong later would be expensive or hard to undo, it earns a place in writing. Everything else can stay a conversation.
 
 Two properties matter more than where exactly it lives:
 

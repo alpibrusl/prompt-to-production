@@ -29,11 +29,12 @@ fi
 mkdir -p "$OUT"
 cd "$OUT"
 
-git init -q
+git init -q -b main
 git config user.email "fixture@ledgerly.example"
 git config user.name "Ledgerly Engineering"
 
 mkdir -p src tests .github/workflows
+touch tests/.gitkeep .github/workflows/.gitkeep
 
 cat > src/app.js <<'EOF'
 const express = require('express');
