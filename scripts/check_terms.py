@@ -67,6 +67,11 @@ def strip_noise(text: str) -> str:
     text = re.sub(r"```.*?```", " ", text, flags=re.S)
     text = re.sub(r"`[^`]*`", " ", text)
     text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)
+    # Diagram markup, not prose -- an SVG's own attributes (xmlns URIs,
+    # element/id names) can accidentally contain a term's letters (e.g. the
+    # "http" in xmlns="http://www.w3.org/2000/svg" reads as an early "HTTP")
+    # without the term ever actually being introduced to a reader.
+    text = re.sub(r"<div[^>]*>.*?</div>", " ", text, flags=re.S)
     return text
 
 

@@ -27,7 +27,7 @@ Then, finally, that artifact has to be put somewhere it will run continuously, r
 Source code. Build. Artifact. Deploy. Production. Five words, one direction. If you take nothing else from this chapter, take the shape of that arrow, because every later chapter is about something that goes wrong somewhere along it.
 
 <div style="margin:1.6rem 0;">
-<svg viewBox="0 0 680 120" width="100%" style="display:block;" xmlns="htt&#112;://www.w3.org/2000/svg">
+<svg viewBox="0 0 680 120" width="100%" style="display:block;" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <marker id="ptp1-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
 <path d="M0,0 L6,3 L0,6" fill="none" stroke="#1a1a1a" stroke-width="1.1"/>
