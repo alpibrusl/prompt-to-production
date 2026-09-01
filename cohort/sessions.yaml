@@ -1,0 +1,160 @@
+sessions:
+  - number: 1
+    title: "The Handoff"
+    chapters: [1, 2, 3]
+    chapter_titles: ["The Handoff", "Where Code Lives", "The Shape of an App"]
+    in_session: >-
+      Vocabulary against a real running product, live: which part is the
+      client, which is the server, where "build" actually happens. The
+      Chapter 1 request — "walk me through the chain behind this" — asked
+      of a real recent recommendation someone in the room has actually
+      received.
+    exercise:
+      name: "Name the parts"
+      description: >-
+        Given a screenshot and a one-paragraph description of a real
+        product, label client / server / database / build / artifact /
+        deploy without seeing any code.
+    checkpoint: >-
+      Can define artifact and deploy correctly, unprompted, using the
+      product they just labeled as the example.
+
+  - number: 2
+    title: "Not Losing Things"
+    chapters: [4]
+    chapter_titles: ["Version Control"]
+    in_session: >-
+      Live walk of a real repo's history — protected branches, what a
+      reviewed PR actually blocks, why volume changes what history is
+      for. Bisecting a real bug back to its commit, live.
+    exercise:
+      name: "Version control audit"
+      description: >-
+        On their own project or the fixture: is there a real remote? Is
+        main protected? Anything large or generated committed that
+        shouldn't be?
+    checkpoint: >-
+      A written, three-line audit note — done / not done / not
+      applicable, same as the book's own closing format.
+
+  - number: 3
+    title: "Not Leaking Things"
+    chapters: [5]
+    chapter_titles: ["Environments"]
+    in_session: >-
+      Why `git log -p`, not just the working tree. The gap between
+      "deleted in the next commit" and "gone."
+    exercise:
+      name: "First meeting with the fixture"
+      description: >-
+        Students are told nothing except "audit this before it ships."
+        They find the credential sitting in an old commit, unprompted,
+        and have to explain why removing the file doesn't fix it.
+      fixture_ref: "fixture/setup.sh"
+    checkpoint: >-
+      Found the leaked credential in history and can state, correctly,
+      that rotating it — not deleting the file — is the actual fix.
+    facilitator_notes: >-
+      Run `fixture/setup.sh` fresh right before the session — a clean
+      checkout matters here, since a student who's seen a previous
+      cohort's fixture won't have the "cold" reaction the exercise
+      depends on. Most groups find the .env reference in the README
+      before they think to check history; let them, it's a fine route in.
+
+  - number: 4
+    title: "Being Able to Change It"
+    chapters: [6, 9]
+    chapter_titles: ["Tests", "CI/CD"]
+    in_session: >-
+      Ask an agent, live, for tests on a real feature. As a group: do
+      they cover the path that must not break, or only the one that was
+      easy to write?
+    exercise:
+      name: "Back to the fixture"
+      description: >-
+        Its .github/workflows/ directory is empty. Students write the one
+        sentence that would actually block a bad merge, and say what
+        "empty" was quietly costing before they wrote it.
+      fixture_ref: "fixture/setup.sh"
+    checkpoint: >-
+      Names a specific untested critical path in their own project, not a
+      hypothetical one.
+
+  - number: 5
+    title: "Not Being Ruined by a Bad Night"
+    chapters: [7, 8, 11]
+    chapter_titles: ["Infrastructure", "Infrastructure as Code", "When It Breaks"]
+    in_session: >-
+      Tabletop, in pairs. One plays the system going down at 11pm; the
+      other directs the agent's diagnosis using Chapter 11's decision
+      tree, out loud, with nothing but the symptoms they're given.
+    exercise:
+      name: "Write the runbook entry you wish you'd had"
+      description: >-
+        Two lines, for the single most likely failure in something they
+        actually run.
+    checkpoint: >-
+      A runbook entry specific enough that a different person in the room
+      could follow it cold.
+
+  - number: 6
+    title: "Knowing What Is Happening"
+    chapters: [10]
+    chapter_titles: ["Observability"]
+    in_session: >-
+      p50 vs. p99 on a real latency distribution — why the average was
+      hiding the customers who were actually having a bad time.
+    exercise:
+      name: "Alert triage"
+      description: >-
+        Ten example alerts. Sort each into "worth paging someone for" or
+        "worth seeing tomorrow," and defend the split out loud.
+    checkpoint: >-
+      A triaged list where every "page" decision has a one-line reason
+      attached.
+
+  - number: 7
+    title: "Directing the Work"
+    chapters: [12, 13, 14]
+    chapter_titles: ["Security", "Cost", "Directing the Work"]
+    in_session: >-
+      Revisit the fixture's unauthorized endpoint one more time, now
+      reading it as a diff someone approved rather than a thing to find.
+      "An MVP reduces features, not standards" — tested against a real
+      recent request someone made of an agent.
+    exercise:
+      name: "Review a diff you didn't write"
+      description: >-
+        A deliberately oversized sample change. Flag anything in it
+        nobody actually asked for.
+      fixture_ref: "fixture/setup.sh"
+    checkpoint: >-
+      A written diff review naming at least one thing that shouldn't have
+      been in scope.
+
+  - number: 8
+    title: "The Minimum Bar"
+    chapters: [15, 16, 17]
+    chapter_titles:
+      - "You Are the Single Point of Failure"
+      - "The Minimum Bar"
+      - "A Note from the Author"
+    in_session: >-
+      Each student runs the book's own verify-production skill against a
+      real project — their own if they have one, the fixture if not — and
+      presents the result to the group: what's genuinely done, what's
+      missing, and what nobody can confirm without asking a real person.
+    checkpoint: >-
+      A specific, honest finding presented to the group — not a clean
+      bill of health, and not a wall of unconfirmed items either.
+    capstone: true
+    deliverable: >-
+      A completed audit against the rubric, run with the
+      prompt-to-production/skills/verify-production skill on something
+      real.
+    facilitator_notes: >-
+      The rubric rewards honest "unconfirmed" findings as much as real
+      "not done" ones — watch for students quietly upgrading an
+      unconfirmed item to done because the machinery for it exists; that
+      is the exact mistake chapter 16 warns about, and worth naming when
+      it happens rather than just correcting the finding.

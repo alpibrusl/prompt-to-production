@@ -60,3 +60,32 @@ jobs:
         with:
           name: prompt-to-production
           path: build/
+
+  cohort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install cohortkit
+        run: |
+          python -m pip install --upgrade pip
+          pip install "content-kit-core @ git+https://github.com/alpibrusl/content-kit@main#subdirectory=packages/core"
+          pip install "cohortkit @ git+https://github.com/alpibrusl/cohort-kit@main"
+
+      # Cross-checks every session's chapter list against this book's own
+      # book.yaml -- a chapter renumbered in the manuscript and never
+      # updated in the curriculum fails here, not silently.
+      - name: Check the cohort curriculum
+        run: make cohort-check
+
+      - name: Build the student handout and facilitator guide
+        run: make cohort-build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prompt-to-production-cohort
+          path: cohort/build/

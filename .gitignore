@@ -2,6 +2,9 @@
 build/
 GLOSSARY.md
 
+# The cohort's generated fixture repo -- fixture/setup.sh is the source.
+cohort/fixture/ledgerly-invoicing/
+
 # Python
 __pycache__/
 *.pyc

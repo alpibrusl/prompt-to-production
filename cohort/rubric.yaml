@@ -1,0 +1,15 @@
+dimensions:
+  - name: "Specificity"
+    description: >-
+      Findings name a file, a line, a person to ask — not a general
+      impression.
+  - name: "Honesty under uncertainty"
+    description: >-
+      Items nobody can verify (a restore actually performed, a rollback
+      actually rehearsed) are marked unconfirmed, not assumed done because
+      the machinery exists.
+  - name: "Proportionality"
+    description: >-
+      Closes by weighing the gaps against what the project actually is —
+      a weekend prototype and something holding real user data don't get
+      the same urgency for the same finding.

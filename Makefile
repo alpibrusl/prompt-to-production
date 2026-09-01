@@ -7,16 +7,18 @@
 PY := python3
 SCRIPTS := scripts
 
-.PHONY: help glossary check build epub pdf html audiobook clean all
+.PHONY: help glossary check build epub pdf html audiobook clean all cohort-check cohort-build
 
 help:
-	@echo "make glossary  regenerate GLOSSARY.md from glossary.yaml"
-	@echo "make check     lint the manuscript against the concept ledger"
-	@echo "make epub      build the EPUB (implies glossary)"
-	@echo "make pdf       build the PDF  (implies glossary)"
-	@echo "make html      build a single-file HTML (implies glossary)"
-	@echo "make all       check + build all three formats"
-	@echo "make clean     remove build artifacts"
+	@echo "make glossary      regenerate GLOSSARY.md from glossary.yaml"
+	@echo "make check         lint the manuscript against the concept ledger"
+	@echo "make epub          build the EPUB (implies glossary)"
+	@echo "make pdf           build the PDF  (implies glossary)"
+	@echo "make html          build a single-file HTML (implies glossary)"
+	@echo "make all           check + build all three formats"
+	@echo "make cohort-check  lint the cohort curriculum against this book's chapters"
+	@echo "make cohort-build  build the cohort student handout + facilitator guide"
+	@echo "make clean         remove build artifacts"
 
 glossary:
 	@$(PY) $(SCRIPTS)/build_glossary.py
@@ -50,5 +52,13 @@ audiobook-plan:
 	@bookkit audiobook -b . --dry-run || [ $$? -eq 9 ]
 
 clean:
-	@rm -rf build GLOSSARY.md
+	@rm -rf build GLOSSARY.md cohort/build
 	@echo "cleaned"
+
+# The cohort curriculum -- see cohort/README.md. Needs cohortkit:
+# pip install "cohortkit @ git+https://github.com/alpibrusl/cohort-kit@main"
+cohort-check:
+	@cohortkit check cohort --book-path .
+
+cohort-build:
+	@cohortkit build cohort --out cohort/build

@@ -1,0 +1,12 @@
+title: "Production Bootcamp Pilot"
+subtitle: "A test run at turning Prompt to Production into a taught module — eight sessions, one running fixture, one capstone that produces a real, honest audit instead of a grade."
+book: "prompt-to-production"
+book_title: "Prompt to Production"
+session_count: 8
+session_length_hours: 2
+cohort_size_min: 8
+cohort_size_max: 15
+format: "live, synchronous"
+prerequisite: "none"
+sessions_file: "sessions.yaml"
+rubric_file: "rubric.yaml"
