@@ -26,6 +26,31 @@ Then, finally, that artifact has to be put somewhere it will run continuously, r
 
 Source code. Build. Artifact. Deploy. Production. Five words, one direction. If you take nothing else from this chapter, take the shape of that arrow, because every later chapter is about something that goes wrong somewhere along it.
 
+<div style="margin:1.6rem 0;">
+<svg viewBox="0 0 680 120" width="100%" style="display:block;" xmlns="htt&#112;://www.w3.org/2000/svg">
+<defs>
+<marker id="ptp1-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6" fill="none" stroke="#1a1a1a" stroke-width="1.1"/>
+</marker>
+</defs>
+<rect x="6" y="30" width="112" height="56" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="62" y="63" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="12.5" font-weight="600" fill="#1a1a1a">SOURCE CODE</text>
+<line x1="118" y1="58" x2="146" y2="58" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp1-arrow)"/>
+<rect x="146" y="30" width="112" height="56" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="202" y="63" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="12.5" font-weight="600" fill="#1a1a1a">BUILD</text>
+<line x1="258" y1="58" x2="286" y2="58" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp1-arrow)"/>
+<rect x="286" y="30" width="112" height="56" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="342" y="63" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="12.5" font-weight="600" fill="#1a1a1a">ARTIFACT</text>
+<line x1="398" y1="58" x2="426" y2="58" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp1-arrow)"/>
+<rect x="426" y="30" width="112" height="56" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="482" y="63" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="12.5" font-weight="600" fill="#1a1a1a">DEPLOY</text>
+<line x1="538" y1="58" x2="566" y2="58" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp1-arrow)"/>
+<rect x="566" y="30" width="108" height="56" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="620" y="63" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="12.5" font-weight="600" fill="#1a1a1a">PRODUCTION</text>
+<text x="340" y="110" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-style="italic" fill="#444">Every later chapter is about something that goes wrong somewhere along this arrow.</text>
+</svg>
+</div>
+
 ## Two kinds of wrong
 
 When you were building on your own screen, there was exactly one way for things to be wrong: the code was wrong. You asked for something, the agent misunderstood, or it made a mistake, and the result did not do what you wanted. You looked at it, you saw it, you asked for a fix.

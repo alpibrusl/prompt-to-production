@@ -42,6 +42,49 @@ A typical one:
 
 This book's own repository has a small version of exactly this, and one of its steps is a check that no chapter uses a term before defining it. Same principle, different subject: a rule you care about, enforced by a machine rather than by remembering.
 
+<div style="margin:1.6rem 0;">
+<svg viewBox="0 0 740 200" width="100%" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ptp9-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6" fill="none" stroke="#1a1a1a" stroke-width="1.1"/>
+</marker>
+</defs>
+<rect x="4" y="60" width="96" height="52" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="52" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" font-weight="600" fill="#1a1a1a">INSTALL &amp;</text>
+<text x="52" y="96" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" font-weight="600" fill="#1a1a1a">LINT</text>
+<line x1="100" y1="86" x2="126" y2="86" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp9-arrow)"/>
+<rect x="126" y="60" width="104" height="52" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="178" y="76" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9" font-weight="600" fill="#1a1a1a">UNIT &amp;</text>
+<text x="178" y="88" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9" font-weight="600" fill="#1a1a1a">INTEGRATION</text>
+<text x="178" y="100" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9" font-weight="600" fill="#1a1a1a">TESTS</text>
+<line x1="178" y1="60" x2="178" y2="38" stroke="#8a3324" stroke-width="1.4"/>
+<text x="178" y="30" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" fill="#8a3324">gate</text>
+<line x1="230" y1="86" x2="256" y2="86" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp9-arrow)"/>
+<rect x="256" y="60" width="112" height="52" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="312" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" font-weight="600" fill="#1a1a1a">BUILD &amp; PUSH</text>
+<text x="312" y="96" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" font-weight="600" fill="#1a1a1a">IMAGE</text>
+<line x1="368" y1="86" x2="394" y2="86" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp9-arrow)"/>
+<rect x="394" y="60" width="100" height="52" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="444" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" font-weight="600" fill="#1a1a1a">DEPLOY TO</text>
+<text x="444" y="96" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" font-weight="600" fill="#1a1a1a">STAGING</text>
+<line x1="494" y1="86" x2="520" y2="86" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp9-arrow)"/>
+<rect x="520" y="60" width="90" height="52" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="565" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" font-weight="600" fill="#1a1a1a">SMOKE</text>
+<text x="565" y="96" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" font-weight="600" fill="#1a1a1a">TESTS</text>
+<line x1="565" y1="60" x2="565" y2="38" stroke="#8a3324" stroke-width="1.4"/>
+<text x="565" y="30" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" fill="#8a3324">gate</text>
+<line x1="610" y1="86" x2="636" y2="86" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp9-arrow)"/>
+<rect x="636" y="60" width="60" height="52" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="666" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" font-weight="600" fill="#1a1a1a">DEPLOY</text>
+<text x="666" y="96" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" font-weight="600" fill="#1a1a1a">TO PROD</text>
+<line x1="666" y1="60" x2="666" y2="38" stroke="#8a3324" stroke-width="1.4"/>
+<text x="666" y="30" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" fill="#8a3324">gate</text>
+<text x="350" y="140" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" fill="#666">1 install &#183; 2 lint &#183; 3 unit tests &#183; 4 integration tests &#183; 5 build image</text>
+<text x="350" y="156" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" fill="#666">6 push &#183; 7 staging &#183; 8 smoke tests &#183; 9 production</text>
+<text x="350" y="185" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-style="italic" fill="#444">An assembly line with inspection points: nothing reaches the shop floor except by travelling down it.</text>
+</svg>
+</div>
+
 A **gate** is a pipeline step whose failure blocks the change from going further. This is the entire mechanism, and it is worth stating plainly:
 
 **A test that nobody is required to pass is a suggestion.**

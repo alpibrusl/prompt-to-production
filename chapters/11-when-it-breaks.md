@@ -14,6 +14,40 @@
 
 That last point is the one worth sitting with. The bug itself took ninety seconds to find once somebody looked at the right thing. Everything else — the six hours — was the absence of what this chapter is about: knowing quickly, having a way back, and having decided in advance who looks.
 
+<div style="margin:1.6rem 0;">
+<svg viewBox="0 0 760 230" width="100%" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="100" x2="720" y2="100" stroke="#1a1a1a" stroke-width="1.1"/>
+<line x1="50" y1="95" x2="50" y2="105" stroke="#1a1a1a" stroke-width="1.1"/>
+<text x="50" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">02:13</text>
+<text x="50" y="118" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">deploy succeeds</text>
+<line x1="170" y1="95" x2="170" y2="105" stroke="#1a1a1a" stroke-width="1.1"/>
+<text x="170" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">02:14</text>
+<text x="170" y="118" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">logins fail</text>
+<line x1="290" y1="95" x2="290" y2="105" stroke="#1a1a1a" stroke-width="1.1"/>
+<text x="290" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">02:41</text>
+<text x="290" y="118" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">email arrives</text>
+<text x="290" y="131" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">(read 08:30)</text>
+<line x1="430" y1="95" x2="430" y2="105" stroke="#1a1a1a" stroke-width="1.1"/>
+<text x="430" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">08:32</text>
+<text x="430" y="118" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">starts looking</text>
+<line x1="550" y1="95" x2="550" y2="105" stroke="#1a1a1a" stroke-width="1.1"/>
+<text x="550" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">09:50</text>
+<text x="550" y="118" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">cause found</text>
+<line x1="690" y1="95" x2="690" y2="105" stroke="#1a1a1a" stroke-width="1.1"/>
+<text x="690" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">11:20</text>
+<text x="690" y="118" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">fixed</text>
+<line x1="50" y1="148" x2="50" y2="162" stroke="#1a1a1a" stroke-width="1.1"/>
+<line x1="50" y1="155" x2="690" y2="155" stroke="#1a1a1a" stroke-width="1.1"/>
+<line x1="690" y1="148" x2="690" y2="162" stroke="#1a1a1a" stroke-width="1.1"/>
+<text x="370" y="172" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">six hours, start to finish</text>
+<line x1="660" y1="181" x2="660" y2="193" stroke="#1a1a1a" stroke-width="1.1"/>
+<line x1="660" y1="187" x2="700" y2="187" stroke="#1a1a1a" stroke-width="1.1"/>
+<line x1="700" y1="181" x2="700" y2="193" stroke="#1a1a1a" stroke-width="1.1"/>
+<text x="680" y="204" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9.5" fill="#666">~90 sec: the actual fix</text>
+<text x="370" y="222" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-style="italic" fill="#444">Almost none of the six hours went to the actual repair.</text>
+</svg>
+</div>
+
 It will break. Not as a possibility to guard against, but as a certainty to prepare for.
 
 This is the chapter people skip, because preparing for failure feels pessimistic when you are trying to build something. It is the opposite. Every system of any size fails regularly; the ones you think of as reliable are not the ones that do not break, they are the ones that break invisibly and recover before you notice. Amazon fails. Google fails. Your bank fails. The difference between them and a system that ruins a weekend is entirely in the preparation.

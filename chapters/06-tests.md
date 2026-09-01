@@ -59,6 +59,22 @@ An **end-to-end test** drives the whole system the way a user would, from the sc
 
 The standard advice is to have many unit tests, some integration tests, and a few end-to-end tests covering only the paths that genuinely must never break — signing up, logging in, paying. This shape is conventionally drawn as a pyramid, and the reasoning is economic rather than aesthetic: you want most of your checking to be fast enough to run constantly.
 
+<div style="margin:1.6rem 0;">
+<svg viewBox="0 0 620 300" width="100%" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+<rect x="140" y="60" width="110" height="60" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="195" y="83" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">END-TO-END</text>
+<text x="195" y="98" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">TESTS</text>
+<text x="266" y="94" text-anchor="start" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">few, slow — critical paths only</text>
+<rect x="95" y="130" width="200" height="60" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="195" y="165" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="13" font-weight="600" fill="#1a1a1a">INTEGRATION TESTS</text>
+<text x="311" y="164" text-anchor="start" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">some — real dependencies, seconds</text>
+<rect x="45" y="200" width="300" height="60" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="195" y="235" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="15" font-weight="600" fill="#1a1a1a">UNIT TESTS</text>
+<text x="361" y="234" text-anchor="start" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">many, fast — milliseconds</text>
+<text x="195" y="285" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-style="italic" fill="#444">Most of your checking should be fast enough to run constantly.</text>
+</svg>
+</div>
+
 The failure mode at each extreme is real. All unit tests and nothing else: every component works, the application does not. Everything end-to-end: the suite takes forty minutes, so people stop running it, so it stops mattering.
 
 **Faking the surroundings.** A **mock** — also stub, fake, test double — is a stand-in for a real dependency during a test. When your code calls a payment provider, the test substitutes something that pretends to be one, so the test is fast and does not charge anyone. Necessary, and worth one caution: a mock encodes your *belief* about how the real thing behaves. If that belief is wrong, your test passes and production fails, and it will be a genuinely confusing hour.

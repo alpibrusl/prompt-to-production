@@ -22,6 +22,32 @@ A **cloud provider** is a company that rents you these machines by the minute: A
 
 There are roughly five levels, and they trade control against work in a consistent direction.
 
+<div style="margin:1.6rem 0;">
+<svg viewBox="0 0 660 300" width="100%" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ptp7-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6" fill="none" stroke="#1a1a1a" stroke-width="1.1"/>
+</marker>
+</defs>
+<line x1="30" y1="255" x2="30" y2="30" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp7-arrow)"/>
+<text x="36" y="24" text-anchor="start" font-family="EB Garamond, Georgia, serif" font-size="10.5" letter-spacing="0.06em" fill="#9a9a9a">MORE CONTROL</text>
+<line x1="30" y1="255" x2="640" y2="255" stroke="#1a1a1a" stroke-width="1.1" marker-end="url(#ptp7-arrow)"/>
+<text x="640" y="272" text-anchor="end" font-family="EB Garamond, Georgia, serif" font-size="10.5" letter-spacing="0.06em" fill="#9a9a9a">LESS OPERATIONAL WORK</text>
+<rect x="55" y="205" width="108" height="42" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="109" y="230" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-weight="600" fill="#1a1a1a">PHYSICAL MACHINE</text>
+<rect x="175" y="163" width="108" height="42" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="229" y="188" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="12" font-weight="600" fill="#1a1a1a">VM</text>
+<rect x="295" y="121" width="108" height="42" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="349" y="146" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="12" font-weight="600" fill="#1a1a1a">CONTAINER</text>
+<rect x="415" y="79" width="120" height="42" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="475" y="100" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-weight="600" fill="#1a1a1a">MANAGED</text>
+<text x="475" y="114" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-weight="600" fill="#1a1a1a">SERVICE</text>
+<rect x="547" y="37" width="108" height="42" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="601" y="62" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" font-weight="600" fill="#1a1a1a">SERVERLESS</text>
+<text x="330" y="290" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-style="italic" fill="#444">Each rung up trades a little more control for a little less to maintain.</text>
+</svg>
+</div>
+
 **A physical machine.** An actual computer in an actual building. Almost nobody starts here anymore. Mentioned only because it is the thing everything else is pretending to be.
 
 **A virtual machine.** A software-simulated computer running on a share of a real one, with its own operating system. This is what you get when you rent "a server" — an EC2 instance, a Droplet, a Compute Engine instance. You get a whole machine to yourself, and with it responsibility for everything on it: security updates, the language runtime, the web server, the certificates, disk space, log rotation.
