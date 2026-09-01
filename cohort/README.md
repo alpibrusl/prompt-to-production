@@ -44,9 +44,11 @@ first, and the book's own text never drifts out of sync with the source.
 
 ## Published handout
 
-The `pages` workflow rebuilds the handout on every push that touches
-`cohort/` and publishes it via GitHub Pages, at whatever URL this repo's
-Pages settings assign (**Settings → Pages**, once enabled). Students
+The `pages` workflow builds the handout and publishes it via GitHub Pages,
+at whatever URL this repo's Pages settings assign. It is a manual trigger
+on purpose (**Actions → pages → Run workflow**), because Pages has to be
+enabled under **Settings → Pages** first and an automatic trigger would
+fail red on every push until it is. Students
 should use that URL, not a copy of the file — the handout tracks progress
 in the browser's own `localStorage`, keyed to the page, so reopening it at
 a stable address is what makes a student's checked-off sessions still be
@@ -63,5 +65,5 @@ cohortkit progress path/to/exports-folder --cohort-dir cohort --out report.html
 ## Status
 
 Pilot. Not yet run with a real cohort. If it holds up, the same shape —
-fixture, recurring sessions, a skill-run capstone — is the template for
-turning the other three books in the series into their own cohorts.
+fixture, recurring sessions, a skill-run capstone — is the template the
+other three books in the series now follow for their own cohorts.

@@ -14,7 +14,7 @@ Start with the thing that governs all of this.
 
 This is not a defect. It is a direct consequence of how it works: you asked a question, it answered that question, well. It is not withholding the rest. The rest was never in scope, because you did not put it there.
 
-Which means your leverage is mostly in the asking. The code will usually be fine, and where it is not, the tests and reviews of earlier chapters are what catch it. Whether the *system* is fine depends on whether the request included the things this book has spent twelve chapters naming.
+Which means your leverage is mostly in the asking. The code will usually be fine, and where it is not, the tests and reviews of earlier chapters are what catch it. Whether the *system* is fine depends on whether the request included the things this book has spent thirteen chapters naming.
 
 ## Say what done means
 
@@ -44,7 +44,7 @@ The reason is not process hygiene. It is that a large change is genuinely unrevi
 
 Small changes also fail cheaply. If a change to one thing breaks, you know what broke it. If a change to nine things breaks, you have an investigation. This is Chapter 4's argument for small commits and Chapter 11's argument for small blast radius, arriving in the form of a working habit.
 
-**Minimum viable product** — MVP — is the smallest version that genuinely tests whether the idea works. And it is worth being precise about what it reduces, because this term is abused: an MVP is a deliberate reduction in *features*, never a reduction in the standards of the next chapter. Fewer things, done properly. Not everything, done badly. "It's just an MVP" is not a reason to skip backups, secrets handling, or authorization checks — it is a reason to have three screens instead of twelve.
+**Minimum viable product** — MVP — is the smallest version that genuinely tests whether the idea works. And it is worth being precise about what it reduces, because this term is abused: an MVP is a deliberate reduction in *features*, never a reduction in the standards of Chapter 16. Fewer things, done properly. Not everything, done badly. "It's just an MVP" is not a reason to skip backups, secrets handling, or authorization checks — it is a reason to have three screens instead of twelve.
 
 ## Reviewing what you cannot read
 

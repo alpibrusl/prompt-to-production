@@ -6,9 +6,9 @@ sessions:
     in_session: >-
       Vocabulary against a real running product, live: which part is the
       client, which is the server, where "build" actually happens. The
-      Chapter 1 request — "walk me through the chain behind this" — asked
-      of a real recent recommendation someone in the room has actually
-      received.
+      Chapter 1 request — "walk me through what this project currently
+      consists of" — asked of a real project someone in the room has
+      actually built.
     exercise:
       name: "Name the parts"
       description: >-
@@ -22,7 +22,7 @@ sessions:
   - number: 2
     title: "Not Losing Things"
     chapters: [4]
-    chapter_titles: ["Version Control"]
+    chapter_titles: ["Keeping Every Version"]
     in_session: >-
       Live walk of a real repo's history — protected branches, what a
       reviewed PR actually blocks, why volume changes what history is
@@ -40,7 +40,7 @@ sessions:
   - number: 3
     title: "Not Leaking Things"
     chapters: [5]
-    chapter_titles: ["Environments"]
+    chapter_titles: ["Environments and Secrets"]
     in_session: >-
       Why `git log -p`, not just the working tree. The gap between
       "deleted in the next commit" and "gone."
@@ -64,7 +64,7 @@ sessions:
   - number: 4
     title: "Being Able to Change It"
     chapters: [6, 9]
-    chapter_titles: ["Tests", "CI/CD"]
+    chapter_titles: ["The Question You Ask Automatically", "The Path to Production"]
     in_session: >-
       Ask an agent, live, for tests on a real feature. As a group: do
       they cover the path that must not break, or only the one that was
@@ -83,11 +83,11 @@ sessions:
   - number: 5
     title: "Not Being Ruined by a Bad Night"
     chapters: [7, 8, 11]
-    chapter_titles: ["Infrastructure", "Infrastructure as Code", "When It Breaks"]
+    chapter_titles: ["What You Are Actually Renting", "Writing the Setup Down", "The Night It Breaks"]
     in_session: >-
       Tabletop, in pairs. One plays the system going down at 11pm; the
-      other directs the agent's diagnosis using Chapter 11's decision
-      tree, out loud, with nothing but the symptoms they're given.
+      other directs the agent's diagnosis using Chapter 11's what-to-do-first
+      list, out loud, with nothing but the symptoms they're given.
     exercise:
       name: "Write the runbook entry you wish you'd had"
       description: >-
@@ -100,7 +100,7 @@ sessions:
   - number: 6
     title: "Knowing What Is Happening"
     chapters: [10]
-    chapter_titles: ["Observability"]
+    chapter_titles: ["Knowing What It Is Doing"]
     in_session: >-
       p50 vs. p99 on a real latency distribution — why the average was
       hiding the customers who were actually having a bad time.
@@ -116,7 +116,7 @@ sessions:
   - number: 7
     title: "Directing the Work"
     chapters: [12, 13, 14]
-    chapter_titles: ["Security", "Cost", "Directing the Work"]
+    chapter_titles: ["Who Is Allowed to Do This", "The Bill You Didn't See Coming", "Directing the Work"]
     in_session: >-
       Revisit the fixture's unauthorized endpoint one more time, now
       reading it as a diff someone approved rather than a thing to find.
@@ -138,7 +138,7 @@ sessions:
     chapter_titles:
       - "You Are the Single Point of Failure"
       - "The Minimum Bar"
-      - "A Note from the Author"
+      - "A Note from the Human Author"
     in_session: >-
       Each student runs the book's own verify-production skill against a
       real project — their own if they have one, the fixture if not — and
