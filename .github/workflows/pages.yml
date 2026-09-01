@@ -10,13 +10,13 @@ name: pages
 #
 # The facilitator guide is never published here. It's the one artifact
 # whose whole reason to exist is content the handout deliberately omits.
+#
+# Manual trigger only, on purpose: this repo is private and Pages isn't
+# enabled yet, so an automatic push trigger would just fail red on every
+# commit that touches cohort/. Run it by hand (Actions -> pages -> Run
+# workflow) once Pages is turned on in this repo's settings.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "cohort/**"
-      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:
