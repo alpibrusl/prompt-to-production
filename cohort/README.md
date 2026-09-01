@@ -36,6 +36,12 @@ make cohort-build   # → cohort/build/handout.html, cohort/build/facilitator-gu
 `book.yaml` — a chapter renumber in the manuscript surfaces here as a
 real check failure, not a stale reference nobody notices.
 
+`cohort-build` passes `--book-path .`, so each session's referenced
+chapters are embedded straight from this book's own Markdown — collapsed,
+one per chapter, right where that session lists them. A student needs
+nothing but the handout itself to read along; no PDF or EPUB has to exist
+first, and the book's own text never drifts out of sync with the source.
+
 ## Published handout
 
 The `pages` workflow rebuilds the handout on every push that touches

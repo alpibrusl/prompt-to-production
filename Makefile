@@ -61,4 +61,4 @@ cohort-check:
 	@cohortkit check cohort --book-path .
 
 cohort-build:
-	@cohortkit build cohort --out cohort/build
+	@cohortkit build cohort --out cohort/build --book-path .
