@@ -38,6 +38,37 @@ This single misunderstanding is behind an enormous share of real security failur
 
 The rule: **the backend must re-check everything.** Every permission, every price, every limit. The frontend's checks exist to give the user a decent experience — telling them the field is wrong before they submit. The backend's checks exist because the frontend cannot be trusted, ever, at all.
 
+<div style="margin:1.6rem 0;">
+<svg viewBox="0 0 620 190" width="100%" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ptp-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L6,3 L0,6 Z" fill="#666"/>
+</marker>
+</defs>
+<rect x="10" y="35" width="170" height="80" fill="#f5f5f5" stroke="#999" stroke-width="1.5"/>
+<text x="95" y="65" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="15" font-weight="600" fill="#1a1a1a">FRONTEND</text>
+<text x="95" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">(client)</text>
+<text x="95" y="100" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" fill="#666">under the user's control</text>
+<rect x="225" y="35" width="170" height="80" fill="#f5f5f5" stroke="#999" stroke-width="1.5"/>
+<text x="310" y="65" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="15" font-weight="600" fill="#1a1a1a">BACKEND</text>
+<text x="310" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">(server)</text>
+<text x="310" y="100" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" fill="#666">must re-check everything</text>
+<rect x="440" y="35" width="170" height="80" fill="#f5f5f5" stroke="#999" stroke-width="1.5"/>
+<text x="525" y="65" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="15" font-weight="600" fill="#1a1a1a">DATABASE</text>
+<text x="525" y="82" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="11" fill="#666">&#160;</text>
+<text x="525" y="100" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" fill="#666">the only part that remembers</text>
+<line x1="182" y1="65" x2="223" y2="65" stroke="#666" stroke-width="1.5" marker-end="url(#ptp-arrow)"/>
+<line x1="223" y1="85" x2="182" y2="85" stroke="#666" stroke-width="1.5" marker-end="url(#ptp-arrow)"/>
+<text x="202" y="55" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">request</text>
+<text x="202" y="105" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">response</text>
+<line x1="397" y1="65" x2="438" y2="65" stroke="#666" stroke-width="1.5" marker-end="url(#ptp-arrow)"/>
+<line x1="438" y1="85" x2="397" y2="85" stroke="#666" stroke-width="1.5" marker-end="url(#ptp-arrow)"/>
+<text x="417" y="55" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">writes</text>
+<text x="417" y="105" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10" fill="#666">reads</text>
+<text x="310" y="140" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="10.5" font-style="italic" fill="#444">Anything the frontend claims about itself can be forged — the backend is the only checkpoint that counts.</text>
+</svg>
+</div>
+
 ## The contract between the parts
 
 The frontend and the backend need an agreement about what can be asked and what comes back. That agreement is an **API**.
