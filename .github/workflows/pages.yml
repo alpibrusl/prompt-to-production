@@ -1,0 +1,67 @@
+# SPDX-License-Identifier: EUPL-1.2
+
+name: pages
+
+# Publishes the cohort student handout to a stable URL. That stability is
+# the point: the handout's progress tracking lives in the browser's own
+# localStorage, keyed to this page, so a student needs to reopen the same
+# URL — not a fresh file each session — for their checked-off progress to
+# still be there.
+#
+# The facilitator guide is never published here. It's the one artifact
+# whose whole reason to exist is content the handout deliberately omits.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cohort/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install cohortkit
+        run: |
+          python -m pip install --upgrade pip
+          pip install "content-kit-core @ git+https://github.com/alpibrusl/content-kit@main#subdirectory=packages/core"
+          pip install "cohortkit @ git+https://github.com/alpibrusl/cohort-kit@main"
+
+      - name: Build the student handout
+        run: make cohort-build
+
+      - name: Assemble the Pages site
+        run: |
+          mkdir -p _site
+          cp cohort/build/handout.html _site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

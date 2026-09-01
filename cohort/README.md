@@ -36,6 +36,24 @@ make cohort-build   # → cohort/build/handout.html, cohort/build/facilitator-gu
 `book.yaml` — a chapter renumber in the manuscript surfaces here as a
 real check failure, not a stale reference nobody notices.
 
+## Published handout
+
+The `pages` workflow rebuilds the handout on every push that touches
+`cohort/` and publishes it via GitHub Pages, at whatever URL this repo's
+Pages settings assign (**Settings → Pages**, once enabled). Students
+should use that URL, not a copy of the file — the handout tracks progress
+in the browser's own `localStorage`, keyed to the page, so reopening it at
+a stable address is what makes a student's checked-off sessions still be
+there next time. The facilitator guide is a local build artifact only
+(`make cohort-build`) and is never published.
+
+Instructors collect students' exported progress files (the handout's
+**Export progress** button) and aggregate them with:
+
+```bash
+cohortkit progress path/to/exports-folder --cohort-dir cohort --out report.html
+```
+
 ## Status
 
 Pilot. Not yet run with a real cohort. If it holds up, the same shape —
