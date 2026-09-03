@@ -15,7 +15,8 @@ Full text: <https://creativecommons.org/licenses/by-nc/4.0/legalcode>
 
 ## The code — EUPL-1.2
 
-`scripts/`, the `Makefile`, `style.css`, and the CI configuration are licensed
+The `Makefile`, `style.css`, the cohort curriculum source, and the CI
+configuration are licensed
 under the **European Union Public Licence v1.2**, the same licence as
 [content-kit](https://github.com/alpibrusl/content-kit), the toolchain this book
 is built with. The full text is in [`LICENSE`](LICENSE).
