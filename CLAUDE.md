@@ -93,6 +93,35 @@ across the series, which is the one thing a concept ledger is meant to prevent.
 Any new figure must be *computable* from the table above. Ledger's Chapter 9
 recomputes correctly from these inputs, and so should anything added later.
 
+## The books are standalone
+
+Decided deliberately: the four books are **standalone volumes that also work as
+a set**, not one course in four parts. Someone must be able to read this one
+alone and finish it without ever having opened another.
+
+That has three consequences, and they are the reason this section exists rather
+than the decision being re-argued each time it comes up.
+
+**Every cross-reference names its book.** Not "the second book in this series",
+which a reader holding only this one cannot resolve — *Prompt to Evidence*. The
+series map in the front matter tells them what that is. A reference that merely
+points somewhere without saying where is a dead end, and there are none left.
+
+**Each book owns its vocabulary.** `glossary.yaml` is self-contained on purpose.
+A term used in two books gets an entry in both, with the same definition — see
+`counterfactual`, shared by *Evidence* and *Decision*. Do not replace a
+definition with a pointer to another volume.
+
+**Shared chapters are acceptable, and still worth reducing.** *Evidence* and
+*Ledger* carry the same four-rule method, and under a standalone reading that
+duplication is defensible: no reader is expected to meet it twice. It is not
+free, though — someone who buys both notices — so the argument stays parallel
+while the examples and failure cases should become each book's own. `bookkit
+check duplication -b . --against ../sibling` measures it.
+
+What this decision does *not* license is contradicting a sibling on shared
+facts. Ledgerly is one company across three books; see the canon section.
+
 ## Absolutes
 
 Distinguish a prescription from an assertion. "Never commit secrets" is a rule
