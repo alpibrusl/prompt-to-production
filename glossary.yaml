@@ -136,6 +136,7 @@ concepts:
     definition: >-
       Someone else's code, packaged so your code can use it without you
       understanding its insides.
+    analogy: "A power tool: you use it without having machined the gears."
     depends_on: ["source code"]
     defined_in: 2
 
