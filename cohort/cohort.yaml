@@ -7,6 +7,10 @@ session_length_hours: 2
 cohort_size_min: 8
 cohort_size_max: 15
 format: "live, synchronous"
-prerequisite: "none"
+prerequisite: >-
+  An agent that can load a SKILL.md file (Claude Code or equivalent), for the
+  capstone in Session 8. The fixture path needs nothing beyond that -- no
+  repository access, no credentials, no approvals -- which is what makes it
+  the workable default where an agent cannot be pointed at company systems.
 sessions_file: "sessions.yaml"
 rubric_file: "rubric.yaml"

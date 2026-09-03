@@ -72,9 +72,12 @@ sessions:
     exercise:
       name: "Back to the fixture"
       description: >-
-        Its .github/workflows/ directory is empty. Students write the one
-        sentence that would actually block a bad merge, and say what
-        "empty" was quietly costing before they wrote it.
+        The fixture has a CI workflow that installs from the lockfile and
+        runs the tests on every pull request -- it looks finished. Students
+        read it and list what it still does not do, then say which of those
+        gaps would actually let a bad merge through. The workflow being there
+        rather than absent is the point: reading something that looks done is
+        the harder skill.
       fixture_ref: "fixture/setup.sh"
     checkpoint: >-
       Names a specific untested critical path in their own project, not a
@@ -150,8 +153,15 @@ sessions:
     capstone: true
     deliverable: >-
       A completed audit against the rubric, run with the
-      prompt-to-production/skills/verify-production skill on something
-      real.
+      prompt-to-production/skills/verify-production skill against one of three
+      targets, in this order of preference for a cohort run inside a company:
+      the fixture; a non-production repository the sponsor named before the
+      course started; or a live system, and that one only with permission from
+      someone who can actually grant it plus an agreement about where the
+      finished audit lives. "Something real" is the third of those, not the
+      default -- the output of this exercise is a list of a company's own
+      unpatched gaps, and it should not be the first document a class produces
+      about production.
     facilitator_notes: >-
       The rubric rewards honest "unconfirmed" findings as much as real
       "not done" ones — watch for students quietly upgrading an

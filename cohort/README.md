@@ -62,6 +62,37 @@ Instructors collect students' exported progress files (the handout's
 cohortkit progress path/to/exports-folder --cohort-dir cohort --out report.html
 ```
 
+## Running this inside a company
+
+The bootcamp was written for individuals who bring their own project. Delivered
+to a company it needs three things it does not currently assume.
+
+**Point the class at the fixture, not at production.** The capstone produces a
+list of a company's own unpatched gaps — secrets in history, restores nobody has
+run, endpoints that check nothing. That is a useful document and not one a
+training exercise should generate about a live system on day one. Session 8 now
+names three targets in order of preference: the fixture, then a non-production
+repository the sponsor named *before* the course started, then a live system
+with permission from someone who can grant it and an agreement about where the
+audit ends up.
+
+The fixture path also needs no repository access, no credentials and no
+approvals, which matters because plenty of companies will not let an agent near
+a real repo at all. Where that is the policy, the course still runs.
+
+**Decide who is in the room.** The rubric rewards an honest "not done" over a
+false "done", and the capstone is *presented*. Among strangers that is
+straightforward. With a manager present, "we have never tested a restore" is a
+career statement rather than a checklist entry, and the honest answer gets
+quietly upgraded. Either agree that line managers do not attend the capstone,
+or say out loud at the start that findings are about the system and not about
+the people who built it — and mean it.
+
+**Say what the schedule is.** Eight two-hour sessions is written down here;
+the cadence is not. Weekly over eight weeks, two consecutive days, four half
+days — all three work, and a company cannot plan around a course that has not
+said which it means.
+
 ## Status
 
 Pilot. Not yet run with a real cohort. If it holds up, the same shape —
