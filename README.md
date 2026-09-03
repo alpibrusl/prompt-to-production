@@ -191,6 +191,44 @@ need a signpost escape hatch, and prose scanning must be conservative about
 ordinary English or the gate becomes noise. Full design:
 [`docs/ledger.md`](https://github.com/alpibrusl/content-kit/blob/main/packages/bookkit/docs/ledger.md).
 
+## Installing the skill
+
+`skills/verify-production/` is this book's closing checklist, packaged so an agent runs
+it. It is what Session 8 of the bootcamp asks students to run, and it works in
+any agent that reads the `SKILL.md` format.
+
+Copy the whole folder — `SKILL.md` and the `references/` directory beside it.
+The checklist the skill actually works from lives in `references/`, so
+`SKILL.md` on its own loads and then has nothing to read.
+
+**Claude Code** — `~/.claude/skills/verify-production/` for every project, or
+`.claude/skills/verify-production/` for one.
+
+**opencode** — reads `~/.claude/skills/` as well, so the line above may be all
+you need. Otherwise `~/.config/opencode/skills/verify-production/`, or point at this
+repository without copying anything:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": { "paths": ["/path/to/prompt-to-production/skills"] },
+  "permission": { "read": "allow", "external_directory": "allow", "edit": "deny" }
+}
+```
+
+The `permission` block matters when the skill lives outside the working
+directory, as `paths` implies. opencode asks before reading there, and
+`opencode run` — the headless form the capstone uses — has nobody to ask, so
+it waits silently and looks like a hang. Granting it up front avoids that.
+`edit: deny` is optional; the skill only reads.
+
+`opencode debug skill` lists every skill it can see and where each came from.
+Needs 1.17.12 or newer — `references/` path resolution was fixed in 1.17.10 and
+1.17.12, and on older builds the skill loads but cannot read its own checklist.
+
+The agent decides when the skill applies; you do not invoke it by name. The
+same instructions are in the book itself, as *Appendix — Running the Skill*.
+
 ## Licence
 
 Manuscript: [CC BY-NC 4.0](COPYING.md). Code: [EUPL-1.2](LICENSE), the
