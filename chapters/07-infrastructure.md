@@ -6,11 +6,7 @@ Your program — Ledgerly, still — needs a computer to run on. Somebody else's
 
 That much is obvious. What is not obvious is that there are four or five quite different things you might rent, they differ enormously in cost and in how much work they leave you, and the choice is usually made in the first ten minutes of a project by whoever set it up — which, now, may be an agent that was not asked to explain itself.
 
-This chapter is so you can ask.
-
 ## The word "server", twice
-
-First, clear up the collision from Chapter 3.
 
 A **server** in the sense used there is a *role*: a program that waits for requests and answers them. A **server** in the sense used here is a *machine*: a computer, somewhere, that runs your program continuously. You will also hear it called a box, a host, an instance, or a node.
 

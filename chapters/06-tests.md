@@ -4,8 +4,6 @@ Of all the practices in this book, automated testing is the one that most reliab
 
 The reasoning for skipping it is understandable. Tests are extra code. They do not do anything a user sees. Writing them feels like a detour from building the thing. And the agent produced working code without them, so what exactly are they for?
 
-Here is what they are for, and it is not what most explanations lead with.
-
 ## Tests are not for finding bugs
 
 A **test** is a small program that runs your program, checks it did the right thing, and reports pass or fail without a human watching.

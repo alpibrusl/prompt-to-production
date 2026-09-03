@@ -74,7 +74,7 @@ You are probably wondering how to review code you cannot fully read. It is a fai
 
 ## Undoing things
 
-The reason all of this earns its place: recovery.
+All of it earns its place at the moment you need to undo something.
 
 To **revert** is to undo a change by recording a *new* commit that reverses it, rather than erasing the original. The history keeps both — the mistake and its undoing. This is deliberate. Erasing history means a future reader cannot understand why something was done and then undone, and the second half of that is often the more useful half.
 

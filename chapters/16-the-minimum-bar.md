@@ -1,8 +1,6 @@
 # The Minimum Bar
 
-This chapter is a checklist and an argument about it.
-
-The argument first because a checklist you do not believe in is a checklist you will skip on the day it matters.
+The argument comes first because a checklist you do not believe in is one you will skip on the day it matters.
 
 ## What "ready" means
 

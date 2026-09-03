@@ -49,8 +49,6 @@ This matters more than it sounds. If you build a separate artifact per environme
 
 Configuration usually reaches a program through **environment variables**: named values handed to it by whatever starts it. `DATABASE_URL`, `PORT`, `LOG_LEVEL`. Locally they typically live in a file called `.env`; in production they are set by the platform.
 
-Which brings us to the part of this chapter that actually matters.
-
 ## Secrets
 
 A **secret** is a value that grants access to something — a password, a key, a token, a certificate. Anyone holding it can act as you.

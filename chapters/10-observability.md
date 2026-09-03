@@ -70,8 +70,6 @@ When your system is one program, traces add little over logs. When a request pas
 
 ## Averages lie
 
-One statistical point that matters more than any other in this chapter.
-
 If someone tells you average response time is 200 milliseconds, you have learned almost nothing useful.
 
 Suppose 95 requests take 50ms and 5 take 3 seconds. The average is about 200ms and looks healthy. But one user in twenty is waiting three seconds, and if that user is your biggest customer, or every user with a large account, then your system is bad in a way the average is actively hiding.
@@ -96,9 +94,7 @@ A **health check** is a small endpoint whose only purpose is to answer "am I wor
 
 ## Promises with numbers in them
 
-The last idea here is what turns all this from data into decisions.
-
-A **service level objective** — SLO — is a target for how good the service will be, stated as a number over a window. "99.9% of requests succeed, measured monthly." "95% of page loads complete within 500 milliseconds."
+A **service level objective** — SLO — is what turns all of this from data into decisions: a target for how good the service will be, stated as a number over a window. "99.9% of requests succeed, measured monthly." "95% of page loads complete within 500 milliseconds."
 
 Three related terms: an SLI is the measurement, an SLO is your internal target, and an SLA is a contractual promise with financial penalties. You almost certainly want SLOs and almost certainly do not yet have an SLA.
 
