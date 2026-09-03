@@ -4,7 +4,7 @@
 
 Your application is deployed. People are using it. What is it doing right now?
 
-For most people building their first real system, the honest answer is: no idea. It appears to work, because loading the page works. Whether it is slow for some users, failing for others, or quietly dropping every tenth order is invisible.
+For most people building their first real system, the honest answer is: no idea. It appears to work because loading the page works. Whether it is slow for some users, failing for others, or quietly dropping every tenth order is invisible.
 
 The way you find out is a customer email. Sometimes days later. Sometimes never — most people who hit a broken thing just leave, and you never learn that they came.
 

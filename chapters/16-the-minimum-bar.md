@@ -2,7 +2,7 @@
 
 This chapter is a checklist and an argument about it.
 
-The argument first, because a checklist you do not believe in is a checklist you will skip on the day it matters.
+The argument first because a checklist you do not believe in is a checklist you will skip on the day it matters.
 
 ## What "ready" means
 
@@ -14,7 +14,7 @@ A prototype shown to three friendly users, holding no real data, that can be thr
 
 Everything below follows from your answer. If the honest reply is "I lose an afternoon", most of this is optional. If it is "a customer loses their data" or "we are in breach of a law", none of it is.
 
-The tempting phrase to be wary of is *it's just an MVP*. Chapter 14 drew the line and it is worth restating, because it is the specific rationalisation that leads to the bad version of this: an MVP reduces **features**, not **standards**. Three screens instead of twelve, absolutely. Three screens with no backups, no authorization checks and the database password in the repository is not a smaller product. It is the same product with a hidden liability attached.
+The tempting phrase to be wary of is *it's just an MVP*. Chapter 14 drew the line and it is worth restating because it is the specific rationalisation that leads to the bad version of this: an MVP reduces **features**, not **standards**. Three screens instead of twelve, absolutely. Three screens with no backups, no authorization checks and the database password in the repository is not a smaller product. It is the same product with a hidden liability attached.
 
 ## The bar
 
@@ -25,7 +25,7 @@ Before real users touch it. Roughly in order of what will hurt first.
 - [ ] Everything is in version control, with a remote copy that is not your laptop.
 - [ ] The main branch is protected: no direct pushes, changes arrive by pull request.
 - [ ] The database is backed up automatically, and **a restore has actually been performed** — not configured, performed.
-- [ ] You know how long a restore takes, because you timed it.
+- [ ] You know how long a restore takes because you timed it.
 
 Backups that have never been restored are an untested belief, and the day you test them for the first time should not be the day you need them.
 
@@ -95,7 +95,7 @@ If that is too much to hold, there is a version that fits on a card. These five 
 
 An afternoon. Genuinely.
 
-## What Ledgerly actually needed
+## What Ledgerly needed
 
 Chapter 1 opened with a thing that worked, twenty minutes after it hadn't, and offered to call it Ledgerly if a name helped. If you've been picturing it since, you've now watched it collect most of the list above one chapter at a time — mostly by nearly failing to.
 
@@ -121,7 +121,7 @@ When something works, before moving on, ask:
 
 > **"What happens when this breaks, and how will I know?"**
 
-That question contains most of this book. It assumes failure rather than hoping against it — Chapter 11. It asks about observability — Chapter 10. It implies a recovery path — Chapter 9. It leads to blast radius, to backups, to authorization, to everything else, because everything else is an answer to some version of it.
+That question contains most of this book. It assumes failure rather than hoping against it — Chapter 11. It asks about observability — Chapter 10. It implies a recovery path — Chapter 9. It leads to blast radius, to backups, to authorization, to everything else because everything else is an answer to some version of it.
 
 Ask it about every piece of what you build. The answer does not always have to be impressive. Sometimes "it breaks, I find out from a monitoring email, and I roll back in two minutes" is completely sufficient.
 

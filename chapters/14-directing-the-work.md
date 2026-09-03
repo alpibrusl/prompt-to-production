@@ -44,7 +44,7 @@ The reason is not process hygiene. It is that a large change is genuinely unrevi
 
 Small changes also fail cheaply. If a change to one thing breaks, you know what broke it. If a change to nine things breaks, you have an investigation. This is Chapter 4's argument for small commits and Chapter 11's argument for small blast radius, arriving in the form of a working habit.
 
-**Minimum viable product** — MVP — is the smallest version that genuinely tests whether the idea works. And it is worth being precise about what it reduces, because this term is abused: an MVP is a deliberate reduction in *features*, never a reduction in the standards of Chapter 16. Fewer things, done properly. Not everything, done badly. "It's just an MVP" is not a reason to skip backups, secrets handling, or authorization checks — it is a reason to have three screens instead of twelve.
+**Minimum viable product** — MVP — is the smallest version that genuinely tests whether the idea works. And it is worth being precise about what it reduces because this term is abused: an MVP is a deliberate reduction in *features*, never a reduction in the standards of Chapter 16. Fewer things, done properly. Not everything, done badly. "It's just an MVP" is not a reason to skip backups, secrets handling, or authorization checks — it is a reason to have three screens instead of twelve.
 
 ## Reviewing what you cannot read
 
@@ -92,7 +92,7 @@ Any yes earns the full six-question pass from the previous section, read closely
 
 ### Four patterns worth stopping for
 
-Whatever the depth of the pass, four things are worth specifically watching for, because they are quiet, common, and none of them require reading the implementation — only the claim being made about it.
+Whatever the depth of the pass, four things are worth specifically watching for because they are quiet, common, and none of them require reading the implementation — only the claim being made about it.
 
 **Confidence that is not evidence.** "This library handles that." "This is safe to run twice." "The API returns X." Said with the same flat certainty whether the agent has verified it or is pattern-matching from something similar it has seen before, and you cannot tell which from the tone alone. When a sentence like this is load-bearing for a decision you are about to make and move on from, check the one line of documentation or run the one command rather than trusting the sentence. The check is usually faster than the argument you would have later if it was wrong.
 
@@ -126,7 +126,7 @@ That last clause matters more than the others. A recommendation with no stated c
 
 ### Convert the question into one you can answer
 
-You cannot evaluate "Postgres versus MongoDB". You can evaluate consequences, and you are in fact better placed than the agent to weigh those, because they are consequences for *you*.
+You cannot evaluate "Postgres versus MongoDB". You can evaluate consequences, and you are in fact better placed than the agent to weigh those because they are consequences for *you*.
 
 Five questions do most of the work, and none of them require knowing what the options are:
 

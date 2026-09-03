@@ -98,7 +98,7 @@ Distributing requests across copies is the job of a **load balancer**: the compo
 
 ## Where in the world
 
-Two more terms, because they have consequences beyond the technical.
+Two more terms because they have consequences beyond the technical.
 
 A **region** is the geographic location of the data centre your system runs in. It determines how long requests take for your users — physics is not negotiable, and a request from Madrid to Virginia and back cannot be fast — and, more importantly, which laws apply to your data. If your users are European and their personal data sits in a US region, you have a legal question, not a performance one. Chapter 12 returns to this.
 

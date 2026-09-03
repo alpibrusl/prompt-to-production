@@ -99,7 +99,7 @@ The letters CD stand for two different things and people use them interchangeabl
 
 **Continuous deployment** means there is no button. Anything that passes goes to production automatically.
 
-Continuous deployment sounds reckless and mostly is not, for a reason that takes a moment to see: it forces the pipeline to be genuinely trustworthy. If nothing stands between a merge and your users, the tests must be real and the rollback must work. A team whose pipeline actually has that — strong tests, a canary or staged rollout, fast rollback, and the ability to see what's happening in production (Chapter 10) — can end up with *better* safety than a team relying on a manual gate, because the gate is doing the job automation should be doing, and doing it worse: a tired person at 6pm is not a good check. That is a claim about a mature pipeline, though, not about removing the button by itself — a thin test suite with no button is worse than a thin test suite with one.
+Continuous deployment sounds reckless and mostly is not, for a reason that takes a moment to see: it forces the pipeline to be genuinely trustworthy. If nothing stands between a merge and your users, the tests must be real and the rollback must work. A team whose pipeline actually has that — strong tests, a canary or staged rollout, fast rollback, and the ability to see what's happening in production (Chapter 10) — can end up with *better* safety than a team relying on a manual gate because the gate is doing the job automation should be doing, and doing it worse: a tired person at 6pm is not a good check. That is a claim about a mature pipeline, though, not about removing the button by itself — a thin test suite with no button is worse than a thin test suite with one.
 
 That said: **start with continuous delivery.** Automate everything up to the last step, and press the button yourself. When you have gone a month pressing the button and never once been glad of the chance to say no, you have earned the right to remove it.
 
@@ -111,7 +111,7 @@ Now the most important part of the chapter, and the part most often left until i
 
 It is the single most valuable capability you can have, and it is worthless if it has never been rehearsed. There is a specific and common failure here: everyone assumes rollback works, nobody has tried it, and the first attempt happens during an incident at 11pm when it turns out the previous image was deleted, or the database migration cannot be undone, or nobody knows the command.
 
-**Practise rolling back on a normal Tuesday, when nothing is wrong.** Deploy something harmless, roll it back, time it. That rehearsal is worth more than several days of careful work elsewhere, because it converts your worst night from a crisis into a procedure.
+**Practise rolling back on a normal Tuesday, when nothing is wrong.** Deploy something harmless, roll it back, time it. That rehearsal is worth more than several days of careful work elsewhere because it converts your worst night from a crisis into a procedure.
 
 Two techniques make it fast and safe:
 
@@ -127,7 +127,7 @@ One more idea, and it removes more deployment anxiety than anything else here.
 
 A **feature flag** is a switch that turns a feature on or off without deploying. The code for the new thing ships to production but stays dark; you turn it on for yourself, then for a few users, then for everyone — and off again instantly if it misbehaves.
 
-The consequence is that **deploying code and releasing a feature become two separate decisions**. You can deploy the half-finished thing safely, because it is switched off. You can release to 5% of users without a deployment. And when something is wrong you turn it off in seconds, which is faster and less disruptive than any rollback.
+The consequence is that **deploying code and releasing a feature become two separate decisions**. You can deploy the half-finished thing safely because it is switched off. You can release to 5% of users without a deployment. And when something is wrong you turn it off in seconds, which is faster and less disruptive than any rollback.
 
 The cost is honest: every flag is a branch in behaviour, and old flags left permanently on become confusing clutter. Remove them once a feature is settled. Nobody does this reliably; do it anyway.
 

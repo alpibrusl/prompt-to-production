@@ -54,7 +54,7 @@ The direct version of the test above. The gaps it finds are usually few, and usu
 
 > "If I disappeared for a month starting today, what would the next person — human or agent — get wrong first?"
 
-A different angle on the same question, and often surfaces a different answer, because it forces a specific failure into view rather than a general audit.
+A different angle on the same question, and often surfaces a different answer because it forces a specific failure into view rather than a general audit.
 
 > "Is anything in our written notes actually out of date? Check it against what the code does now."
 

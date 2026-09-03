@@ -32,9 +32,9 @@ It is not. Languages were designed for different jobs, at different times, under
 
 A typical modern application uses several at once — one for the part in the browser, one for the part on the server, SQL for the data — and that is normal rather than a sign of disorder.
 
-There is a distinction worth having, because it explains a class of confusion later. Some languages are **compiled**: the source is translated ahead of time, in a build step, and what you deploy is the translation rather than the original source. Go and Rust translate all the way to machine instructions the processor runs directly. Java and C# translate to an intermediate form that still needs a runtime (the JVM, the .NET runtime) to run it — a real build step either way, just not quite the same destination. Others are **interpreted**: the source is read and executed on the fly by another program, with no separate translation step, so what you deploy is the source itself. Python and JavaScript work this way.
+There is a distinction worth having because it explains a class of confusion later. Some languages are **compiled**: the source is translated ahead of time, in a build step, and what you deploy is the translation rather than the original source. Go and Rust translate all the way to machine instructions the processor runs directly. Java and C# translate to an intermediate form that still needs a runtime (the JVM, the .NET runtime) to run it — a real build step either way, just not quite the same destination. Others are **interpreted**: the source is read and executed on the fly by another program, with no separate translation step, so what you deploy is the source itself. Python and JavaScript work this way.
 
-The practical consequence: with a compiled language, a whole class of mistakes is caught before anything runs, because the translation refuses to complete. With an interpreted language, you find out when the line is reached, possibly in front of a user. Neither is better. It is a trade between speed of discovery and speed of change, and both camps are fully convinced.
+The practical consequence: with a compiled language, a whole class of mistakes is caught before anything runs because the translation refuses to complete. With an interpreted language, you find out when the line is reached, possibly in front of a user. Neither is better. It is a trade between speed of discovery and speed of change, and both camps are fully convinced.
 
 You do not need to choose. Your agent will use whatever is conventional for what you are building. What you need is to not be startled when a project has files in four languages, and to know that "it compiles" means a mistake did not happen rather than that the thing works.
 
@@ -72,7 +72,7 @@ The useful instinct is proportion. A library that saves a week of work is worth 
 
 ## The file that pins everything down
 
-There is one more file worth knowing by name, because it is the answer to a question that will otherwise puzzle you.
+There is one more file worth knowing by name because it is the answer to a question that will otherwise puzzle you.
 
 The question: if a package manager fetches the newest version of everything, and libraries are constantly updated, how does a project built today match one built next month?
 

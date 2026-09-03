@@ -2,13 +2,13 @@
 
 You can build something that functions perfectly — Ledgerly is up, taking invoices, nothing broken — and still be destroyed by it: cloud costs are unusual in that you can incur an enormous bill without any warning, in a matter of hours, through a mistake rather than success. The stories are real, well documented, and mostly not about growth.
 
-## What actually generates a bill
+## What generates a bill
 
 The intuition most people bring is that you pay for computers. You pay for four things, and the machines are frequently the smallest.
 
 **Compute** — machines running. Predictable, and the part everyone thinks of.
 
-**Storage** — data at rest. Cheap per gigabyte, and it only grows, because deleting things requires a decision and nobody makes it.
+**Storage** — data at rest. Cheap per gigabyte, and it only grows because deleting things requires a decision and nobody makes it.
 
 **Data transfer**, and specifically **egress**: data leaving the provider's network. This is the surprising one. Moving data *in* is usually free; moving it *out* costs meaningfully per gigabyte, and it is where genuinely shocking bills come from. An application serving video or large images without a content delivery network in front can produce an egress bill several times its compute bill.
 

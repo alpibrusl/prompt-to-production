@@ -10,7 +10,7 @@ Two words that sound similar, mean different things, and are confused constantly
 
 **Authorization** is establishing what that person is allowed to do.
 
-Authentication is the one people get right, because it is visible — there is a login page, it either works or it does not. Authorization is where the breaches are, because it is invisible: nothing on screen tells you that user 4471 can fetch user 4472's invoice by changing a number in the address bar.
+Authentication is the one people get right because it is visible — there is a login page, it either works or it does not. Authorization is where the breaches are because it is invisible: nothing on screen tells you that user 4471 can fetch user 4472's invoice by changing a number in the address bar.
 
 That specific bug — where an identifier in a request is not checked against who is asking — is one of the most common serious vulnerabilities on the web. It requires no skill to find. Someone changes `/invoices/8812` — the same invoice Chapter 10's logs showed being created — to `/invoices/8813` out of curiosity and sees a stranger's data.
 
@@ -36,7 +36,7 @@ A hotel keycard that opens your room, the gym, and nothing else. Not a master ke
 
 In practice this means: the application's database user can read and write the tables it uses and cannot drop them. The service that sends email has permission to send email and not to read your storage. A developer has access to staging; access to production is deliberate, narrower, and logged.
 
-The reason is not distrust. It is blast radius, from Chapter 11, applied to compromise: when something is breached — a leaked key, a compromised dependency, a mistake — least privilege decides whether you lose one thing or everything. The default in most cloud setups is far too permissive, because permissive is what makes things work on the first try, and nobody comes back to narrow it.
+The reason is not distrust. It is blast radius, from Chapter 11, applied to compromise: when something is breached — a leaked key, a compromised dependency, a mistake — least privilege decides whether you lose one thing or everything. The default in most cloud setups is far too permissive because permissive is what makes things work on the first try, and nobody comes back to narrow it.
 
 ## Encryption, and what it does not do
 
@@ -44,7 +44,7 @@ The reason is not distrust. It is blast radius, from Chapter 11, applied to comp
 
 **Encryption at rest** scrambles stored data so a stolen disk or database file is useless without the key. Most managed databases offer it as a checkbox. Tick it.
 
-Now the important part, because encryption is where false confidence lives: **neither protects you from a stolen credential.** If someone has your database password, encryption at rest is irrelevant — they connect legitimately and the database decrypts everything for them, as designed. If someone has a user's session token, TLS is irrelevant — they make properly encrypted requests as that user.
+Now the important part because encryption is where false confidence lives: **neither protects you from a stolen credential.** If someone has your database password, encryption at rest is irrelevant — they connect legitimately and the database decrypts everything for them, as designed. If someone has a user's session token, TLS is irrelevant — they make properly encrypted requests as that user.
 
 Encryption protects against interception and theft of the physical thing. It does nothing about someone walking in the front door with a valid key. Which is why Chapter 5's rules about secrets carry more weight than any encryption setting.
 

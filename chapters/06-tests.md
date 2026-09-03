@@ -10,7 +10,7 @@ Here is what they are for, and it is not what most explanations lead with.
 
 A **test** is a small program that runs your program, checks it did the right thing, and reports pass or fail without a human watching.
 
-The naive account is that tests catch mistakes. They do, sometimes. But if that were the whole story they would be a poor investment, because for the mistake to be caught you must have anticipated it, and if you anticipated it you would probably have avoided it.
+The naive account is that tests catch mistakes. They do, sometimes. But if that were the whole story they would be a poor investment because for the mistake to be caught you must have anticipated it, and if you anticipated it you would probably have avoided it.
 
 The real value is different, and much larger: **tests are what let you change things.**
 

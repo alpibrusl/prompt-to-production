@@ -73,7 +73,7 @@ This is the actual handoff. The agent gave you code. The system is yours, and it
 
 ## Why nobody told you this
 
-It is worth being precise about why this gap exists, because it is not because engineers were hiding anything.
+It is worth being precise about why this gap exists, and it is not that engineers were hiding anything.
 
 Software engineering as a profession is maybe seventy years old. For most of that time, the only way to get code was to write it, and writing it took years to learn. By the time someone could produce a working program, they had absorbed — slowly, mostly by suffering — everything else: that you keep a history of changes, that you never test on the live system, that secrets do not go in the source, that you need to know when things break before your customers tell you.
 
@@ -85,11 +85,11 @@ The people who could tell you are often the worst placed to. Ask an experienced 
 
 That shape is what this book is.
 
-## What you actually need
+## What you need
 
-Let me be honest about the scope of the claim here, because there is a lot of dishonest writing in this area.
+Let me be honest about the scope of the claim here because there is a lot of dishonest writing in this area.
 
-A word on who this is for, because it is broader than it first looks. The obvious reader is someone who cannot program and has discovered that an agent can build things for them. But the actual condition this book addresses is more general than that: **you can now build software faster than your engineering judgement has had time to develop.** That describes founders, product managers, scientists, analysts and designers — and it equally describes a competent developer working two layers outside their usual territory, which now happens to almost everyone. If you have shipped something you could not fully account for, you are in the right place regardless of what you do for a living.
+A word on who this is for because it is broader than it first looks. The obvious reader is someone who cannot program and has discovered that an agent can build things for them. But the actual condition this book addresses is more general than that: **you can now build software faster than your engineering judgement has had time to develop.** That describes founders, product managers, scientists, analysts and designers — and it equally describes a competent developer working two layers outside their usual territory, which now happens to almost everyone. If you have shipped something you could not fully account for, you are in the right place regardless of what you do for a living.
 
 This book will not teach you to program. You will not finish it able to read a complicated piece of code and say whether it is good. That is a real skill, it takes real time, and pretending otherwise would waste yours.
 
@@ -176,7 +176,7 @@ You can read it straight through, and it is written to be read that way — each
 
 There is a lot of jargon ahead. Roughly a hundred and fifty terms, and every one of them will be defined the first time it appears and collected in the glossary at the back.
 
-I want to say something about jargon, because people apologise for it too readily. Jargon is not a barrier that engineers erected to keep you out. Mostly it is *compression*: a word that saves a sentence. "Idempotent" (Chapter 8) is not showing off; it means "safe to run twice", and once you have the word you can express in one adjective a property that would otherwise take a paragraph and get muddled.
+I want to say something about jargon because people apologise for it too readily. Jargon is not a barrier that engineers erected to keep you out. Mostly it is *compression*: a word that saves a sentence. "Idempotent" (Chapter 8) is not showing off; it means "safe to run twice", and once you have the word you can express in one adjective a property that would otherwise take a paragraph and get muddled.
 
 The reason jargon feels exclusionary is not the words. It is that people use them without ever having been told what they mean, and asking feels like an admission. So the words become a membership test rather than a tool.
 

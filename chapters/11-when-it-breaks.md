@@ -50,11 +50,11 @@ That last point is the one worth sitting with. The bug itself took ninety second
 
 It will break. Not as a possibility to guard against, but as a certainty to prepare for.
 
-This is the chapter people skip, because preparing for failure feels pessimistic when you are trying to build something. It is the opposite. Every system of any size fails regularly; the ones you think of as reliable are not the ones that do not break, they are the ones that break invisibly and recover before you notice. Amazon fails. Google fails. Your bank fails. The difference between them and a system that ruins a weekend is entirely in the preparation.
+This is the chapter people skip because preparing for failure feels pessimistic when you are trying to build something. It is the opposite. Every system of any size fails regularly; the ones you think of as reliable are not the ones that do not break, they are the ones that break invisibly and recover before you notice. Amazon fails. Google fails. Your bank fails. The difference between them and a system that ruins a weekend is entirely in the preparation.
 
 ## Failure is normal
 
-Start by accepting the premise, because everything else follows from it.
+Start by accepting the premise because everything else follows from it.
 
 Machines fail. Disks fill. Networks partition. Third-party services go down without warning — and their status page will say everything is fine, because the status page is updated by a human who does not know yet. Certificates expire, always at the least convenient moment. A dependency's new version breaks something subtle. A customer uploads a 900-megabyte file to a field you assumed would hold a phone number. Somebody runs a well-intentioned script against the wrong environment.
 
@@ -74,7 +74,7 @@ This is almost always a choice made in code, and it is almost always cheap at th
 
 **Retries** are the most common tool here, and the most commonly misused. A **retry** is automatically trying a failed operation again, and the right way is with **exponential backoff** — wait one second, then two, then four, then eight — plus a limit on attempts.
 
-Naive retries make outages worse in a way that is worth understanding because it is counterintuitive. A service slows down. Every client retries immediately. The service now receives triple the traffic while already struggling, so it slows further, so more requests time out and are retried. A service that was degraded is now completely down, and it stays down after the original cause has passed, because the retry traffic alone is enough to keep it there. This is called a retry storm and it is a genuine, common cause of outages that outlast their trigger.
+Naive retries make outages worse in a way that is worth understanding because it is counterintuitive. A service slows down. Every client retries immediately. The service now receives triple the traffic while already struggling, so it slows further, so more requests time out and are retried. A service that was degraded is now completely down, and it stays down after the original cause has passed because the retry traffic alone is enough to keep it there. This is called a retry storm and it is a genuine, common cause of outages that outlast their trigger.
 
 Backoff spreads the load out. And retries are only safe at all when the operation is **idempotent** — Chapter 8's word, arriving where it matters. Retrying "set status to paid" is fine at any number of repetitions *in the order they were meant to happen*. It stops being fine if a late, delayed retry can land after something legitimate changed the status again in between — a refund, say — and silently stomps back to "paid" on an order that was correctly reverted. The safe version checks the current state before acting ("set to paid, but only if it's currently pending") rather than setting it unconditionally. Retrying "charge this card" without care charges the card twice regardless of ordering.
 
@@ -98,7 +98,7 @@ A **runbook** is written instructions for handling a specific known failure. "Th
 
 ## What to do first
 
-When something is badly wrong, the instinct is to find out why. Resist it, because it is the wrong order.
+When something is badly wrong, the instinct is to find out why. Resist it because it is the wrong order.
 
 **Restore service first. Understand it afterwards.**
 
