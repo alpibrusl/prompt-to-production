@@ -9,6 +9,13 @@ sessions:
       Chapter 1 request — "walk me through what this project currently
       consists of" — asked of a real project someone in the room has
       actually built.
+    solo: >-
+      Open a product you actually use and, from the outside, name its parts:
+      which piece is the client, which is the server, where the build
+      happens. Then ask an agent Chapter 1's question about a project of
+      your own -- "walk me through what this project currently consists of"
+      -- and check its answer against the vocabulary rather than accepting
+      it.
     exercise:
       name: "Name the parts"
       description: >-
@@ -27,6 +34,12 @@ sessions:
       Live walk of a real repo's history — protected branches, what a
       reviewed PR actually blocks, why volume changes what history is
       for. Bisecting a real bug back to its commit, live.
+    solo: >-
+      Walk a real repository's history yourself: `git log`, then `git log
+      -p` on one file you did not write. Find a bug you already know about
+      and bisect back to the commit that introduced it. The point is not the
+      tooling -- it is noticing how much of the answer was in the history
+      rather than the current code.
     exercise:
       name: "Version control audit"
       description: >-
@@ -44,6 +57,11 @@ sessions:
     in_session: >-
       Why `git log -p`, not just the working tree. The gap between
       "deleted in the next commit" and "gone."
+    solo: >-
+      On any repository you have, run `git log -p` and read what leaves the
+      working tree but stays in the history. If you find nothing, plant
+      something harmless in a scratch repo, remove it in a later commit, and
+      confirm for yourself that it is still there.
     exercise:
       name: "First meeting with the fixture"
       description: >-
@@ -69,6 +87,11 @@ sessions:
       Ask an agent, live, for tests on a real feature. As a group: do
       they cover the path that must not break, or only the one that was
       easy to write?
+    solo: >-
+      Ask an agent for tests on a real feature of yours, then judge what
+      came back against one question: does it cover the path that must not
+      break, or only the path that was easy to write? Write down the
+      untested path you found.
     exercise:
       name: "Back to the fixture"
       description: >-
@@ -91,6 +114,13 @@ sessions:
       Tabletop, in pairs. One plays the system going down at 11pm; the
       other directs the agent's diagnosis using Chapter 11's what-to-do-first
       list, out loud, with nothing but the symptoms they're given.
+    solo: >-
+      The session runs this as a tabletop in pairs, which needs a second
+      person. Alone, do the written half: take Chapter 11's what-to-do-first
+      list and work a real outage you have lived through -- or the fixture
+      -- from symptoms to first action, in writing, before checking what the
+      chapter says. The value is committing to a first move while you still
+      do not know the cause.
     exercise:
       name: "Write the runbook entry you wish you'd had"
       description: >-
@@ -107,6 +137,11 @@ sessions:
     in_session: >-
       p50 vs. p99 on a real latency distribution — why the average was
       hiding the customers who were actually having a bad time.
+    solo: >-
+      Find a real latency distribution -- your own, or any public dashboard
+      that publishes percentiles -- and compare its p50 with its p99. Then
+      work out how many users a day are living in that p99, and whether the
+      average would have told you.
     exercise:
       name: "Alert triage"
       description: >-
@@ -125,6 +160,11 @@ sessions:
       reading it as a diff someone approved rather than a thing to find.
       "An MVP reduces features, not standards" — tested against a real
       recent request someone made of an agent.
+    solo: >-
+      Re-read the fixture's invoice endpoint as a diff someone approved
+      rather than a thing to find. Then take a real recent request you made
+      of an agent and test it against "an MVP reduces features, not
+      standards": which of the two did you actually ask it to reduce?
     exercise:
       name: "Review a diff you didn't write"
       description: >-
@@ -147,6 +187,13 @@ sessions:
       real project — their own if they have one, the fixture if not — and
       presents the result to the group: what's genuinely done, what's
       missing, and what nobody can confirm without asking a real person.
+    solo: >-
+      Run the book's own verify-production skill against a real project --
+      your own if you have one, the fixture if not -- and write the result
+      up as the four verdicts: what is genuinely done, what is missing, what
+      only a person can confirm, and what does not apply. There is no group
+      to present it to, so the discipline has to come from the writing: an
+      audit you would be willing to show someone.
     checkpoint: >-
       A specific, honest finding presented to the group — not a clean
       bill of health, and not a wall of unconfirmed items either.

@@ -62,6 +62,31 @@ Instructors collect students' exported progress files (the handout's
 cohortkit progress path/to/exports-folder --cohort-dir cohort --out report.html
 ```
 
+## Three ways to run this
+
+The same source renders for three rooms, because what changes between them is
+who is present rather than what is taught.
+
+**Self-paced**, one reader alone:
+
+```bash
+cohortkit build cohort --out cohort/build --book-path . --self-paced
+```
+
+One handbook, no facilitator guide, and no live segment — four of these eight
+sessions describe something that only happens in a room, and handing those to
+someone reading alone hands them instructions they cannot follow. Each session
+carries a `solo` field saying what that reader does instead. Session 5 is the
+honest case: its tabletop needs a second person, so the solo version does the
+written half rather than pretending the exercise survives.
+
+**An academy**, an open cohort of strangers: the default build, handout plus
+facilitator guide.
+
+**A company**, colleagues who share a codebase: the same build, with the
+differences below — where the capstone points, who is in the room, and what
+may leave it.
+
 ## Running this inside a company
 
 The bootcamp was written for individuals who bring their own project. Delivered
