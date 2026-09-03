@@ -109,7 +109,7 @@ Stateless does not mean nothing is remembered. It means *the server* does not re
 
 The declared structure of your data — what tables exist, what fields they have, what is allowed in each — is the **schema**. Ledgerly's `invoices` table has an id, a customer, an amount, a due date; the customer field cannot be empty.
 
-The schema is not paperwork. It is enforcement. A well-specified schema makes whole categories of bad data impossible, and the database will refuse to store something that violates it. Getting the schema right early is one of the highest-leverage things you can do, because everything downstream inherits its assumptions.
+The schema is not paperwork. It is enforcement. A well-specified schema makes whole categories of bad data impossible, and the database will refuse to store something that violates it. Getting the schema right early is one of the highest-leverage things you can do because everything downstream inherits its assumptions.
 
 Which raises the obvious problem: your understanding will change, and you will need to alter it. Adding a field to a table that already holds fifty thousand rows is not editing a document. Those rows exist. What is the new field's value for them?
 
@@ -125,7 +125,7 @@ Two warnings, both from experience rather than theory:
 
 ## A cache, and the trouble with it
 
-One more term, because you will meet it early and it explains a specific kind of confusion.
+One more term because you will meet it early and it explains a specific kind of confusion.
 
 A **cache** is a copy of an expensive answer, kept somewhere fast so the same question does not have to be worked out twice. If your homepage runs a heavy calculation to produce a list, you can compute it once, keep the result for five minutes, and serve it instantly to everyone who asks in the meantime.
 

@@ -28,7 +28,7 @@ Small projects sometimes skip staging, and that is a defensible choice when the 
 
 Environments that start identical do not stay identical, and the divergence is where "works on my machine" is born.
 
-Your laptop has a different operating system from the server. It has a different version of the language runtime, because you installed yours in March and the server's was set up in January. It has files sitting around from previous experiments. Its database contains twelve rows; production's contains four hundred thousand, and the query that returns instantly on twelve takes ninety seconds on four hundred thousand. Your network is fast and local; production's calls cross the internet and sometimes time out.
+Your laptop has a different operating system from the server. It has a different version of the language runtime because you installed yours in March and the server's was set up in January. It has files sitting around from previous experiments. Its database contains twelve rows; production's contains four hundred thousand, and the query that returns instantly on twelve takes ninety seconds on four hundred thousand. Your network is fast and local; production's calls cross the internet and sometimes time out.
 
 **Environment parity** is the word for how closely your environments resemble each other, and it is best understood as a measure of *how much what you observed in one tells you about another*. Low parity means your testing was theatre.
 
@@ -41,7 +41,7 @@ The thing you can do today, before either of those, is more modest and still wor
 
 ## Configuration: the same code, different settings
 
-If the same artifact is going to run in three places, something has to differ, because the database address is not the same in each. That something is **configuration** — the settings that differ between environments, kept outside the code.
+If the same artifact is going to run in three places, something has to differ because the database address is not the same in each. That something is **configuration** — the settings that differ between environments, kept outside the code.
 
 The rule is: **build once, configure per environment.** The exact same artifact goes to staging and to production. Only its configuration differs.
 
@@ -64,7 +64,7 @@ Secrets look exactly like ordinary configuration. `DATABASE_URL` and `LOG_LEVEL`
 The failure is almost always the same, and it is not exotic:
 
 1. A key is needed to make something work.
-2. It gets put directly in a source file, because that works immediately.
+2. It gets put directly in a source file because that works immediately.
 3. Everything works. The key is forgotten.
 4. Six months later, the repository is made public, or a contractor is given access, or the project is copied into a new one, and the key goes with it.
 5. Somebody finds it.

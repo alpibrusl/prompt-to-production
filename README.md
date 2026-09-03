@@ -88,11 +88,14 @@ One episode per chapter is already podcast-shaped: 17 episodes, ~172,600
 characters of narration. Episode numbers match chapter numbers exactly —
 the author's note is narrated too, as the closing episode, `chapter_17`.
 
-**What the conversion does with a technical book.** Fenced code blocks are
-dropped from the narration, which is right — a pipeline listing read aloud is
-noise. Tables and checklists survive as prose, and the generated glossary is not
-included at all, since 151 definitions read in sequence is reference material,
-not listening. Headings are not announced.
+**What the conversion does with a technical book.** Fenced code blocks and the
+inline SVG diagrams are dropped from the narration, which is right — a pipeline
+listing or a box-and-arrow diagram read aloud is noise. Tables keep their cells
+but lose their pipes: each row is narrated as its cells in order, because a
+table's arrangement is visual while its content is not. Checklists survive as
+prose, and the generated glossary is not included at all, since 151 definitions
+read in sequence is reference material, not listening. Headings are not
+announced.
 
 **Rendering needs a backend, and it is the one part that costs something.**
 `kokoro` and `chatterbox` run locally and are free but English-centric and slow
@@ -126,8 +129,8 @@ Two things are generated from it, so the definition exists in exactly one place:
 ## The gate
 
 A book that teaches jargon has one dominant editorial failure mode: using a term
-before defining it. `scripts/check_terms.py` makes that a build failure rather
-than a thing a proofreader might notice.
+before defining it. `bookkit check terms` makes that a build failure rather than
+a thing a proofreader might notice.
 
 | rule | | |
 |---|---|---|
@@ -135,10 +138,16 @@ than a thing a proofreader might notice.
 | `term-never-defined` | error | a `depends_on` entry no concept defines |
 | `term-defined-twice` | error | two concepts claim the same name |
 | `prerequisite-inversion` | error | A depends on B, but A is defined first |
+| `dependency-cycle` | error | prerequisites form a loop |
+| `concept-missing-definition` | error | nothing for the book to commit to |
+| `defined-in-out-of-range` | error | a term defined in a chapter that doesn't exist |
+| `chapter-reference-out-of-range` | error | the prose points at a chapter the book does not have |
 | `orphan-concept` | warning | in the ledger, never used in the prose |
+| `chapter-defines-nothing` | warning | a chapter whose vocabulary the ledger never records, and which hasn't declared that |
+| `stale-teaches-no-terms` | warning | a chapter declared term-free that now defines one |
 
 It exits `8` on error, following bookkit's convention, and runs on every pull
-request. Two deliberate design choices keep it quiet enough to be trusted:
+request. Three deliberate design choices keep it quiet enough to be trusted:
 
 **Signposted forward references are allowed.** "Containers (Chapter 7) package
 the program…" is good writing, not an error — the reader is told exactly where
@@ -148,8 +157,15 @@ that is the one that strands a reader.
 **Only distinctive names are scanned.** Ordinary English words — "test", "plan",
 "state", "image" — appear constantly in prose that is not about the concept, and
 flagging them would train everyone to ignore the gate, which is worse than not
-having one. Multi-word terms and acronyms are scanned automatically; a single
-word that is unambiguous jargon opts in with `scan: true`.
+having one. Multi-word, hyphenated and acronym terms are scanned automatically;
+a single word that is unambiguous jargon opts in with `scan: true`.
+
+**Matching tolerates how people actually write.** A gate that checks
+"dependency" but not "dependencies" is not a stricter gate — it is a gate with
+holes in it, and the holes are invisible, which is the bad kind. Regular and
+common irregular plurals count, so do the three spellings of a hyphenated term
+(`trade-off` / `trade off` / `tradeoff`), and so does a signpost written the way
+this book actually writes them: "Chapters 6 and 7", not only "Chapter 7".
 
 ## Relationship to content-kit
 
@@ -158,17 +174,22 @@ This repository is downstream of
 modify it. bookkit is genre-neutral by design; the book-specific machinery lives
 here.
 
-The ledger and the linter are working prototypes of two proposals filed against
-content-kit, built against real data rather than designed in the abstract:
+The ledger and the linter began life here, as a `scripts/` directory duplicated
+byte for byte into all four books in the series — which is how the case for
+moving them upstream got demonstrated rather than argued. They have since
+landed in content-kit, closing the three proposals they prototyped:
 
-- [#9](https://github.com/alpibrusl/content-kit/issues/9) — a genre-aware canon with a `Concept` model. `glossary.yaml` is that model, populated.
-- [#10](https://github.com/alpibrusl/content-kit/issues/10) — genre-aware continuity rules. `check_terms.py` implements the term rules.
-- [#11](https://github.com/alpibrusl/content-kit/issues/11) — a generated glossary as back matter. `build_glossary.py` does it locally.
+- [#9](https://github.com/alpibrusl/content-kit/issues/9) — a genre-aware canon with a `Concept` model, now `content_kit_core.ledger`. `glossary.yaml` is that model, populated.
+- [#10](https://github.com/alpibrusl/content-kit/issues/10) — genre-aware continuity rules, now `bookkit check terms`.
+- [#11](https://github.com/alpibrusl/content-kit/issues/11) — a generated glossary as back matter, now `bookkit glossary`.
 
-If those land upstream, this repository deletes `scripts/` and gains a
-`bible.yaml`. Two findings from writing the book are already fed back into the
-issues: forward references need a signpost escape hatch, and prose scanning must
-be conservative about ordinary English or the gate becomes noise.
+So `scripts/` is gone, and this repository is back to holding only what is
+actually specific to this book: the manuscript, the ledger it is written
+against, and the `verify-production` skill. Two findings from writing the book
+went upstream with the code rather than staying as lessons — forward references
+need a signpost escape hatch, and prose scanning must be conservative about
+ordinary English or the gate becomes noise. Full design:
+[`docs/ledger.md`](https://github.com/alpibrusl/content-kit/blob/main/packages/bookkit/docs/ledger.md).
 
 ## Licence
 

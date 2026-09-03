@@ -6,9 +6,9 @@ You have a working thing — Ledgerly, say. Now you are going to change it, and 
 
 Not dramatic losses. Ordinary ones: an afternoon of work overwritten, a feature that worked on Tuesday and does not on Thursday with nobody able to say what happened in between, a fix that broke something else and no way back to before the fix.
 
-The system that prevents all of this is called **version control**, and it is the single most valuable piece of engineering practice you can adopt. Not the most sophisticated. The most valuable, by a wide margin, because it converts almost every mistake from a loss into an inconvenience.
+The system that prevents all of this is called **version control**, and it is the single most valuable piece of engineering practice you can adopt. Not the most sophisticated. The most valuable, by a wide margin because it converts almost every mistake from a loss into an inconvenience.
 
-## What it actually does
+## What it does
 
 Version control records every change to a codebase as a separate, labelled, reversible step, so that any past state can be recovered exactly.
 
@@ -63,7 +63,7 @@ Push often. There is no cost.
 
 A **pull request** — PR, universally; GitLab says merge request — is a proposal to merge one branch into another, opened for review before it is accepted.
 
-This is where a great deal of engineering actually happens, and it is worth understanding what a PR is *for*, because it is doing several jobs at once:
+This is where a great deal of engineering actually happens, and it is worth understanding what a PR is *for* because it is doing several jobs at once:
 
 - It shows the complete diff in one place, so a change can be judged as a whole rather than commit by commit.
 - It is where automated checks report. Chapter 9 is about those; the important part is that a PR is the natural gate — tests run against the proposed change, and a red result blocks it.

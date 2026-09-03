@@ -31,7 +31,6 @@ jobs:
       - name: Install bookkit
         run: |
           python -m pip install --upgrade pip
-          pip install pyyaml
           pip install "content-kit-core @ git+https://github.com/alpibrusl/content-kit@main#subdirectory=packages/core"
           pip install "bookkit[epub,pdf] @ git+https://github.com/alpibrusl/content-kit@main#subdirectory=packages/bookkit"
 
@@ -39,6 +38,11 @@ jobs:
       # way a failing test would.
       - name: Check term continuity
         run: make check
+
+      # House style. Reported, never enforced: prose judgement is not a thing
+      # to fail a build over, but a regression should be visible in the log.
+      - name: Check prose style
+        run: make prose
 
       - name: Build EPUB
         run: make epub

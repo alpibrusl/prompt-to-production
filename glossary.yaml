@@ -17,6 +17,10 @@
 kind: technical
 title: "Prompt to Production"
 
+# Chapter 16 is the closing checklist and 17 the afterword: both recap the
+# book's vocabulary rather than extend it, so neither introduces a term.
+teaches_no_terms: [16, 17]
+
 concepts:
 
   # ─── Chapter 1 — The Handoff ────────────────────────────────────────────

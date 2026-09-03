@@ -99,7 +99,7 @@ The same instinct every time: *do not do it by hand; describe it, commit the des
 
 ## Being honest about the cost
 
-IaC has real costs and it is worth naming them, because the enthusiastic version of this chapter would be dishonest.
+IaC has real costs and it is worth naming them because the enthusiastic version of this chapter would be dishonest.
 
 It is slower to start. Clicking through a console takes twenty minutes; expressing the same thing in files takes an afternoon the first time.
 
@@ -113,7 +113,7 @@ So a proportionate position: explore in the console, and once you know what you 
 
 > "Is our infrastructure defined in code, or was it clicked together? If it's clicked, what would it take to describe the important parts in files?"
 
-You are not necessarily asking for the whole thing to be converted. You are finding out which world you are in, because it changes what every later question means.
+You are not necessarily asking for the whole thing to be converted. You are finding out which world you are in because it changes what every later question means.
 
 > "Show me the plan before applying it, and walk me through anything being destroyed or replaced."
 
