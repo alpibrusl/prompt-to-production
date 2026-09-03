@@ -73,6 +73,10 @@ front_matter:
   - toc
 
 back_matter:
+  # How to install the skill this book ships with. Back matter rather than a
+  # chapter: it is a reference a reader returns to once, not something the
+  # argument depends on.
+  - { file: RUNNING-THE-SKILL.md, title: "Appendix — Running the Skill" }
   # Generated from glossary.yaml by `make glossary` — do not edit by hand.
   - { file: GLOSSARY.md, title: "Glossary" }
   - about_author
