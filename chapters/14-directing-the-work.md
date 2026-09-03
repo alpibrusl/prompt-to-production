@@ -8,8 +8,6 @@ You now know roughly a hundred and fifty things exist that you did not know exis
 
 ## The asymmetry
 
-Start with the thing that governs all of this.
-
 **An agent will build almost anything you ask for and will rarely tell you what you forgot to ask for.**
 
 This is not a defect. It is a direct consequence of how it works: you asked a question, it answered that question, well. It is not withholding the rest. The rest was never in scope, because you did not put it there.
@@ -48,7 +46,7 @@ Small changes also fail cheaply. If a change to one thing breaks, you know what 
 
 ## Reviewing what you cannot read
 
-Chapter 4 promised this and here it is.
+Chapter 4 promised a way to read a change without reading code.
 
 You cannot read the code well enough to verify it is correct. That is simply true and pretending otherwise helps nobody. But you can read a *diff* — the lines added and removed — for shape, and shape tells you more than people expect. Six questions, none of which require understanding the code:
 
@@ -106,13 +104,9 @@ None of these four ask you to read code. They ask whether a specific *claim* hol
 
 ## When you cannot judge the choice
 
-Here is a situation that will happen to you within a week of starting anything real.
-
-The agent stops and offers you a choice. This is roughly how Ledgerly's own database got picked: Postgres or MongoDB. REST or GraphQL. A monolith or separate services. Vercel or AWS. It lays out three options with trade-offs, all of which sound reasonable, none of which you can evaluate, and it waits.
+Within a week of starting anything real, the agent will stop and offer you a choice. This is roughly how Ledgerly's own database got picked: Postgres or MongoDB. REST or GraphQL. A monolith or separate services. Vercel or AWS. It lays out three options with trade-offs, all of which sound reasonable, none of which you can evaluate, and it waits.
 
 You have no basis to choose. None. The words are not the problem — you could look each of them up — the problem is that the trade-off is between consequences you have never experienced.
-
-This section is what to do in that moment, and it is not "go and learn databases".
 
 ### Refuse the menu
 
@@ -198,8 +192,6 @@ A rhythm that works:
 Not sophisticated. It is what almost every functional software team does, and the discipline is entirely in doing it in small pieces rather than large ones.
 
 ## Saying no
-
-Last, the thing that is genuinely hard and rarely written down.
 
 The agent will confidently suggest approaches. Most will be reasonable. Some will be wrong for your situation in ways it cannot know, because it does not know your budget, your users, your legal exposure, or how much operational work you can absorb.
 

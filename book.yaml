@@ -36,24 +36,24 @@ chapters:
   # contents. The Markdown source keeps its own plain H1; the numbering is
   # book-assembly metadata, so it lives here rather than in the prose.
   # Part I — The Ground
-  - { file: chapters/01-the-handoff.md,        title: "Chapter 1 — The Handoff" }
+  - { file: chapters/01-the-handoff.md,        title: "Chapter 1 — The Handoff", part: "Part I — The Ground" }
   - { file: chapters/02-where-code-lives.md,   title: "Chapter 2 — Where Code Lives" }
   - { file: chapters/03-the-shape-of-an-app.md, title: "Chapter 3 — The Shape of an App" }
   # Part II — Keeping It
-  - { file: chapters/04-version-control.md,    title: "Chapter 4 — Keeping Every Version" }
+  - { file: chapters/04-version-control.md,    title: "Chapter 4 — Keeping Every Version", part: "Part II — Keeping It" }
   - { file: chapters/05-environments.md,       title: "Chapter 5 — Environments and Secrets" }
   - { file: chapters/06-tests.md,              title: "Chapter 6 — The Question You Ask Automatically" }
   # Part III — Shipping It
-  - { file: chapters/07-infrastructure.md,     title: "Chapter 7 — What You Are Actually Renting" }
+  - { file: chapters/07-infrastructure.md,     title: "Chapter 7 — What You Are Actually Renting", part: "Part III — Shipping It" }
   - { file: chapters/08-infrastructure-as-code.md, title: "Chapter 8 — Writing the Setup Down" }
   - { file: chapters/09-ci-cd.md,              title: "Chapter 9 — The Path to Production" }
   # Part IV — Living With It
-  - { file: chapters/10-observability.md,      title: "Chapter 10 — Knowing What It Is Doing" }
+  - { file: chapters/10-observability.md,      title: "Chapter 10 — Knowing What It Is Doing", part: "Part IV — Living With It" }
   - { file: chapters/11-when-it-breaks.md,     title: "Chapter 11 — The Night It Breaks" }
   - { file: chapters/12-security.md,           title: "Chapter 12 — Who Is Allowed to Do This" }
   - { file: chapters/13-cost.md,               title: "Chapter 13 — The Bill You Didn't See Coming" }
   # Part V — Working With the Agent
-  - { file: chapters/14-directing-the-work.md, title: "Chapter 14 — Directing the Work" }
+  - { file: chapters/14-directing-the-work.md, title: "Chapter 14 — Directing the Work", part: "Part V — Working With the Agent" }
   - { file: chapters/15-you-are-the-single-point-of-failure.md, title: "Chapter 15 — You Are the Single Point of Failure" }
   - { file: chapters/16-the-minimum-bar.md,    title: "Chapter 16 — The Minimum Bar" }
   # Afterword. Was chapter 0 (front matter); moved here deliberately.

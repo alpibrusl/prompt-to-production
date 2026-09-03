@@ -4,8 +4,6 @@ There is a moment in every project where getting a change to users stops being s
 
 The difference between teams that ship confidently many times a day and teams that batch changes into a nervous Thursday release is not talent, and it is not the size of the company. It is whether the path from a change to production is automated and identical every time, or improvised.
 
-This chapter is that path.
-
 ## Continuous integration
 
 **Continuous integration** — CI, always — means automatically building and testing every change as soon as it is proposed.
@@ -123,9 +121,7 @@ Both depend on being able to see whether things are going wrong, which is Chapte
 
 ## Separating shipping from releasing
 
-One more idea, and it removes more deployment anxiety than anything else here.
-
-A **feature flag** is a switch that turns a feature on or off without deploying. The code for the new thing ships to production but stays dark; you turn it on for yourself, then for a few users, then for everyone — and off again instantly if it misbehaves.
+A **feature flag** removes more deployment anxiety than anything else in this chapter: a switch that turns a feature on or off without deploying. The code for the new thing ships to production but stays dark; you turn it on for yourself, then for a few users, then for everyone — and off again instantly if it misbehaves.
 
 The consequence is that **deploying code and releasing a feature become two separate decisions**. You can deploy the half-finished thing safely because it is switched off. You can release to 5% of users without a deployment. And when something is wrong you turn it off in seconds, which is faster and less disruptive than any rollback.
 

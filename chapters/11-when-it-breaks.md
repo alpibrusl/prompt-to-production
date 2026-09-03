@@ -54,8 +54,6 @@ This is the chapter people skip because preparing for failure feels pessimistic 
 
 ## Failure is normal
 
-Start by accepting the premise because everything else follows from it.
-
 Machines fail. Disks fill. Networks partition. Third-party services go down without warning — and their status page will say everything is fine, because the status page is updated by a human who does not know yet. Certificates expire, always at the least convenient moment. A dependency's new version breaks something subtle. A customer uploads a 900-megabyte file to a field you assumed would hold a phone number. Somebody runs a well-intentioned script against the wrong environment.
 
 None of these are exotic. They are Tuesday.

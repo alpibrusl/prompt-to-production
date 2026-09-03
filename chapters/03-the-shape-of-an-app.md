@@ -18,8 +18,6 @@ Every response carries a status code, and you know some already. `200` means fin
 
 ## The three parts
 
-Now the shape.
-
 The **frontend** is what the user sees and touches: the screens, the buttons, the layout, everything that happens in the browser or the phone. It is a client.
 
 The **backend** is what the user never sees: the rules, the logic, the decisions, the part that knows a discount code has expired or that this account may not see that document. It plays the server role.

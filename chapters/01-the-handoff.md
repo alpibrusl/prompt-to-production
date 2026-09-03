@@ -81,9 +81,7 @@ None of that was taught as a separate subject. It came bundled. It was the water
 
 What has changed is that the bundle came apart. You can now get working code without the years, which is genuinely wonderful, and it means the water is gone. Nobody removed it deliberately. It simply was never a separate thing that could be handed to you, so when the code arrived without it, no one noticed the omission.
 
-The people who could tell you are often the worst placed to. Ask an experienced engineer what you need to know and you will get either a shrug — because to them it is not knowledge, it is just how things are — or a firehose of specifics about tools you have no reason to care about. The general shape is hard to see from inside.
-
-That shape is what this book is.
+The people who could tell you are often the worst placed to. Ask an experienced engineer what you need to know and you will get either a shrug — because to them it is not knowledge, it is just how things are — or a firehose of specifics about tools you have no reason to care about. The general shape is hard to see from inside — and that shape is what this book covers.
 
 ## What you need
 
@@ -103,7 +101,7 @@ The agent is not withholding. It is answering the question you asked. The skill 
 
 ## What this book is not about
 
-It is not about Claude Code, or Codex, or Cursor, or whatever is announced next month.
+It is not about Claude Code, or Codex, or Cursor, or whatever is announced next month — it is about the ground those tools stand on.
 
 That is a deliberate refusal, not an oversight. The tools are the fastest-moving part of this whole landscape: their interfaces change monthly, their capabilities change quarterly, and half the specifics anyone writes about them are wrong within a year. A book organised around one of them would be a book with a shelf life measured in months, and you would have to distrust every page of it by the time you finished.
 
@@ -111,11 +109,7 @@ What the agent hands you moves on a completely different timescale. The idea tha
 
 So: no screenshots, no prompts to copy, no tool-specific instructions. When this book says "the agent", it means whichever one you use. Everything here should apply equally to a tool that does not exist yet — and if it stops applying, that will be genuine news rather than a version bump.
 
-This is a book about the ground the tools stand on.
-
 ## What this book does not cover
-
-Scope, honestly, so you know when you have left it.
 
 The book assumes you are building a **web application or a service** — something with a screen or an interface, a backend, and a database, running on somebody else's computers. That is what agents are asked to build most often, and it is where the practices transfer furthest.
 
