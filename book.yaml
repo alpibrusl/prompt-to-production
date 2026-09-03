@@ -63,11 +63,17 @@ chapters:
   # tag inside the chapter itself already marks it as set apart.
   - { file: chapters/17-a-note-from-the-author.md, title: "" }
 
-front_matter: [title_page, copyright, toc]
+front_matter:
+  - title_page
+  - copyright
+  # The series map opens the book. A reader meets "the second book in this
+  # series" in chapter 1; the page that explains what that is has to come
+  # before it, not 150 pages later in the back matter.
+  - { file: ABOUT-THE-SERIES.md, title: "The Prompt to... Series" }
+  - toc
 
 back_matter:
   # Generated from glossary.yaml by `make glossary` — do not edit by hand.
   - { file: GLOSSARY.md, title: "Glossary" }
   - about_author
-  - { file: ABOUT-THE-SERIES.md, title: "The Prompt to... Series" }
   - { file: COLOPHON.md, title: "Colophon" }
