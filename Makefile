@@ -39,8 +39,14 @@ prose-fix:
 epub: glossary
 	@bookkit build -f epub
 
+# WeasyPrint loads Pango through the dynamic linker. On macOS, System
+# Integrity Protection strips DYLD_* from the environment whenever a protected
+# binary runs -- and both /usr/bin/make and the /bin/sh shim that `bookkit`
+# installs as are protected. So exporting DYLD_FALLBACK_LIBRARY_PATH before
+# `make pdf` has no effect, and the failure claims libgobject is missing on a
+# machine where it is installed. Calling the module directly skips both shims.
 pdf: glossary
-	@bookkit build -f pdf
+	@$(if $(wildcard /opt/homebrew/lib/libgobject-2.0.dylib),DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib ,)python3 -c "from bookkit.cli import app; app()" build -f pdf
 
 html: glossary
 	@bookkit build -f html
