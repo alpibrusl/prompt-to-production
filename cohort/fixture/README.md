@@ -34,9 +34,27 @@ book's repository the same way `build/` does.
   tracking in a later commit but still fully readable via
   `git log -p -- .env`. The point isn't finding it; it's the group
   correctly concluding that removing the file didn't fix anything.
-- **Session 4** — `.github/workflows/` and `tests/` are both empty.
-  Nothing blocks a bad merge.
+- **Session 4** — a CI workflow that installs from the lockfile and runs
+  real, passing tests on every pull request. It looks finished, and it has
+  no branch protection, no dependency scanning, no deploy and no rollback.
+  Reading something that looks done is the harder skill.
 - **Session 7** — the unauthorized `/invoices/:id` route, revisited as
   something to catch in review rather than something to go find.
-- **Session 8 (capstone)** — a real target for the `verify-production`
-  skill, for anyone without a project of their own to point it at.
+- **Session 8 (capstone)** — the default target for the
+  `verify-production` skill, and the recommended one for a cohort run
+  inside a company.
+
+  The fixture is deliberately mixed, because an audit where every answer is
+  "not done" teaches nothing about auditing. Some items are genuinely done
+  (the lockfile, the tests, CI running them). One is neither done nor
+  missing: `infra/backups.tf` configures nightly snapshots and nothing
+  anywhere shows a restore was ever performed — the `[mixed]` case the skill
+  is built around, and the one students most often mark ✅. `docs/runbook.md`
+  is the same trick in miniature: it exists, and every section says TODO.
+  One item is genuinely not applicable — the service makes no outbound
+  third-party calls, so "retries backed off and safe to repeat" is ➖ rather
+  than ❌, and marking it ❌ is a misreading worth catching.
+
+  Nothing in the generated repository announces any of this. An earlier
+  version labelled the unauthorized endpoint in a code comment, which handed
+  students the finding and left nothing to audit.
