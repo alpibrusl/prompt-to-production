@@ -58,6 +58,29 @@ opencode at the repository from a project's `opencode.jsonc`:
 Check it loaded with `opencode debug skill`, which lists every skill
 opencode can see and where each one came from.
 
+If you point opencode at a skill that lives outside the folder you are
+working in -- which the `paths` option above does -- it will stop and ask
+permission the first time the skill reads its own checklist. In the normal
+interactive session you answer the question and carry on. Running
+non-interactively, with `opencode run`, there is nobody to ask: it waits,
+silently, and looks like a hang rather than a question. Granting the
+permission up front avoids it:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": { "paths": ["/path/to/prompt-to-production/skills"] },
+  "permission": {
+    "read": "allow",
+    "external_directory": "allow",
+    "edit": "deny"
+  }
+}
+```
+
+`edit: deny` is not required. It is worth setting anyway: the skill only
+ever reads, so nothing it legitimately does needs permission to write.
+
 Skill support arrived in opencode over several releases, and the fixes that
 made a skill's `references/` folder resolve correctly landed in 1.17.10 and
 1.17.12. On an older build the skill loads and then cannot read its own

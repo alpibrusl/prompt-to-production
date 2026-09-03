@@ -211,9 +211,16 @@ repository without copying anything:
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
-  "skills": { "paths": ["/path/to/prompt-to-production/skills"] }
+  "skills": { "paths": ["/path/to/prompt-to-production/skills"] },
+  "permission": { "read": "allow", "external_directory": "allow", "edit": "deny" }
 }
 ```
+
+The `permission` block matters when the skill lives outside the working
+directory, as `paths` implies. opencode asks before reading there, and
+`opencode run` — the headless form the capstone uses — has nobody to ask, so
+it waits silently and looks like a hang. Granting it up front avoids that.
+`edit: deny` is optional; the skill only reads.
 
 `opencode debug skill` lists every skill it can see and where each came from.
 Needs 1.17.12 or newer — `references/` path resolution was fixed in 1.17.10 and
