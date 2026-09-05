@@ -26,6 +26,13 @@ you already have.
 > An agent will build almost anything you ask for, and will rarely tell you what
 > you forgot to ask for.
 
+
+> **Two licences.** The manuscript in `chapters/` is
+> [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — share and
+> adapt with credit, no commercial use. Everything else, including the build
+> and the cohort curriculum, is [EUPL-1.2](LICENSE). GitHub shows only the
+> second; [`COPYING.md`](COPYING.md) is the authority on the split.
+
 ## Contents
 
 | | Part | Chapters |
