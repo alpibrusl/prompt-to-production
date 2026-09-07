@@ -1,0 +1,58 @@
+# Edición en castellano de "Prompt to Production".
+#
+# El manuscrito inglés es la fuente. Este directorio es una traducción, no una
+# bifurcación: cuando el original cambia, esta edición se actualiza, y no al
+# revés. Las cifras de Ledgerly son canon compartido de toda la serie y no se
+# tocan aquí — véase CLAUDE.md.
+#
+# `language: es` hace que bookkit rotule el índice, la portada y la nota
+# biográfica en castellano. Lo demás lo pone esta traducción.
+
+title: "Prompt to Production"
+subtitle: "La ingeniería de software que su agente de IA da por sabida"
+cover: "../cover.png"
+author:
+  name: "Alfonso Sastre"
+  bio: >-
+    Alfonso Sastre es físico teórico de formación. Su doctorado y sus cuatro
+    años de investigación posdoctoral fueron en QCD en el retículo, un campo
+    donde la física sale de la simulación a gran escala — lo que significaba
+    escribir código de alto rendimiento y analizar los datos que producía.
+    Desde 2015 trabaja como científico de datos en viajes, banca y movilidad
+    eléctrica.
+language: es
+output: "prompt-to-production-es.epub"
+
+copyright:
+  year: "2026"
+  license: "CC BY-NC 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc/4.0/"
+  notice:
+    - >-
+      Escrito con la ayuda de un agente de IA, que es la única forma honesta de
+      escribir este libro en concreto. Cada afirmación es del autor y suya es la
+      responsabilidad de defenderla.
+    - >-
+      Traducción del original inglés, cuyo manuscrito es la fuente.
+
+theme:
+  base_font: serif
+  page_size: 6x9
+  font_size_pt: 11.0
+  stylesheet: "../style.css"
+  stylesheet_mode: extend
+
+chapters:
+  - { file: chapters/01-the-handoff.md, title: "Capítulo 1 — El traspaso", part: "Parte I — El terreno" }
+
+front_matter:
+  - title_page
+  - copyright
+  - { file: SOBRE-LA-SERIE.md, title: "La serie Prompt to…" }
+  - { file: SOBRE-LA-TRADUCCION.md, title: "Sobre esta traducción" }
+  - toc
+
+back_matter:
+  # Generado desde glossary.yaml por `make glossary-es`. No editar a mano.
+  - { file: GLOSARIO.md, title: "Glosario" }
+  - about_author
