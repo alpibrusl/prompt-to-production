@@ -1,0 +1,94 @@
+# El registro de conceptos de la edición en castellano de "Prompt to Production".
+#
+# Es el canon del libro en esta lengua: cada término que enseña, la ÚNICA
+# definición a la que se compromete y la ÚNICA analogía que usa para esa idea.
+# `make check-es` valida el manuscrito castellano contra este fichero.
+#
+# El registro inglés (../glossary.yaml) manda sobre los conceptos; este manda
+# sobre las palabras. Cuando los dos discrepan sobre qué enseña un capítulo, el
+# inglés tiene razón y esto es un error de traducción.
+#
+# `aka` recoge aquí algo que el original no necesita: el anglicismo que el
+# lector va a oír en su empresa. "despliegue" y "deploy" son la misma entrada,
+# y el glosario impreso los muestra juntos a propósito.
+
+kind: technical
+title: "Prompt to Production"
+
+# El capítulo 16 es la lista de comprobación final y el 17 es el epílogo del
+# autor: ambos recapitulan vocabulario en lugar de ampliarlo.
+teaches_no_terms: [16, 17]
+
+concepts:
+
+  # ─── Capítulo 1 — El traspaso ───────────────────────────────────────────
+  - term: "código fuente"
+    aka: ["código", "la fuente", "source code"]
+    definition: >-
+      El texto que una persona o un agente escribe para describir lo que un
+      programa debería hacer. Es lo que se edita; no es lo que tocan sus
+      usuarios.
+    analogy: "Una receta: instrucciones escritas, no el plato."
+    defined_in: 1
+
+  - term: "programa"
+    aka: ["aplicación", "app"]
+    definition: >-
+      Código fuente convertido en algo que un ordenador puede ejecutar.
+    depends_on: ["código fuente"]
+    defined_in: 1
+
+  - term: "build"
+    aka: ["construcción", "compilación"]
+    definition: >-
+      El proceso que convierte el código fuente en algo ejecutable, y el acto
+      de ejecutar ese proceso. Un build bien controlado debería ser
+      reproducible: la misma fuente y las mismas entradas fijadas producen el
+      mismo resultado.
+    analogy: "Cocinar la receta."
+    depends_on: ["código fuente", "programa"]
+    defined_in: 1
+
+  - term: "artefacto"
+    aka: ["artefacto de build", "artifact"]
+    definition: >-
+      Lo que sale de un build — un fichero o un paquete que puede desplegarse.
+      Derivado de la fuente, no editado directamente, y reproducible a partir
+      de ella.
+    depends_on: ["build"]
+    defined_in: 1
+
+  - term: "tiempo de ejecución"
+    aka: ["en ejecución", "runtime"]
+    definition: >-
+      El estado de un programa mientras se está ejecutando de verdad, frente a
+      estar en disco como texto. Casi todos los fallos interesantes de este
+      libro ocurren aquí.
+    depends_on: ["programa"]
+    defined_in: 1
+
+  - term: "despliegue"
+    aka: ["desplegar", "deploy", "publicar", "release"]
+    definition: >-
+      Poner un artefacto en un sitio donde funcionará para usuarios reales, y
+      convertirlo en la versión a la que esos usuarios llegan.
+    depends_on: ["artefacto", "tiempo de ejecución"]
+    defined_in: 1
+
+  - term: "producción"
+    aka: ["prod", "en vivo"]
+    scan: true
+    definition: >-
+      El entorno que tocan los usuarios de verdad. El único donde los errores
+      cuestan algo.
+    depends_on: ["despliegue"]
+    defined_in: 1
+
+  - term: "sistema"
+    definition: >-
+      Todo lo que tiene que estar funcionando para que sus usuarios consigan
+      aquello a lo que vinieron: el programa, la máquina que hay debajo, la
+      red, la base de datos, los servicios de terceros y los ajustes que
+      cambian entre su portátil y el mundo real.
+    depends_on: ["programa", "tiempo de ejecución"]
+    defined_in: 1
