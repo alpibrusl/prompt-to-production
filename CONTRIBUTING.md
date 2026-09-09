@@ -21,13 +21,34 @@ covers the files you touched.
 ## Setting up
 
 ```bash
-python -m pip install "bookkit @ git+https://github.com/alpibrusl/content-kit@main#subdirectory=packages/bookkit"
-python -m pip install "cohortkit @ git+https://github.com/alpibrusl/cohort-kit@main"
+python -m pip install "bookkit @ git+https://github.com/alpibrusl/content-kit@v0.2.0#subdirectory=packages/bookkit"
+python -m pip install "cohortkit @ git+https://github.com/alpibrusl/cohort-kit@v0.2.0"
 ```
 
 Building the PDF also needs Pango, which is a system library rather than a
 Python one — `brew install pango` on macOS, `apt install libpango-1.0-0
 libpangoft2-1.0-0` on Debian.
+
+## The toolchain is pinned
+
+CI and the commands above install bookkit and cohortkit at a **tag**, not at
+`@main`:
+
+```
+git+https://github.com/alpibrusl/content-kit@v0.2.0#subdirectory=packages/bookkit
+```
+
+That is what makes this book's own tag sufficient to rebuild it. The rendered
+PDF depends on the toolchain as much as on the manuscript — in one week the
+same commit produced page numbers in a different typeface, running heads on
+different pages, and a glossary in a different language, with no text change at
+all. A reader handed `v1.0.0` and told to rebuild it would otherwise get
+whatever the toolchain happened to be that morning.
+
+The cost is that a toolchain fix does not arrive on its own. Bumping is
+deliberate: change `TOOLCHAIN` at the top of each workflow in `.github/workflows/`,
+change the version in this file and in `README.md`, rebuild, and check the
+build stamp on the copyright page reads what you expect.
 
 ## What CI will check
 
