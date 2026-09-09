@@ -97,7 +97,7 @@ clean:
 	@echo "cleaned"
 
 # The cohort curriculum -- see cohort/README.md. Needs cohortkit:
-# pip install "cohortkit @ git+https://github.com/alpibrusl/cohort-kit@main"
+# pip install "cohortkit @ git+https://github.com/alpibrusl/cohort-kit@v0.2.0"
 cohort-check:
 	@cohortkit check cohort --book-path .
 
