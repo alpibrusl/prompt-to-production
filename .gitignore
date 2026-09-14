@@ -17,6 +17,3 @@ venv/
 .idea/
 .vscode/
 
-# Edición en castellano — derivados.
-es/build/
-es/GLOSARIO.md
