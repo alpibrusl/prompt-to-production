@@ -68,15 +68,8 @@ audiobook:
 audiobook-plan:
 	@bookkit audiobook -b . --dry-run || [ $$? -eq 9 ]
 
-# The Spanish edition is parked. `es/` keeps its book.yaml, ledger, translation
-# criteria and first chapter, because bookkit needs no changes to render it --
-# `language: es` is all it ever needed, so restoring this is re-adding targets,
-# not rebuilding anything. They are gone meanwhile so that no build, and in
-# particular no release, can publish a one-chapter book by accident: `release`
-# attaches build/*.epub and build/*.pdf by glob.
-
 clean:
-	@rm -rf build es/build es/GLOSARIO.md GLOSSARY.md cohort/build
+	@rm -rf build GLOSSARY.md cohort/build
 	@echo "cleaned"
 
 # The cohort curriculum -- see cohort/README.md. Needs cohortkit:
