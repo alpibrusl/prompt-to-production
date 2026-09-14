@@ -4,7 +4,7 @@
 # This file is also, deliberately, the smallest honest example of what the book
 # describes: one command, same result on any machine, nothing built by hand.
 
-.PHONY: help glossary check check-es glossary-es epub-es pdf-es html-es prose prose-fix build epub pdf html audiobook clean all cohort-check cohort-build
+.PHONY: help glossary check prose prose-fix build epub pdf html audiobook clean all cohort-check cohort-build
 
 help:
 	@echo "make glossary      regenerate GLOSSARY.md from glossary.yaml"
@@ -17,11 +17,6 @@ help:
 	@echo "make all           check + build all three formats"
 	@echo "make cohort-check  lint the cohort curriculum against this book's chapters"
 	@echo "make cohort-build  build the cohort student handout + facilitator guide"
-	@echo ""
-	@echo "  edición en castellano (es/)"
-	@echo "make check-es      lint the Spanish manuscript against es/glossary.yaml"
-	@echo "make glossary-es   regenerate es/GLOSARIO.md"
-	@echo "make epub-es / pdf-es / html-es"
 	@echo ""
 	@echo "make clean         remove build artifacts"
 
@@ -73,24 +68,12 @@ audiobook:
 audiobook-plan:
 	@bookkit audiobook -b . --dry-run || [ $$? -eq 9 ]
 
-# The Spanish edition is a translation, not a fork: `es/` has its own
-# book.yaml, chapters and ledger, and bookkit renders it with no changes
-# because `language: es` is all it needs. The English manuscript stays the
-# source -- when a chapter changes there, the translation follows.
-check-es:
-	@bookkit check terms -b es
-
-glossary-es:
-	@bookkit glossary -b es --out es/GLOSARIO.md
-
-epub-es: glossary-es
-	@bookkit build -b es -f epub
-
-pdf-es: glossary-es
-	@$(if $(wildcard /opt/homebrew/lib/libgobject-2.0.dylib),DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib ,)python3 -c "from bookkit.cli import app; app()" build -b es -f pdf
-
-html-es: glossary-es
-	@bookkit build -b es -f html
+# The Spanish edition is parked. `es/` keeps its book.yaml, ledger, translation
+# criteria and first chapter, because bookkit needs no changes to render it --
+# `language: es` is all it ever needed, so restoring this is re-adding targets,
+# not rebuilding anything. They are gone meanwhile so that no build, and in
+# particular no release, can publish a one-chapter book by accident: `release`
+# attaches build/*.epub and build/*.pdf by glob.
 
 clean:
 	@rm -rf build es/build es/GLOSARIO.md GLOSSARY.md cohort/build
