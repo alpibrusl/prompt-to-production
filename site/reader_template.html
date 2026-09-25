@@ -6,6 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{TITLE}}</title>
 <meta name="description" content="{{SUBTITLE}}">
+<link rel="canonical" href="{{URL}}">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5OWPC90ZXh0Pjwvc3ZnPg==">
+<meta property="og:type" content="book">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{SUBTITLE}}">
+<meta property="og:url" content="{{URL}}">
+<meta property="og:site_name" content="{{REPO}}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{SUBTITLE}}">
+{{JSONLD}}
 <style>
   :root {
     --bg: #faf8f4;
@@ -275,7 +286,7 @@
 
         <footer class="book-footer">
           <p>
-            This manuscript is <a href="{{LICENSE_URL}}">{{LICENSE}}</a> &mdash;
+            This manuscript is <a rel="license" href="{{LICENSE_URL}}">{{LICENSE}}</a> &mdash;
             share and adapt with credit, no commercial use.
           </p>
           <p><a href="index.html">Back to {{REPO}}</a></p>

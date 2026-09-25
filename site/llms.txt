@@ -1,0 +1,15 @@
+# Prompt to Production
+
+> The software engineering your AI agent assumes you already know — for people who can now get working software without having learned to program, and who have discovered that working code is not the same thing as a system you can run.
+
+## Book
+
+- [Prompt to Production](https://alpibrusl.github.io/prompt-to-production/book.html): The full manuscript, seventeen chapters, teaching the vocabulary and the map for directing an AI agent's software engineering work.
+
+## Cohort
+
+- [Student handout](https://alpibrusl.github.io/prompt-to-production/handout.html): The exercises and sessions built from this book, for anyone running or taking the cohort.
+
+## Series
+
+One of four standalone volumes on the judgement an AI agent's capability assumes you already have: [Prompt to Evidence](https://alpibrusl.github.io/prompt-to-evidence/), [Prompt to Ledger](https://alpibrusl.github.io/prompt-to-ledger/), [Prompt to Decision](https://alpibrusl.github.io/prompt-to-decision/).

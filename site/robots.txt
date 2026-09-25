@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alpibrusl.github.io/prompt-to-production/sitemap.xml
