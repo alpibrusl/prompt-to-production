@@ -2,6 +2,8 @@
 
 **The software engineering your AI agent assumes you already know.**
 
+Read it online: <https://alpibrusl.github.io/prompt-to-production/>
+
 A short book for people who can now get working software without having learned
 to program — founders, product managers, designers, analysts — and who have
 discovered that working code is not the same thing as a system you can run.
