@@ -1,5 +1,6 @@
 # Build artifacts. The manuscript is the source; these are derived.
 build/
+_site/
 GLOSSARY.md
 
 # The cohort's generated fixture repo -- fixture/setup.sh is the source.

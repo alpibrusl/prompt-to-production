@@ -1,0 +1,358 @@
+<!-- SPDX-License-Identifier: EUPL-1.2 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{SUBTITLE}}">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --bg-raised: #f1ece1;
+    --fg: #1c1a17;
+    --muted: #5c574d;
+    --accent: #8a4a2f;
+    --border: #e4ddd0;
+    --sidebar-bg: #f4efe4;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16140f;
+      --bg-raised: #201d16;
+      --fg: #ece7dc;
+      --muted: #b3ab9a;
+      --accent: #e0a37e;
+      --border: #3a352a;
+      --sidebar-bg: #1c1912;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16140f;
+    --bg-raised: #201d16;
+    --fg: #ece7dc;
+    --muted: #b3ab9a;
+    --accent: #e0a37e;
+    --border: #3a352a;
+    --sidebar-bg: #1c1912;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    line-height: 1.65;
+  }
+
+  a { color: var(--accent); }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  .topbar .home-link {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .topbar .book-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .icon-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+  }
+  .icon-btn:hover { border-color: var(--accent); }
+
+  .layout {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    height: calc(100vh - 49px);
+    position: sticky;
+    top: 49px;
+    overflow-y: auto;
+    padding: 1.25rem 0.5rem 2rem;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  .sidebar ol {
+    list-style: none;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+  .sidebar li.toc-part {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 1.4rem 0 0.4rem;
+    padding: 0 0.5rem;
+  }
+  .sidebar li.toc-part:first-child { margin-top: 0; }
+  .sidebar a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 0.88rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 6px;
+  }
+  .sidebar a:hover { background: var(--bg-raised); }
+  .sidebar a.active { background: var(--bg-raised); color: var(--accent); font-weight: 600; }
+  .toc-num {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  main {
+    flex: 1;
+    min-width: 0;
+    padding: 2.5rem 1.5rem 6rem;
+  }
+  .reading-column {
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .book-header {
+    max-width: 42rem;
+    margin: 0 auto 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .book-header h1 { font-size: 2rem; margin: 0 0 0.3rem; }
+  .book-header .subtitle { color: var(--muted); font-style: italic; margin: 0 0 0.4rem; }
+  .book-header .author { font-family: -apple-system, system-ui, sans-serif; font-size: 0.85rem; color: var(--muted); }
+
+  .chapter { padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
+  .chapter:last-of-type { border-bottom: none; }
+  .chapter-eyebrow {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+  }
+  .chapter h1 { font-size: 1.7rem; margin: 0 0 1.3rem; }
+  .chapter h2 { font-size: 1.25rem; margin: 2rem 0 0.8rem; }
+  .chapter p { margin: 0 0 1rem; }
+  .chapter blockquote {
+    border-left: 3px solid var(--border);
+    margin: 1.2rem 0;
+    padding-left: 1rem;
+    color: var(--muted);
+  }
+  .chapter code {
+    font-family: "SF Mono", "DejaVu Sans Mono", Consolas, monospace;
+    font-size: 0.9em;
+    background: var(--bg-raised);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+  }
+  .chapter pre {
+    background: var(--bg-raised);
+    padding: 1rem;
+    overflow-x: auto;
+    border-radius: 6px;
+  }
+  .chapter pre code { background: none; padding: 0; }
+
+  .chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 0.85rem;
+  }
+  .chapter-nav-link { text-decoration: none; max-width: 45%; }
+  .chapter-nav-link.next { text-align: right; margin-left: auto; }
+
+  .book-footer {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .book-footer a { color: var(--accent); }
+
+  .sidebar-overlay { display: none; }
+
+  @media (max-width: 860px) {
+    .sidebar {
+      position: fixed;
+      top: 49px;
+      left: 0;
+      height: calc(100vh - 49px);
+      width: 82vw;
+      max-width: 300px;
+      transform: translateX(-100%);
+      transition: transform 0.2s ease;
+      z-index: 30;
+    }
+    body.sidebar-open .sidebar { transform: translateX(0); }
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 49px 0 0 0;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 25;
+    }
+    body.sidebar-open .sidebar-overlay { display: block; }
+    .menu-btn { display: inline-block; }
+    main { padding: 1.75rem 1.1rem 4rem; }
+  }
+  @media (min-width: 861px) {
+    .menu-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Toggle chapter list">&#9776;</button>
+    <a class="home-link" href="index.html">&larr; {{REPO}}</a>
+    <span class="book-title">{{TITLE}}</span>
+    <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode">&#9788;</button>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="layout">
+    <nav class="sidebar" id="sidebar">
+      <ol>
+{{SIDEBAR}}
+      </ol>
+    </nav>
+
+    <main>
+      <div class="reading-column">
+        <header class="book-header">
+          <h1>{{TITLE}}</h1>
+          <p class="subtitle">{{SUBTITLE}}</p>
+          <p class="author">{{AUTHOR}}</p>
+        </header>
+
+{{CHAPTERS}}
+
+        <footer class="book-footer">
+          <p>
+            This manuscript is <a href="{{LICENSE_URL}}">{{LICENSE}}</a> &mdash;
+            share and adapt with credit, no commercial use.
+          </p>
+          <p><a href="index.html">Back to {{REPO}}</a></p>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var themeBtn = document.getElementById("theme-toggle");
+  var STORAGE_KEY = "{{REPO}}:theme";
+
+  function applyTheme(theme) {
+    if (theme === "light" || theme === "dark") {
+      root.setAttribute("data-theme", theme);
+    } else {
+      root.removeAttribute("data-theme");
+    }
+  }
+
+  function currentTheme() {
+    try {
+      return localStorage.getItem(STORAGE_KEY) || "auto";
+    } catch (e) {
+      return "auto";
+    }
+  }
+
+  function storeTheme(theme) {
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch (e) {
+      /* private browsing or storage disabled: theme just won't persist */
+    }
+  }
+
+  applyTheme(currentTheme());
+
+  themeBtn.addEventListener("click", function () {
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var effective = root.getAttribute("data-theme") || (prefersDark ? "dark" : "light");
+    var next = effective === "dark" ? "light" : "dark";
+    applyTheme(next);
+    storeTheme(next);
+  });
+
+  var menuBtn = document.getElementById("menu-toggle");
+  var overlay = document.getElementById("sidebar-overlay");
+  function closeSidebar() { document.body.classList.remove("sidebar-open"); }
+  menuBtn.addEventListener("click", function () {
+    document.body.classList.toggle("sidebar-open");
+  });
+  overlay.addEventListener("click", closeSidebar);
+  document.getElementById("sidebar").addEventListener("click", function (e) {
+    if (e.target.closest("a")) closeSidebar();
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll(".sidebar a"));
+  var sections = Array.prototype.slice.call(document.querySelectorAll(".chapter"));
+  if ("IntersectionObserver" in window && sections.length) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var slug = entry.target.getAttribute("data-slug");
+          links.forEach(function (link) {
+            link.classList.toggle("active", link.getAttribute("data-slug") === slug);
+          });
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    sections.forEach(function (section) { observer.observe(section); });
+  }
+})();
+</script>
+</body>
+</html>

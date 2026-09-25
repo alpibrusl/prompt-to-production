@@ -1,0 +1,159 @@
+<!-- SPDX-License-Identifier: EUPL-1.2 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt to Production</title>
+<meta name="description" content="The software engineering your AI agent assumes you already know.">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --bg-raised: #f1ece1;
+    --fg: #1c1a17;
+    --muted: #5c574d;
+    --accent: #8a4a2f;
+    --border: #e4ddd0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16140f;
+      --bg-raised: #201d16;
+      --fg: #ece7dc;
+      --muted: #b3ab9a;
+      --accent: #e0a37e;
+      --border: #3a352a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    line-height: 1.55;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 4rem;
+  }
+  header { margin-bottom: 2.5rem; }
+  h1 { font-size: 2.1rem; margin: 0 0 0.35rem; }
+  .subtitle { color: var(--muted); font-size: 1.05rem; margin: 0 0 1rem; }
+  .lede { font-size: 1.05rem; }
+  .badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+  .badge {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+  }
+  h2 {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 2.5rem 0 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+  }
+  .card {
+    display: block;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 0.9rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card-title {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  .card-desc {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .book-card .card-title { font-size: 1.15rem; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--accent); }
+  footer p { margin: 0 0 0.6rem; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Prompt to Production</h1>
+    <p class="subtitle">The software engineering your AI agent assumes you already know</p>
+    <p class="lede">
+      For people who can now get working software without having learned to
+      program &mdash; founders, product managers, designers, analysts &mdash;
+      and who have discovered that working code is not the same thing as a
+      system you can run. Not how to write code. How to <em>ask for</em> what
+      you now know exists.
+    </p>
+    <div class="badges">
+      <span class="badge">17 chapters</span>
+      <span class="badge">CC BY-NC 4.0</span>
+      <span class="badge">part of a 4-book series</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>The book</h2>
+    <a class="card book-card" href="book.html">
+      <div class="card-title">Read &ldquo;Prompt to Production&rdquo;</div>
+      <div class="card-desc">
+        The full manuscript, seventeen chapters, as one page. Free to read and
+        share under CC BY-NC 4.0.
+      </div>
+    </a>
+  </section>
+
+  <section>
+    <h2>The cohort</h2>
+    <a class="card" href="handout.html">
+      <div class="card-title">Student handout</div>
+      <div class="card-desc">The exercises and sessions built from this book, for anyone running or taking the cohort.</div>
+    </a>
+  </section>
+
+  <footer>
+    <p>
+      One of four standalone volumes on the judgement an AI agent's
+      capability assumes you already have &mdash;
+      <a href="https://github.com/alpibrusl/prompt-to-evidence">Prompt to Evidence</a>,
+      <a href="https://github.com/alpibrusl/prompt-to-ledger">Prompt to Ledger</a>,
+      <a href="https://github.com/alpibrusl/prompt-to-decision">Prompt to Decision</a>.
+      See <a href="https://github.com/alpibrusl/prompt-to-production/blob/main/ABOUT-THE-SERIES.md">ABOUT-THE-SERIES.md</a>.
+    </p>
+    <p>
+      Source on
+      <a href="https://github.com/alpibrusl/prompt-to-production">github.com/alpibrusl/prompt-to-production</a>.
+      The manuscript is CC BY-NC 4.0; the code and cohort curriculum are EUPL-1.2.
+      See <code>COPYING.md</code>.
+    </p>
+  </footer>
+</main>
+</body>
+</html>

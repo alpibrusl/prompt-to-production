@@ -2,21 +2,19 @@
 
 name: pages
 
-# Publishes the cohort student handout to a stable URL. That stability is
-# the point: the handout's progress tracking lives in the browser's own
-# localStorage, keyed to this page, so a student needs to reopen the same
-# URL — not a fresh file each session — for their checked-off progress to
-# still be there.
+# Publishes the book as a proper web reader (not bookkit's print-emulating
+# HTML — see site/build_reader.py) alongside the cohort student handout, at
+# a stable URL. That stability matters for the handout specifically: its
+# progress tracking lives in the browser's own localStorage, keyed to this
+# page, so a student needs to reopen the same URL — not a fresh file each
+# session — for their checked-off progress to still be there.
 #
 # The facilitator guide is never published here. It's the one artifact
 # whose whole reason to exist is content the handout deliberately omits.
-#
-# Manual trigger only, on purpose: this repo is private and Pages isn't
-# enabled yet, so an automatic push trigger would just fail red on every
-# commit that touches cohort/. Run it by hand (Actions -> pages -> Run
-# workflow) once Pages is turned on in this repo's settings.
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -53,10 +51,18 @@ jobs:
       - name: Build the student handout
         run: make cohort-build
 
+      - name: Build the web reader
+        run: python3 site/build_reader.py
+
       - name: Assemble the Pages site
         run: |
           mkdir -p _site
-          cp cohort/build/handout.html _site/index.html
+          cp site/index.html _site/index.html
+          cp cohort/build/handout.html _site/handout.html
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
