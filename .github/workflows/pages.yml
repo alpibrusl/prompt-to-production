@@ -58,6 +58,9 @@ jobs:
         run: |
           mkdir -p _site
           cp site/index.html _site/index.html
+          cp site/robots.txt _site/robots.txt
+          cp site/llms.txt _site/llms.txt
+          cp site/sitemap.xml _site/sitemap.xml
           cp cohort/build/handout.html _site/handout.html
 
       - uses: actions/configure-pages@v5

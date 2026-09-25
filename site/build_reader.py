@@ -19,6 +19,7 @@ carries in a leading blockquote, rather than being numbered like a chapter.
 from __future__ import annotations
 
 import html
+import json
 import re
 from pathlib import Path
 
@@ -27,6 +28,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE = Path(__file__).resolve().parent / "reader_template.html"
+BASE_URL = "https://alpibrusl.github.io/prompt-to-production/"
 
 CHAPTER_PREFIX = re.compile(r"^Chapter\s+\d+\s+—\s+")
 LEADING_H1 = re.compile(r"^#\s+(.+?)\s*\n")
@@ -124,6 +126,20 @@ def render_chapters(chapters: list[dict]) -> str:
     return "\n".join(sections)
 
 
+def render_jsonld(config: dict, url: str) -> str:
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": config["title"],
+        "description": config.get("subtitle", ""),
+        "author": {"@type": "Person", "name": (config.get("author") or {}).get("name") or ""},
+        "inLanguage": "en",
+        "license": config["copyright"]["license_url"],
+        "url": url,
+    }
+    return f'<script type="application/ld+json">\n{json.dumps(data, indent=2)}\n</script>'
+
+
 def main() -> None:
     config = yaml.safe_load((ROOT / "book.yaml").read_text())
     chapters = load_chapters(config)
@@ -131,6 +147,7 @@ def main() -> None:
     out_dir = ROOT / "_site"
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    url = BASE_URL + "book.html"
     page = TEMPLATE.read_text()
     page = page.replace("{{REPO}}", "prompt-to-production")
     page = page.replace("{{TITLE}}", html.escape(config["title"]))
@@ -140,6 +157,8 @@ def main() -> None:
     page = page.replace("{{LICENSE_URL}}", html.escape(config["copyright"]["license_url"]))
     page = page.replace("{{SIDEBAR}}", render_sidebar(chapters))
     page = page.replace("{{CHAPTERS}}", render_chapters(chapters))
+    page = page.replace("{{URL}}", url)
+    page = page.replace("{{JSONLD}}", render_jsonld(config, url))
 
     (out_dir / "book.html").write_text(page)
     print(f"wrote _site/book.html ({len(chapters)} chapters)")
